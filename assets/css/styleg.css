@@ -1,0 +1,243 @@
+/*start header*/
+/*header background*/
+header{
+    background-color: rgb(7, 3, 32);
+    justify-content: space-between;
+    display: flex;
+    width: 1,321.77px;
+    height: 47.64px;
+    border-radius: 10px;
+}
+/*button color*/
+header button{
+
+    background-color: rgb(216, 0, 39, 1);
+    color: rgb(255, 255, 255);
+    width: 131.77px;
+    height: 32.17px;
+    border-radius: 6px;
+}
+/*text modifications*/
+header a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+}
+/*button text*/
+header button p{
+    text-align: center;
+    margin-top: 6px;
+    font-family: "Arial", sans-serif;
+}
+
+/*alignement*/
+header th{
+    vertical-align: bottom;
+}
+/*space between button*/
+#spaceh{
+    color: rgb(7, 3, 32);
+}
+
+/*end header*/
+/* memory.css */
+body {
+  margin: 0;
+  background-color: #0b0b2b;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.fake{
+  display: flex;
+  margin-top: 20px;
+}
+.memory-game {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.memory-game h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.memory-game p {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.control label {
+  display: block;
+  font-size: 0.75rem;
+  color: #ccc;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.control select {
+  padding: 8px 12px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: white;
+  color: #0b0b2b;
+  font-size: 1rem;
+}
+
+#generate-btn {
+  padding: 10px 20px;
+  background-color: #ff392b;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#generate-btn:hover {
+  background-color: #e82e24;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+/* footer général */
+footer {
+  margin-top: 100px;
+  width: 100%;
+  background-color: white;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: black;
+}
+
+/* conteneur des colonnes */
+.fhead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start; /* items collés à gauche */
+  gap: 40px;                    /* écart entre les colonnes */
+  padding: 0 10%;               /* padding latéral pour centrer tout ça */
+  margin-bottom: 40px;
+}
+
+/* colonne logo + texte */
+.tabl0 {
+  max-width: 300px;
+}
+
+.tabl0 #logo {
+  display: block;
+  height: 50px;
+  margin-bottom: 16px;
+}
+
+.tabl0 p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* colonnes Menu et Contact */
+.tabl1,
+.tabl2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 200px;
+}
+
+.tabl1 h4{
+  margin-left: auto;
+}
+
+.tabl1 h4,.tabl2 h4 {
+  display: block;
+  color: black !important;
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+
+.tabl2 h4 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+}
+
+.tabl1 a {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tabl2 p {
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+/* liens généraux */
+footer a {
+  color: black !important;
+  text-decoration: none;
+}
+
+/* séparation */
+footer hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 20% 24px;
+}
+
+/* icônes sociales */
+#links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 0 10%;  /* même padding que .fhead pour garder l’alignement */
+  margin-bottom: 24px;
+
+}
+
+.linka {
+  width: 40px;
+  height: 30px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.linka:hover {
+  transform: scale(1.2);
+}
+
+/* copyright */
+#endf {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
