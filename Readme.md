@@ -1,2 +1,2 @@
 # Readme...
-Explication à propos du site-web
+Explication à propos du site-web.
