@@ -43,3 +43,12 @@ CREATE TABLE score (
 )
 CHARACTER SET 'utf8'
 ENGINE = INNODB;
+
+-- user story 2
+-- info email, mdp, pseudo (5 lignes minimum)
+INSERT INTO main_user(email, mdp, pseudo)
+VALUES     ('lunar.fox92@mail.com', 'T!ger$2025', 'PixelRider'),
+           ('zephyr.wave88@outlook.com', 'BlueMoon#47', 'ShadowNova'),
+        ('nova.sparkle77@gmail.com', 'Z3nith!Sky', 'FrostByteX'),
+        ('echo.shadow13@yahoo.com', 'P@ssw0rdX9', 'EchoDrift'),
+        ('crimson.tide55@protonmail.com', 'Cr1mson*Edge', 'NeonVortex');
