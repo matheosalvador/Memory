@@ -44,6 +44,25 @@ CREATE TABLE score (
 CHARACTER SET 'utf8'
 ENGINE = INNODB;
 
+
+
+-- création de la table des messages
+CREATE TABLE message (
+    id INT UNSIGNED  AUTO_INCREMENT,
+    game_id INT UNSIGNED  NOT NULL,
+    user_id INT UNSIGNED  NOT NULL ,
+    message TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- date des messages (mis à jour)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES main_user(id),
+    FOREIGN KEY (game_id) REFERENCES game(id)
+)
+CHARACTER SET 'utf8'
+ENGINE = INNODB;
+-- fin user story 1 et 3
+
+
+
 -- user story 2
 -- info email, mdp, pseudo (5 lignes minimum)
 INSERT INTO main_user(email, mdp, pseudo)
