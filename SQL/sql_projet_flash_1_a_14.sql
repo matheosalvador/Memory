@@ -160,7 +160,6 @@ ON s.game_id = g.id
 
 
 -- user story 8
-    
 -- user story 7
 -- (a mettre dans score)
 SELECT game.game_name, main_user.pseudo, score.difficulty, score.score, score.created_at
@@ -180,8 +179,9 @@ SET difficulty = 2, game_id = 1,
     updated_at = CURRENT_TIMESTAMP;
 -- fin user story 8
 
--- user story 10
 
+
+-- user story 10
 -- ajout de la table isSender
 ALTER TABLE message 
 ADD isSender TINYINT(1);
@@ -205,6 +205,8 @@ WHERE m.created_at >= NOW() - INTERVAL 1 DAY
 ORDER BY m.created_at ASC
 LIMIT 1;
 -- fin user story 10
+
+
 
 -- user story 11
 CREATE TABLE messagerie_privee (
@@ -264,8 +266,9 @@ DELETE FROM messagerie_privee
 WHERE id=24
 -- fin user story 12
 
--- user story 13
 
+    
+-- user story 13
 -- valeur pour tester la messagerie privée (insérer des valeurs)
 INSERT INTO mesagerie_privee(user_sender_id, user_receiver_id, msg, is_read, created_at, read_at) VALUES
 (1, 2, 'Yo ShadowNova, prêt pour la session de test ?', 1, '2025-10-16 08:00:00', '2025-10-16 08:05:00'),
@@ -305,6 +308,9 @@ JOIN (
 WHERE 1 IN (m.user_sender_id, m.user_receiver_id)
 ORDER BY m.created_at DESC;
 -- fin de user story 13
+
+
+
 -- user story 14
 SELECT 
     mp.id AS message_id,
