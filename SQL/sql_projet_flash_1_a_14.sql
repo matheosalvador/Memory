@@ -169,3 +169,46 @@ WHERE id = 24;
 DELETE FROM messagerie_privee
 WHERE id=24
 -- fin user story 12
+
+-- user story 13
+
+-- valeur pour tester la messagerie privée (insérer des valeurs)
+INSERT INTO mesagerie_privee(user_sender_id, user_receiver_id, msg, is_read, created_at, read_at) VALUES
+(1, 2, 'Yo ShadowNova, prêt pour la session de test ?', 1, '2025-10-16 08:00:00', '2025-10-16 08:05:00'),
+(2, 1, 'Toujours prêt PixelRider ', 1, '2025-10-16 08:07:00', '2025-10-16 08:08:00'),
+(1, 3, 'Salut FrostByteX, tu peux checker mon dernier commit ?', 0, '2025-10-16 09:00:00', NULL),
+(3, 1, 'Oui, je regarde ça tout de suite.', 1, '2025-10-16 09:15:00', '2025-10-16 09:17:00'),
+(4, 2, 'ShadowNova, tu viens à la réunion de ce soir ?', 0, '2025-10-15 18:00:00', NULL),
+(2, 4, 'Oui EchoDrift, je serai là vers 18h30.', 1, '2025-10-15 18:10:00', '2025-10-15 18:11:00'),
+(5, 1, 'Yo PixelRider, on lance une partie de Marinbad ?', 0, '2025-10-16 10:00:00', NULL),
+(1, 5, 'Grave ! Envoie-moi ton code de salle.', 1, '2025-10-16 10:05:00', '2025-10-16 10:07:00'),
+(3, 4, 'EchoDrift, t’as vu le nouveau patch du jeu ?', 1, '2025-10-15 19:00:00', '2025-10-15 19:02:00'),
+(4, 3, 'Oui FrostByteX, les graphismes sont fous !', 1, '2025-10-15 19:05:00', '2025-10-15 19:06:00');
+
+SELECT 
+    m.id,
+    sender.pseudo AS sender_pseudo,
+    receiver.pseudo AS receiver_pseudo,
+    m.msg,
+    m.created_at,
+    m.read_at,
+    m.is_read
+FROM messagerie_privee AS m
+JOIN main_user AS sender
+ON sender.id = m.user_sender_id
+JOIN main_user AS receiver 
+ON receiver.id = m.user_receiver_id
+JOIN (
+    SELECT 
+        (user_sender_id + user_receiver_id) AS conversation_sum,
+        MAX(created_at) AS last_message_date
+    FROM messagerie_privee
+    WHERE 1 IN (user_sender_id, user_receiver_id)
+    GROUP BY (user_sender_id + user_receiver_id)
+) AS conv
+    ON (m.user_sender_id + m.user_receiver_id) = conv.conversation_sum
+    AND m.created_at = conv.last_message_date
+WHERE 1 IN (m.user_sender_id, m.user_receiver_id)
+ORDER BY m.created_at DESC;
+-- fin de user story 13
+
