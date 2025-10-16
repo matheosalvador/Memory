@@ -109,3 +109,63 @@ UPDATE score
 SET difficulty = 2, game_id = 1,
     updated_at = CURRENT_TIMESTAMP;
 -- fin user story 8
+
+
+
+-- user story 11
+CREATE TABLE messagerie_privee (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_sender_id INT UNSIGNED NOT NULL,
+    user_receiver_id INT UNSIGNED NOT NULL,
+    msg TEXT NOT NULL,
+    is_read TINYINT(1) DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    read_at DATETIME NULL,
+    PRIMARY KEY (id)
+)
+-- fin user story 11
+
+
+
+-- user story 12
+-- Insertion des messages avec NOW() pour les dates
+INSERT INTO messagerie_privee (msg, is_read, read_at, created_at, user_sender_id, user_receiver_id) 
+VALUES
+  ('Yo, tu va bien', 1, NOW(), NOW(), 1, 2),
+  ('Oe tranquille', 0, NOW(), NOW(), 2, 1),
+  ('cv bieng', 1, NULL, NOW(), 3, 3),
+  ('vous voulez jouer a un jeu?', 1, NULL, NOW(), 1, 1),
+  ('az', 1, NOW(), NOW(), 2, 3),
+  ('go apex?', 1, NULL, NOW(), 1, 2),
+  ('aller', 0, NULL, NOW(), 2, 2),
+  ('vas-y', 1, NOW(), NOW(), 3, 1),
+  ('apres je peux pas mtn', 1, NOW(), NOW(), 2, 1),
+  ('ah', 0, NULL, NOW(), 1, 3),
+  ('après on est le midi, ce soir t dispo?', 1, NULL, NOW(), 3, 3),
+  ('en vrai ouais je crois', 1, NOW(), NOW(), 2, 2),
+  ('aller ba go ce soir', 1, NULL, NOW(), 1, 2),
+  ('pense a prendre ta souris !', 0, NOW(), NOW(), 2, 1),
+  ('ok je penserais a ca', 0, NULL, NOW(), 1, 1),
+  ('et change de clavier, passe a un querty', 0, NULL, NOW(), 3, 3),
+  ('ba il va très bien mon azerty', 1, NOW(), NOW(), 1, 3),
+  ('la map D:', 0, NULL, NOW(), 2, 2),
+  ('ça marche, bon ba a ce soir :))', 1, NOW(), NOW(), 1, 2),
+  ('aller', 1, NULL, NOW(), 2, 1);
+
+
+
+-- les tests
+-- message supplémentaires
+INSERT INTO messagerie_privee (msg, is_read, read_at, created_at, user_sender_id, user_receiver_id)
+VALUES
+  ('ah et pense a installer le jeu aussi :]', 1, NOW(), NOW(), 3, 2),
+  ('oe tkt je penserais a ca', 1, NOW(), NOW(), 2, 1);
+
+-- update message
+UPDATE messagerie_privee
+SET msg = 'pas de clavier'
+WHERE id = 24;
+
+DELETE FROM messagerie_privee
+WHERE id=24
+-- fin user story 12
