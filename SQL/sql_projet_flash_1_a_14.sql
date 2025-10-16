@@ -211,4 +211,42 @@ JOIN (
 WHERE 1 IN (m.user_sender_id, m.user_receiver_id)
 ORDER BY m.created_at DESC;
 -- fin de user story 13
+-- user story 14
+SELECT 
+    mp.id AS message_id,
+    sender.pseudo AS sender_pseudo,
+    receiver.pseudo AS receiver_pseudo,
+    mp.msg AS message,
+    mp.created_at AS sent_at,
+    mp.read_at AS read_at,
+    mp.is_read,
 
+    -- Statistiques expéditeur
+    (SELECT COUNT() FROM score s WHERE s.user_id = mp.user_sender_id) AS sender_total_games,
+    (SELECT g.game_name
+     FROM score s
+     JOIN game g ON s.game_id = g.id
+     WHERE s.user_id = mp.user_sender_id
+     GROUP BY s.game_id
+     ORDER BY COUNT() DESC
+     LIMIT 1) AS sender_most_played_game,
+
+    -- Statistiques receveur
+    (SELECT COUNT() FROM score s WHERE s.user_id = mp.user_receiver_id) AS receiver_total_games,
+    (SELECT g.game_name
+     FROM score s
+     JOIN game g ON s.game_id = g.id
+     WHERE s.user_id = mp.user_receiver_id
+     GROUP BY s.game_id
+     ORDER BY COUNT() DESC
+     LIMIT 1) AS receiver_most_played_game
+
+FROM messagerie_privee mp
+JOIN main_user sender ON sender.id = mp.user_sender_id
+JOIN main_user receiver ON receiver.id = mp.user_receiver_id
+WHERE 
+    (mp.user_sender_id = 1 AND mp.user_receiver_id = 2)
+    OR
+    (mp.user_sender_id = 2 AND mp.user_receiver_id = 1)
+ORDER BY mp.created_at ASC;
+-- fin user story 14
