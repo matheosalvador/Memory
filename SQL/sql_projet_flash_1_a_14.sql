@@ -26,3 +26,20 @@ CREATE TABLE game (
 )
 CHARACTER SET 'utf8'
 ENGINE = INNODB;
+
+
+
+-- création de la table de score
+CREATE TABLE score (
+    id INT UNSIGNED  AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    game_id INT UNSIGNED NOT NULL,
+    difficulty ENUM ('1','2','3') NOT NULL, -- niveau de difficulté
+    score INT UNSIGNED NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES main_user(id),
+    FOREIGN KEY (game_id) REFERENCES game(id)
+)
+CHARACTER SET 'utf8'
+ENGINE = INNODB;
