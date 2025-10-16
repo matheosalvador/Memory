@@ -52,3 +52,15 @@ VALUES     ('lunar.fox92@mail.com', 'T!ger$2025', 'PixelRider'),
         ('nova.sparkle77@gmail.com', 'Z3nith!Sky', 'FrostByteX'),
         ('echo.shadow13@yahoo.com', 'P@ssw0rdX9', 'EchoDrift'),
         ('crimson.tide55@protonmail.com', 'Cr1mson*Edge', 'NeonVortex');
+
+
+
+-- info jeu (1 lignes minimum)
+INSERT INTO game(game_name)
+VALUES     ('Power Of Memory'); 
+
+
+
+-- info score (2 lignes minimum)
+INSERT INTO score (user_id, game_id, difficulty, score, created_at) 
+Values(1, 1, '1',10, '2025-10-14 12:00'),(2, 1, '2',20, '2025-10-14 12:00');
