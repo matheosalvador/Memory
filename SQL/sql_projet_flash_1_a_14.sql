@@ -64,3 +64,25 @@ VALUES     ('Power Of Memory');
 -- info score (2 lignes minimum)
 INSERT INTO score (user_id, game_id, difficulty, score, created_at) 
 Values(1, 1, '1',10, '2025-10-14 12:00'),(2, 1, '2',20, '2025-10-14 12:00');
+
+-- user story 5
+SELECT * FROM main_user WHERE email = 'jnffbj@gmail.com' AND mdp ='gfbyvuhgeu764364';
+-- fin user story 5
+
+
+
+-- user story 6
+SELECT 
+g.game_name,
+m.pseudo,
+s.difficulty,
+s.score,
+s.created_at
+FROM score as s 
+LEFT JOIN main_user as m
+ON s.user_id = m.id
+LEFT JOIN game as g 
+ON s.game_id = g.id
+-- fin user story 6
+
+
