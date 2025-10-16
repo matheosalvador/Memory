@@ -65,6 +65,9 @@ VALUES     ('Power Of Memory');
 INSERT INTO score (user_id, game_id, difficulty, score, created_at) 
 Values(1, 1, '1',10, '2025-10-14 12:00'),(2, 1, '2',20, '2025-10-14 12:00');
 
+
+
+
 -- user story 5
 SELECT * FROM main_user WHERE email = 'jnffbj@gmail.com' AND mdp ='gfbyvuhgeu764364';
 -- fin user story 5
@@ -86,3 +89,14 @@ ON s.game_id = g.id
 -- fin user story 6
 
 
+
+-- user story 8
+-- user story 7
+-- (a mettre dans score)
+SELECT game.game_name, main_user.pseudo, score.difficulty, score.score, score.created_at
+FROM score 
+JOIN main_user ON score.user_id = main_user.id -- jointure entre score et main_user
+JOIN game ON game.id = score.game_id -- jointure entre jeu et score
+WHERE main_user.pseudo LIKE '%%' -- recherche de pseudo (avec modulo %%)
+ORDER BY score.difficulty, score.score;
+-- fin user story 7
