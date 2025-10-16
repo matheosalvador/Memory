@@ -100,3 +100,12 @@ JOIN game ON game.id = score.game_id -- jointure entre jeu et score
 WHERE main_user.pseudo LIKE '%%' -- recherche de pseudo (avec modulo %%)
 ORDER BY score.difficulty, score.score;
 -- fin user story 7
+
+ALTER TABLE score
+ADD updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP -- (on a oublié d'ajouter ça)
+
+-- update le score de qlq1 à 200
+UPDATE score 
+SET difficulty = 2, game_id = 1,
+    updated_at = CURRENT_TIMESTAMP;
+-- fin user story 8
