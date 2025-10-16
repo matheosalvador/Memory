@@ -180,7 +180,31 @@ SET difficulty = 2, game_id = 1,
     updated_at = CURRENT_TIMESTAMP;
 -- fin user story 8
 
+-- user story 10
 
+-- ajout de la table isSender
+ALTER TABLE message 
+ADD isSender TINYINT(1);
+
+-- la colonne isSender (booleen) modifié
+UPDATE message
+SET isSender = CASE 
+                  WHEN user_id = 3 THEN 1 
+                  ELSE 0 
+               END;
+
+-- contenu message + nom du joueur + date et heure
+SELECT 
+    m.message,
+    u.pseudo,
+    m.user_id,
+    m.created_at
+FROM message m
+JOIN main_user u ON m.user_id = u.id
+WHERE m.created_at >= NOW() - INTERVAL 1 DAY
+ORDER BY m.created_at ASC
+LIMIT 1;
+-- fin user story 10
 
 -- user story 11
 CREATE TABLE messagerie_privee (
