@@ -86,6 +86,38 @@ Values(1, 1, '1',10, '2025-10-14 12:00'),(2, 1, '2',20, '2025-10-14 12:00');
 
 
 
+--user story 9
+-- info message (25 lignes minimum)
+INSERT INTO message(message, game_id, user_id)
+VALUES    ('Salut, t’es dispo ?', 1, 1),
+        ('Ouais, je finis à 18h.', 1, 2),
+        ('Parfait, on se retrouve vers 19h au café ?', 1, 1),
+        ('Ça marche, j’ai hâte !', 1, 2),
+        ('T’as vu le dernier épisode de la série ?', 1, 1),
+        ('Non, pas encore, spoil pas !', 1, 2),
+        ('Promis, mais tu vas kiffer.', 1, 1),
+        ('Tu me connais trop bien haha.', 1, 2),
+        ('Tu ramènes ton ordi ce soir ?', 1, 1),
+        ('Ouais, on pourra bosser un peu aussi.', 1, 2),
+        ('Cool, j’ai avancé sur le projet.', 1, 1),
+        ('Trop bien, montre-moi ça !', 1, 2),
+        ('Tu veux manger sur place ou commander ?', 1, 1),
+        ('On peut commander, j’ai la flemme de bouger.', 1, 2),
+        ('Ok, pizza comme d’hab ?', 1, 1),
+        ('Grave, quatre fromages pour moi.', 1, 2),
+        ('Et une végétarienne pour moi.', 1, 1),
+        ('Tu prends des boissons ?', 1, 2),
+        ('Ouais, je passe au supermarché avant.', 1, 1),
+        ('Top, je ramène les plaids.', 1, 2),
+        ('On va passer une bonne soirée !', 1, 1),
+        ('Comme toujours avec toi.', 1, 2),
+        ('À tout à l’heure alors !', 1, 1),
+        ('Bonne nuit !', 1, 2),
+        ('Désolé je suis pas disponible', 1, 1);
+-- fin user story 9
+-- fin de user story 2
+
+
 
 -- user story 5
 SELECT * FROM main_user WHERE email = 'jnffbj@gmail.com' AND mdp ='gfbyvuhgeu764364';
@@ -110,6 +142,7 @@ ON s.game_id = g.id
 
 
 -- user story 8
+    
 -- user story 7
 -- (a mettre dans score)
 SELECT game.game_name, main_user.pseudo, score.difficulty, score.score, score.created_at
