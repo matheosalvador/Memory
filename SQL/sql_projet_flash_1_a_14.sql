@@ -119,6 +119,24 @@ VALUES    ('Salut, t’es dispo ?', 1, 1),
 
 
 
+-- user story 4
+-- verification email non double
+UPDATE main_user AS mu
+LEFT JOIN (
+    SELECT email FROM main_user WHERE email = 'jnffbj@gmail.com'
+) AS doublon ON doublon.email IS NOT NULL
+SET mu.email = 'jnffbj@gmail.com'
+WHERE mu.id = 1 AND doublon.email IS NULL;
+SELECT * FROM main_user WHERE email = 'xxx';
+
+-- modification mot de passe
+UPDATE main_user
+SET mdp = 'xxx'
+WHERE id = '1';
+-- fin user story 4
+
+
+
 -- user story 5
 SELECT * FROM main_user WHERE email = 'jnffbj@gmail.com' AND mdp ='gfbyvuhgeu764364';
 -- fin user story 5
