@@ -312,7 +312,7 @@ ORDER BY m.created_at DESC;
 
 
 -- user story 14
-SELECT 
+SELECT (
     mp.id AS message_id,
     sender.pseudo AS sender_pseudo,
     receiver.pseudo AS receiver_pseudo,
@@ -324,7 +324,7 @@ SELECT
     -- Statistiques expéditeur
     (SELECT COUNT() FROM score s WHERE s.user_id = mp.user_sender_id) AS sender_total_games,
     (SELECT g.game_name
-     FROM score s
+     FROM score as s
      JOIN game g ON s.game_id = g.id
      WHERE s.user_id = mp.user_sender_id
      GROUP BY s.game_id
@@ -334,7 +334,7 @@ SELECT
     -- Statistiques receveur
     (SELECT COUNT() FROM score s WHERE s.user_id = mp.user_receiver_id) AS receiver_total_games,
     (SELECT g.game_name
-     FROM score s
+     FROM score as  s
      JOIN game g ON s.game_id = g.id
      WHERE s.user_id = mp.user_receiver_id
      GROUP BY s.game_id
