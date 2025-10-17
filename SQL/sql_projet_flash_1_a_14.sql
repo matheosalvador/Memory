@@ -282,7 +282,7 @@ INSERT INTO mesagerie_privee(user_sender_id, user_receiver_id, msg, is_read, cre
 (3, 4, 'EchoDrift, t’as vu le nouveau patch du jeu ?', 1, '2025-10-15 19:00:00', '2025-10-15 19:02:00'),
 (4, 3, 'Oui FrostByteX, les graphismes sont fous !', 1, '2025-10-15 19:05:00', '2025-10-15 19:06:00');
 
-SELECT 
+SELECT (
     m.id,
     sender.pseudo AS sender_pseudo,
     receiver.pseudo AS receiver_pseudo,
