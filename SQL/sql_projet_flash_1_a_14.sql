@@ -314,7 +314,7 @@ ORDER BY m.created_at DESC;
 
 
 -- user story 14
-SELECT (
+SELECT 
     mp.id AS message_id,
     sender.pseudo AS sender_pseudo,
     receiver.pseudo AS receiver_pseudo,
@@ -324,23 +324,23 @@ SELECT (
     mp.is_read,
 
     -- Statistiques expéditeur
-    (SELECT COUNT() FROM score s WHERE s.user_id = mp.user_sender_id) AS sender_total_games,
+    (SELECT COUNT(*) FROM score s WHERE s.user_id = mp.user_sender_id) AS sender_total_games, -- requete pour expediteur
     (SELECT g.game_name
-     FROM score as s
+     FROM score s
      JOIN game g ON s.game_id = g.id
      WHERE s.user_id = mp.user_sender_id
      GROUP BY s.game_id
-     ORDER BY COUNT() DESC
+     ORDER BY COUNT(*) DESC
      LIMIT 1) AS sender_most_played_game,
 
     -- Statistiques receveur
-    (SELECT COUNT() FROM score s WHERE s.user_id = mp.user_receiver_id) AS receiver_total_games,
+    (SELECT COUNT(*) FROM score s WHERE s.user_id = mp.user_receiver_id) AS receiver_total_games, -- requete pour receveur
     (SELECT g.game_name
-     FROM score as  s
+     FROM score s
      JOIN game g ON s.game_id = g.id
      WHERE s.user_id = mp.user_receiver_id
      GROUP BY s.game_id
-     ORDER BY COUNT() DESC
+     ORDER BY COUNT(*) DESC
      LIMIT 1) AS receiver_most_played_game
 
 FROM messagerie_privee mp
