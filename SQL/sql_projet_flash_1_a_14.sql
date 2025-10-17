@@ -296,7 +296,7 @@ ON sender.id = m.user_sender_id
 JOIN main_user AS receiver 
 ON receiver.id = m.user_receiver_id
 JOIN (
-    SELECT 
+    SELECT (
         (user_sender_id + user_receiver_id) AS conversation_sum,
         MAX(created_at) AS last_message_date
     FROM messagerie_privee
@@ -306,6 +306,8 @@ JOIN (
     ON (m.user_sender_id + m.user_receiver_id) = conv.conversation_sum
     AND m.created_at = conv.last_message_date
 WHERE 1 IN (m.user_sender_id, m.user_receiver_id)
+    )
+    )
 ORDER BY m.created_at DESC;
 -- fin de user story 13
 
