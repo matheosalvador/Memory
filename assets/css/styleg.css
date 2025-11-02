@@ -1,46 +1,30 @@
 /*start header*/
-/*header background*/
-header{
-    background-color: rgb(7, 3, 32);
-    justify-content: space-between;
-    display: flex;
-    width: 1,321.77px;
-    height: 47.64px;
-    border-radius: 10px;
+header {
+  background-color: rgb(7, 3, 32);
+  justify-content: space-between;
+  display: flex;
+  border-radius: 10px;
 }
-/*button color*/
-header button{
-
-    background-color: rgb(216, 0, 39, 1);
-    color: rgb(255, 255, 255);
-    width: 131.77px;
-    height: 32.17px;
-    border-radius: 6px;
+header button {
+  background-color: rgb(216, 0, 39);
+  color: white;
+  width: 131.77px;
+  height: 32.17px;
+  border-radius: 6px;
 }
-/*text modifications*/
-header a{
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-family: "Arial", sans-serif;
-    font-weight: normal;
+header a {
+  color: white;
+  text-decoration: none;
+  font-family: "Arial", sans-serif;
 }
-/*button text*/
-header button p{
-    text-align: center;
-    margin-top: 6px;
-    font-family: "Arial", sans-serif;
+header th {
+  vertical-align: bottom;
 }
-
-/*alignement*/
-header th{
-    vertical-align: bottom;
+#spaceh {
+  color: rgb(7, 3, 32);
 }
-/*space between button*/
-#spaceh{
-    color: rgb(7, 3, 32);
-}
-
 /*end header*/
+
 /* memory.css */
 body {
   margin: 0;
@@ -48,7 +32,7 @@ body {
   color: white;
   font-family: Arial, sans-serif;
 }
-.fake{
+.fake {
   display: flex;
   margin-top: 20px;
 }
@@ -58,18 +42,15 @@ body {
   padding: 60px 20px;
   text-align: center;
 }
-
 .memory-game h1 {
   font-size: 2.5rem;
   margin-bottom: 16px;
 }
-
 .memory-game p {
   font-size: 1rem;
   margin-bottom: 40px;
   line-height: 1.5;
 }
-
 .controls {
   display: flex;
   justify-content: center;
@@ -77,7 +58,6 @@ body {
   gap: 30px;
   margin-bottom: 50px;
 }
-
 .control label {
   display: block;
   font-size: 0.75rem;
@@ -85,7 +65,6 @@ body {
   margin-bottom: 4px;
   text-transform: uppercase;
 }
-
 .control select {
   padding: 8px 12px;
   border: 1px solid #555;
@@ -94,7 +73,6 @@ body {
   color: #0b0b2b;
   font-size: 1rem;
 }
-
 #generate-btn {
   padding: 10px 20px;
   background-color: #ff392b;
@@ -103,20 +81,17 @@ body {
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s;
 }
-
 #generate-btn:hover {
   background-color: #e82e24;
 }
-
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   justify-items: center;
 }
-
 .card {
   width: 100px;
   height: 100px;
@@ -125,11 +100,189 @@ body {
   cursor: pointer;
   transition: transform 0.2s;
 }
-
 .card:hover {
   transform: scale(1.05);
 }
-/* footer général */
+
+/* === SECTION AVEC IMAGE DE MANETTE + CHATBOX === */
+.game-presentation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0b0b2b;
+  padding: 80px 10%;
+  color: white;
+  gap: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation-text {
+  flex: 1;
+  max-width: 45%;
+  z-index: 2;
+}
+
+.presentation-text h2 {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.presentation-text p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #ccc;
+}
+
+.play-btn {
+  background-color: #e00034;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-btn:hover {
+  background-color: #c3002b;
+}
+
+/* Image plein côté droit */
+/* Conteneur de l'image + chatbox */
+.presentation-image {
+  flex: 1;
+  position: relative; /* important ! la chatbox sera relative à cette div */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.presentation-image .gamepad {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(0.9);
+}
+
+.chatbox {
+  position: absolute;
+  right: -80px;     /* décale légèrement vers la droite */
+  bottom: 20px;     /* reste en bas de la section */
+  width: 360px;
+  min-height: 450px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #e00034;
+  color: white;
+  padding: 12px 14px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.chat-body {
+  background-color: #fafafa;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;            /* prend tout l’espace restant */
+  overflow-y: auto;   /* scroll si beaucoup de messages */
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.message.left {
+  align-self: flex-start;
+}
+
+.message.right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.sender {
+  font-size: 0.7rem;
+  color: #888;
+  margin-bottom: 3px;
+}
+
+.bubble {
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.bubble.red {
+  background-color: #e00034;
+  color: white;
+}
+
+.time {
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+.chat-input {
+  border-top: 1px solid #ddd;
+  padding: 8px;
+  background-color: #fff;
+  flex-shrink: 0;  /* empêche de rétrécir et reste toujours en bas */
+}
+
+.chat-input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.chat-input input::placeholder {
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .game-presentation {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .presentation-image .gamepad {
+    height: 300px;
+  }
+
+  .chatbox {
+    position: static;
+    transform: none;
+    width: 90%;
+    min-height: 350px;
+    margin-top: -20px;
+  }
+}
+
+/* footer */
 footer {
   margin-top: 100px;
   width: 100%;
@@ -139,103 +292,53 @@ footer {
   font-size: 14px;
   color: black;
 }
-
-/* conteneur des colonnes */
 .fhead {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start; /* items collés à gauche */
-  gap: 40px;                    /* écart entre les colonnes */
-  padding: 0 10%;               /* padding latéral pour centrer tout ça */
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 0 10%;
   margin-bottom: 40px;
 }
-
-/* colonne logo + texte */
 .tabl0 {
   max-width: 300px;
 }
-
 .tabl0 #logo {
   display: block;
   height: 50px;
   margin-bottom: 16px;
 }
-
-.tabl0 p {
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* colonnes Menu et Contact */
-.tabl1,
-.tabl2 {
+.tabl1, .tabl2 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   max-width: 200px;
 }
-
-.tabl1 h4{
-  margin-left: auto;
-}
-
-.tabl1 h4,.tabl2 h4 {
-  display: block;
-  color: black !important;
-  font-size: 16px;
-  margin: 0 0 16px;
-}
-
-.tabl2 h4 {
-  margin: 0 0 16px 0;
-  font-size: 16px;
-}
-
-.tabl1 a {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.tabl2 p {
-  margin: 0 0 8px 0;
-  line-height: 1.5;
-}
-
-/* liens généraux */
 footer a {
   color: black !important;
   text-decoration: none;
 }
-
-/* séparation */
 footer hr {
   border: none;
   border-top: 1px solid #ccc;
   margin: 0 20% 24px;
 }
-
-/* icônes sociales */
 #links {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
-  padding: 0 10%;  /* même padding que .fhead pour garder l’alignement */
+  padding: 0 10%;
   margin-bottom: 24px;
-
 }
-
 .linka {
   width: 40px;
   height: 30px;
   border-radius: 10px;
   transition: transform 0.3s;
 }
-
 .linka:hover {
   transform: scale(1.2);
 }
-
-/* copyright */
 #endf {
   text-align: center;
   font-size: 13px;
