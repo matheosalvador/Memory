@@ -7,6 +7,7 @@ header{
     width: 1,321.77px;
     height: 47.64px;
     border-radius: 10px;
+    align-items: flex-end;
 }
 
 .logohead{
@@ -22,6 +23,11 @@ header button{
     height: 32.17px;
     border-radius: 6px;
 }
+
+header button:hover{
+    transform: scale(1.05);
+}
+
 /*text modifications*/
 header a{
     color: rgb(255, 255, 255);
@@ -40,8 +46,9 @@ header button p{
 header th{
     vertical-align: bottom;
 }
+
 /*space between button*/
 .spaceh{
-    color: rgb(7, 3, 32);
+    margin-right: 50px;
 }
 /*end header*/
