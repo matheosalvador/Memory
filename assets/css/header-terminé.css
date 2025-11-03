@@ -1,0 +1,54 @@
+/*start header*/
+/*header background*/
+header{
+    background-color: rgb(7, 3, 32);
+    justify-content: space-between;
+    display: flex;
+    width: 1,321.77px;
+    height: 47.64px;
+    border-radius: 10px;
+    align-items: flex-end;
+}
+
+.logohead{
+    width: 50px;
+}
+
+/*button color*/
+header button{
+
+    background-color: rgb(216, 0, 39, 1);
+    color: rgb(255, 255, 255);
+    width: 131.77px;
+    height: 32.17px;
+    border-radius: 6px;
+}
+
+header button:hover{
+    transform: scale(1.05);
+}
+
+/*text modifications*/
+header a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+}
+/*button text*/
+header button p{
+    text-align: center;
+    margin-top: 6px;
+    font-family: "Arial", sans-serif;
+}
+
+/*alignement*/
+header th{
+    vertical-align: bottom;
+}
+
+/*space between button*/
+.spaceh{
+    margin-right: 50px;
+}
+/*end header*/

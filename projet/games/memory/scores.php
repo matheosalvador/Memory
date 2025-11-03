@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en"> <!-- language define to english-->
+    <head>
+        <meta charset="utf-8"> <!-- every character set here-->
+        <link rel="stylesheet" href="assets\css\contact-scores.css">
+        <title>The memory game</title>
+    </head>
+    <body>
+        <!-- header start (start at the top)-->
+        <header>
+            <img class="logohead" src="assets\images\logo_memory.png" alt="logo">
+                <div class="nav-container">
+                    <table>
+                        <thead>
+                            <th><a class="spaceh" href="index.html"> Home</a></th> <!-- redirection to home page-->
+                            <th><a class="spaceh" href="scores.html"> Scores</a></th> <!-- redirection to scores page-->
+                            <th><button><a href="contact.html">Contact us</a></button></th> <!-- redirection to contact page-->
+                        </thead>
+                    </table>
+                </div>
+        </header>
+        <!-- header end -->
+    
+            <!-- smol text :>  -->
+        <p class="startg">Scores</p>
+        <p class="startj">Here you can see the scores by a rank system, the game mode, the player name, </p>
+        <p class="startj">the game mode difficulty, the time and date.</p>
+        <div class="scorea">
+            <table id="bodyta"><!-- scoreboard (in test)-->
+                <thead class="intern">
+                    <tr>
+                        <th class="scoreb">#</th>
+                        <th>Game</th>
+                        <th>Player name</th>
+                        <th>Difficulty</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="bodytable">
+                    <tr id="bodytablho1">
+                        <td>1</td>
+                        <td class="bordhh"><img id="f"src="assets\images\mini_logo_memory.png">Power of memory</td>
+                        <td>John_Doe</td>
+                        <td>Hard</td>
+                        <td>1m35</td>
+                        <td>2025/09/28</td>
+                    </tr>
+                    <tr id="bodytablho2">
+                        <td>2</td>
+                        <td class="bordhh"><img id="f"src="assets\images\mini_logo_memory.png">Power of memory</td>
+                        <td>Player 2</td>
+                        <td>Hard</td>
+                        <td>1m39</td>
+                        <td>2025/09/28</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bloc1">
+            <div class="lefttxt">
+                <h3 class="titlemem">The memory game</h3>
+                <p class="mainmem">You will make mistakes. You might forget a move. But that doesn’t define you. It’s about how well you remember, how clearly you think, and how fiercely you compete. Every card you flip, every match you make — it counts.</p>
+                <a href="#" class="playbutton">Play</a>
+            </div>
+            <div>
+                <img class="right-image" src="assets\images\memory_sec.png" alt="memory_image">
+            </div>
+        </div>
+    
+        <!-- start of footer (start at the bottom) -->
+        <footer>
+            <div class="fhead">
+                <div class="tabl0">
+                    <p> <img src="assets\images\logo_memory.png" alt="logo" id="logo"></p>
+                    <p>Our games offer an entertaining experience<br /> and make you work on your thinking!</p>
+                </div>
+                <div class="tabl1">
+                    <h4>Menu</h4>
+                    <a href="index.html">Home</a>
+                    <a href="scores.html">Scores</a>
+                    <a href="contact.html">contact</a>
+                </div>
+                <div class="tabl2">
+                    <h4>Contact us</h4><br />
+                    <span>We are at your<br />disposal for<br /> any questions.</span>
+                    <br />
+                    <p>contact@web.com</p>
+                    <br />
+                </div>
+                <div id="links">
+                    <a href="https://www.facebook.com/profile.php?id=61581419054379"><img src="assets\images\facebook _logo.png" alt="Facebook" class="linka"></a>
+                    <a href="https://x.com/MemoryContact"><img src="assets\images\twitter_logo.png" alt="Twitter" class="linka"></a>
+                    <a href="https://www.instagram.com/contact.memory.games/"><img src="assets\images\instagram_logo.png" alt="Instagram" class="linka"></a>
+                    <a href="https://www.linkedin.com/in/memory-games-168488388/"><img src="assets\images\linkedin_logo.png" alt="linkdin" class="linka"></a>
+                </div>
+            </div>
+            <hr> <!--line-->
+            <div id="endf">
+                <span>© 2025 all rights reserved</span>
+            </div>
+        </footer>
+        <!-- end of footer -->
+    </body>
+</html>
