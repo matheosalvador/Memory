@@ -5,6 +5,7 @@
     <head>
         <meta charset="utf-8"> <!-- every character set here-->
         <link rel="stylesheet" href="assets\css\contact-scores.css">
+        <link rel="stylesheet" href="assets\css\main.css">
         <title>The memory game</title>
     </head>
     <body>
