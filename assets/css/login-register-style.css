@@ -28,6 +28,9 @@
 #login-register .mt-3 {
 	margin-top: 3px;
 }
+#login-register .gap-1 {
+	gap: 1em;
+}
 
 #login-register .w-full {
 	width: 100%;

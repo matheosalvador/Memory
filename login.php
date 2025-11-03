@@ -9,7 +9,8 @@
 </head>
 <body>
 <!-- Body -->
-	<div class="login-register flex">
+ <div id="login-register">
+	<div class="flex">
 		<div class="w-50">
 			<!-- title and paraphe -->
 			<div class="login-container flex"> 
@@ -34,7 +35,12 @@
 					</div>
 				</div>
 				<!-- google button -->
-			<button id="google-sign-in-button" ><img id="google" width="25px" hei src="assets\images\google.png"/>Sign in with Google</button>
+			<button id="google-sign-in-button">
+				<div class="flex align-items-center justify-content-center gap-1">
+					<img id="google" width="25px" src="assets\images\google.png"/>
+					<span>Sign in with Google </span>
+				</div>
+			</button>
 				<span id="txtlink1">Don't have an account yet ?<a href="register.html" id="link2" >Sign up</a></span>
 			</div>
 		</div>
