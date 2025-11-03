@@ -3,12 +3,13 @@
 <head>
 	<!-- Head -->
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets\css\login-register-style.css">
 	<title>Register</title>
 </head>
 <body>
 <!-- Body -->
-<div class="main-container flex">
+<div class="login-register flex">
 	<div class="w-50">
 		<!-- title and paraphe -->
 		<div class="login-container flex"> 
