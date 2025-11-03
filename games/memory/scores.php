@@ -91,7 +91,7 @@
                     <br />
                 </div>
                 <div id="links">
-                    <a href="https://www.facebook.com/profile.php?id=61581419054379"><img src="assets\images\facebook _logo.png" alt="Facebook" class="linka"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61581419054379"><img src="assets\images\facebook_logo.png" alt="Facebook" class="linka"></a>
                     <a href="https://x.com/MemoryContact"><img src="assets\images\twitter_logo.png" alt="Twitter" class="linka"></a>
                     <a href="https://www.instagram.com/contact.memory.games/"><img src="assets\images\instagram_logo.png" alt="Instagram" class="linka"></a>
                     <a href="https://www.linkedin.com/in/memory-games-168488388/"><img src="assets\images\linkedin_logo.png" alt="linkdin" class="linka"></a>
