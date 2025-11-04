@@ -20,7 +20,7 @@
                     <h6>OUR ...</h6>
                     <h4 class="wline">Début de lorem sur fibra</h4>
                     <p>Description</p>
-                    <a href="games.php" class="button">Start !</a>
+                    <a href="games\memory\index.php" class="button">Start !</a>
                 </div>
             </div>
         </section>
