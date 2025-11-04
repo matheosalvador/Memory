@@ -1,1 +1,1 @@
-- Page de gestion du compte
+<!-- Page de gestion du compte -->

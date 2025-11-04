@@ -1,1 +1,1 @@
-- Fonctions de sécurité
+<!-- Fonctions de sécurité -->

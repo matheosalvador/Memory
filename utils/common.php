@@ -1,1 +1,1 @@
-Future Fichier appelé sur toutes les pages
+<!-- Future Fichier appelé sur toutes les pages -->

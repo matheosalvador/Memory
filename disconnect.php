@@ -1,1 +1,1 @@
-- Page de déconnexion
+<!-- Page de déconnexion -->

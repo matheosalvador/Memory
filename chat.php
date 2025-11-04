@@ -1,1 +1,1 @@
-- Page de chat
+<!-- Page de chat -->

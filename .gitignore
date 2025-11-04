@@ -1,2 +1,7 @@
-- Liste des fichiers à exclure de git
-*.php
+# Liste des fichiers à exclure de git
+
+# Ignorer tous les fichiers .log
+*.log
+*.tmp
+utils/config.php
+utils/database.php

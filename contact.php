@@ -10,7 +10,7 @@
     </head>
 
     <?php include 'partials\header-terminé.php' ?>
-<!-- body -->
+
     <body>    
         <span id="titlef">Our geographical locations and our headquarters</span>
         <span id="titlec">Our main location is currently in France.</span>

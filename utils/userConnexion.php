@@ -1,1 +1,1 @@
-- Fonctions de connexion/déconnexion
+<!-- Fonctions de connexion/déconnexion -->
