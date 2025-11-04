@@ -2,8 +2,10 @@
 body {
   margin: 0;
   background-color: #0b0b2b;
-  color: white;
   font-family: Arial, sans-serif;
+}
+.wwline{
+  color: white;
 }
 .fake {
   display: flex;

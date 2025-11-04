@@ -15,8 +15,8 @@
 
         <!-- memory.php -->
         <section class="memory-game">
-            <h1>The Power Of Memory</h1>
-            <p>
+            <h1 class="wwline">The Power Of Memory</h1>
+            <p class="wwline">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
             Suspendisse scelerisque in tortor vitae sollicitudin.
             </p>
