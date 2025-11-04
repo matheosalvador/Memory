@@ -7,9 +7,9 @@
                 </div>
                 <div class="tabl1">
                     <h4>Menu</h4> <!-- redirections -->
-                    <a href="index.html">Home</a>
-                    <a href="scores.html">Scores</a>
-                    <a href="contact.html">contact</a>
+                    <a href="index.php">Home</a>
+                    <a href="scores.php">Scores</a>
+                    <a href="contact.php">contact</a>
                 </div>
                 <div class="tabl2"> <!-- sum text :> -->
                     <h4>Contact us</h4><br />

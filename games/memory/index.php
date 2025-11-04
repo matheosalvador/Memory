@@ -8,7 +8,7 @@
     <title>Games</title>
 </head>
     <body>  
-        <!-- memory.html -->
+        <!-- memory.php -->
         <section class="memory-game">
             <h1>The Power Of Memory</h1>
             <p>

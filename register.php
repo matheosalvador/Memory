@@ -37,7 +37,7 @@
 				</div>
 				<!-- google button -->
 			<button id="google-sign-in-button" ><img id="google" width="25px" hei src="assets\images\google.png"/>Sign in with Google</button>
-				<span id="txtlink1">Don't have an account yet ?<a href="register.html" id="link2" >Sign up</a></span>
+				<span id="txtlink1">Don't have an account yet ?<a href="register.php" id="link2" >Sign up</a></span>
 			</div>
 		</div>
 		<div class="w-50">
