@@ -1,4 +1,4 @@
-<?php require('../../utils/helper.php'); ?>
+<?php require('/utils/helper.php'); ?>
 
 <!DOCTYPE html>
 
