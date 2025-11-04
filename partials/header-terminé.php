@@ -1,7 +1,7 @@
 <html>
         <!-- header start (start at the top)-->
         <header>
-            <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo">
+            <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
                 <div class="nav-container">
                     <table>
                         <thead>
