@@ -1,54 +1,99 @@
 /*start header*/
 /*header background*/
-header{
-    background-color: #070320;
-    justify-content: space-between;
-    display: flex;
-    width: 1,321.77px;
-    height: 47.64px;
-    border-radius: 10px;
-    align-items: flex-end;
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background-color: rgb(7, 3, 32); /* même fond que ton body */
 }
 
-.logohead{
-    width: 50px;
+.logohead {
+  height: 65px;
 }
 
-/*button color*/
-header button{
-
-    background-color: rgb(216, 0, 39, 1);
-    color: rgb(255, 255, 255);
-    width: 131.77px;
-    height: 32.17px;
-    border-radius: 6px;
+/* Nav container */
+.nav-container {
+  display: flex;
+  gap: 60px;
+  align-items: center;
 }
 
-header button:hover{
-    transform: scale(1.05);
+/* Liens principaux */
+.spaceh {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 6px;
+  transition: color 0.3s ease;
 }
 
-/*text modifications*/
-header a{
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-family: "Arial", sans-serif;
-    font-weight: normal;
-}
-/*button text*/
-header button p{
-    text-align: center;
-    margin-top: 6px;
-    font-family: "Arial", sans-serif;
+/* Barre rouge sous le lien */
+.spaceh::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  background-color: rgb(216, 0, 39);
+  transition: width 0.3s ease;
 }
 
-/*alignement*/
-header th{
-    vertical-align: bottom;
+/* Effet hover */
+.spaceh:hover::after {
+  width: 100%;
 }
 
-/*space between button*/
-.spaceh{
-    margin-right: 50px;
+/* Lien actif : barre visible */
+.spaceh.active::after {
+  width: 100%;
 }
-/*end header*/
+
+/* Couleur du texte actif */
+.spaceh.active {
+  color: rgb(216, 0, 39);
+}
+
+/* "Contact us" bouton style */
+.button-like {
+  background-color: rgb(216, 0, 39);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover sur le bouton */
+.button-like:hover {
+  background-color: #ff4b4b;
+  transform: scale(1.05);
+}
+
+/* Quand Contact est la page active */
+.button-like.active {
+  box-shadow: 0 4px 12px rgba(216, 0, 39, 0.4);
+}
+
+/* Responsive : mobile */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .spaceh {
+    font-size: 18px;
+  }
+}
