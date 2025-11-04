@@ -1,10 +1,12 @@
+<?php require('../../utils/helper.php'); ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
 	<!-- Head -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="assets\css\login-register-style.css">
+	<link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\login-register-style.css">
 	<title>Register</title>
 </head>
 <body>
