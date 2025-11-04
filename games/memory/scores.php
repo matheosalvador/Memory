@@ -32,7 +32,7 @@
                 <tbody id="bodytable">
                     <tr id="bodytablho1">
                         <td>1</td>
-                        <td class="bordhh"><img id="f"src="assets\images\mini_logo_memory.png">Power of memory</td>
+                        <td class="bordhh"><img src="<?= getBaseUrl(); ?>/assets/images/mini_logo_memory.png">Power of memory</td>
                         <td>John_Doe</td>
                         <td>Hard</td>
                         <td>1m35</td>
@@ -40,7 +40,7 @@
                     </tr>
                     <tr id="bodytablho2">
                         <td>2</td>
-                        <td class="bordhh"><img id="f"src="assets\images\mini_logo_memory.png">Power of memory</td>
+                        <td class="bordhh"><img id="f"src="../../assets\images\mini_logo_memory.png">Power of memory</td>
                         <td>Player 2</td>
                         <td>Hard</td>
                         <td>1m39</td>
@@ -56,7 +56,7 @@
                 <a href="#" class="playbutton">Play</a>
             </div>
             <div>
-                <img class="right-image" src="assets\images\memory_sec.png" alt="memory_image">
+                <img class="right-image" src="../../assets/images/memory_sec.png" alt="memory_image">
             </div>
         </div>
 
