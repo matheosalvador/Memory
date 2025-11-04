@@ -1,0 +1,1 @@
+<!-- toute les fonctions php de la page d'accueil-->
