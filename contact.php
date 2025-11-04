@@ -1,7 +1,6 @@
 <?php require('utils/helper.php'); ?>
 
 <!DOCTYPE html>
-
 <html lang="en"> <!-- language define to english-->
     <head>
         <meta charset="utf-8"> <!-- every character set here-->
@@ -11,7 +10,7 @@
     </head>
 
     <?php include 'partials\header-terminé.php' ?>
-
+<!-- body -->
     <body>    
         <span id="titlef">Our geographical locations and our headquarters</span>
         <span id="titlec">Our main location is currently in France.</span>
