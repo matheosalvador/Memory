@@ -8,22 +8,7 @@
         <title>The memory game</title>
     </head>
     <body>
-        <!-- header start (start at the top)-->
-        <header>
-            <img class="logohead" src="assets\images\logo_memory.png" alt="logo">
-                <div class="nav-container">
-                    <table>
-                        <thead>
-                            <th><a class="spaceh" href="index.html"> Home</a></th> <!-- redirection to home page-->
-                            <th><a class="spaceh" href="scores.html"> Scores</a></th> <!-- redirection to scores page-->
-                            <th><button><a href="contact.html">Contact us</a></button></th> <!-- redirection to contact page-->
-                        </thead>
-                    </table>
-                </div>
-        </header>
-        <!-- header end -->
-    
-            <!-- smol text :>  -->
+        <!-- smol text :>  -->
         <p class="startg">Scores</p>
         <p class="startj">Here you can see the scores by a rank system, the game mode, the player name, </p>
         <p class="startj">the game mode difficulty, the time and date.</p>
@@ -69,39 +54,5 @@
                 <img class="right-image" src="assets\images\memory_sec.png" alt="memory_image">
             </div>
         </div>
-    
-        <!-- start of footer (start at the bottom) -->
-        <footer>
-            <div class="fhead">
-                <div class="tabl0">
-                    <p> <img src="assets\images\logo_memory.png" alt="logo" id="logo"></p>
-                    <p>Our games offer an entertaining experience<br /> and make you work on your thinking!</p>
-                </div>
-                <div class="tabl1">
-                    <h4>Menu</h4>
-                    <a href="index.html">Home</a>
-                    <a href="scores.html">Scores</a>
-                    <a href="contact.html">contact</a>
-                </div>
-                <div class="tabl2">
-                    <h4>Contact us</h4><br />
-                    <span>We are at your<br />disposal for<br /> any questions.</span>
-                    <br />
-                    <p>contact@web.com</p>
-                    <br />
-                </div>
-                <div id="links">
-                    <a href="https://www.facebook.com/profile.php?id=61581419054379"><img src="assets\images\facebook_logo.png" alt="Facebook" class="linka"></a>
-                    <a href="https://x.com/MemoryContact"><img src="assets\images\twitter_logo.png" alt="Twitter" class="linka"></a>
-                    <a href="https://www.instagram.com/contact.memory.games/"><img src="assets\images\instagram_logo.png" alt="Instagram" class="linka"></a>
-                    <a href="https://www.linkedin.com/in/memory-games-168488388/"><img src="assets\images\linkedin_logo.png" alt="linkdin" class="linka"></a>
-                </div>
-            </div>
-            <hr> <!--line-->
-            <div id="endf">
-                <span>© 2025 all rights reserved</span>
-            </div>
-        </footer>
-        <!-- end of footer -->
     </body>
 </html>
