@@ -1,16 +1,26 @@
-<html>
-        <!-- header start (start at the top)-->
-        <header>
-            <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
-                <div class="nav-container">
-                    <table>
-                        <thead>
-                            <th><a class="spaceh" href="<?= getBaseUrl(); ?>../index.php"> Home</a></th> <!-- redirection to home page-->
-                            <th><a class="spaceh" href="<?= getBaseUrl(); ?>../games\memory\scores.php"> Scores</a></th> <!-- redirection to scores page-->
-                            <th><button><a href="<?= getBaseUrl(); ?>../contact.php">Contact us</a></button></th> <!-- redirection to contact page-->
-                        </thead>
-                    </table>
-                </div>
-        </header>
-        <!-- header end -->
-</html>
+<!-- header start (start at the top) -->
+ 
+<?php
+//  detects the page where you are 
+$currentPage = basename($_SERVER['SCRIPT_NAME']); // request the give you back index, contact, ...
+?>
+
+<header class="main-header">
+    <!-- logo -->
+    <a href="<?= getBaseUrl(); ?>index.php">
+        <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
+    </a>
+
+    <!-- navigation -->
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+        <a href="<?= getBaseUrl(); ?>..\index.php" 
+           class="spaceh <?= $currentPage === 'index.php' ? 'active' : '' ?>">Home</a> <!-- redirection to home page-->
+
+        <a href="<?= getBaseUrl(); ?>..\games\memory\scores.php"
+           class="spaceh <?= $currentPage === 'scores.php' ? 'active' : '' ?>">Scores</a> <!-- redirection to scores page-->
+
+        <a href="<?= getBaseUrl(); ?>../contact.php"
+           class="spaceh button-like <?= $currentPage === 'contact.php' ? 'active' : '' ?>">Contact us</a> <!-- redirection to contact page-->
+    </nav>
+</header>
+<!-- header end -->
