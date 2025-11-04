@@ -5,9 +5,9 @@
                 <div class="nav-container">
                     <table>
                         <thead>
-                            <th><a class="spaceh" href="index.php"> Home</a></th> <!-- redirection to home page-->
-                            <th><a class="spaceh" href="games\memory\scores.php"> Scores</a></th> <!-- redirection to scores page-->
-                            <th><button><a href="<?= getBaseUrl(); ?>/contact.php">Contact us</a></button></th> <!-- redirection to contact page-->
+                            <th><a class="spaceh" href="<?= getBaseUrl(); ?>../index.php"> Home</a></th> <!-- redirection to home page-->
+                            <th><a class="spaceh" href="<?= getBaseUrl(); ?>../games\memory\scores.php"> Scores</a></th> <!-- redirection to scores page-->
+                            <th><button><a href="<?= getBaseUrl(); ?>../contact.php">Contact us</a></button></th> <!-- redirection to contact page-->
                         </thead>
                     </table>
                 </div>
