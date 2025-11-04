@@ -80,7 +80,7 @@
         </div>
 
         <div class="presentation-image">
-            <img src="assets/images/manette.png" alt="Manette de jeu" class="gamepad">
+            <img src="../../assets/images/manette.png" alt="Manette de jeu" class="gamepad">
             <div class="chatbox">
                 <div class="chat-header">Power Of Memory</div>
                 <div class="chat-body">
