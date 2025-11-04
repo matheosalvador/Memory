@@ -8,6 +8,9 @@
         <title>The memory game</title>
     </head>
     <body>
+
+        <?php include 'partials\header-terminé.php' ?>
+
         <!-- smol text :>  -->
         <p class="startg">Scores</p>
         <p class="startj">Here you can see the scores by a rank system, the game mode, the player name, </p>
@@ -54,5 +57,8 @@
                 <img class="right-image" src="assets\images\memory_sec.png" alt="memory_image">
             </div>
         </div>
+
+        <?php include 'partials\footer-terminé.php' ?>
+
     </body>
 </html>

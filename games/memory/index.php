@@ -1,13 +1,18 @@
+<?php require('../../utils/helper.php'); ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/indexgames.css">
+    <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\indexgames.css">
     <link rel="stylesheet" href="assets\css\main.css">
     <title>Games</title>
 </head>
     <body>  
+
+        <?php include 'partials\header-terminé.php' ?>
+
         <!-- memory.php -->
         <section class="memory-game">
             <h1>The Power Of Memory</h1>
@@ -99,5 +104,8 @@
             </div>
         </div>
     </section>
+
+    <?php include 'partials\footer-terminé.php' ?>
+
     </body>
 </html>
