@@ -11,7 +11,7 @@
 </head>
     <body>  
 
-        <?php include 'partials\header-terminé.php' ?>
+        <?php include "../../partials\header-terminé.php" ?>
 
         <!-- memory.php -->
         <section class="memory-game">
@@ -105,7 +105,7 @@
         </div>
     </section>
 
-    <?php include 'partials\footer-terminé.php' ?>
+    <?php include "../../partials/footer-terminé.php" ?>
 
     </body>
 </html>

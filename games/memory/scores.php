@@ -11,7 +11,7 @@
     </head>
     <body>
 
-        <?php include 'partials\header-terminé.php' ?>
+        <?php include "../../partials\header-terminé.php" ?>
 
         <!-- smol text :>  -->
         <p class="startg">Scores</p>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <?php include 'partials\footer-terminé.php' ?>
+        <?php include "../../partials/footer-terminé.php" ?>
 
     </body>
 </html>
