@@ -42,22 +42,22 @@
 
             <div class="grid">
                 <!-- 16 cartes blanches -->
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="assets/images/HK.png" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
+                <div class="card"><img src="../../assets/images/HK.png" alt=""></div>
             </div>
         </section>
 
