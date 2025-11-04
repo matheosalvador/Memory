@@ -23,7 +23,7 @@
 					<label for="password">Password</label>
 					<input id="checkpassword" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 					<a href="https://www.google.com/" id="link1"> Forgot Password? </a>
-					<button id="checkbutton"><span id="parabutton">Sign in</span></button>
+					<input id="checkbutton" type="submit"><span id="parabutton">Sign in</span></button>
 				<!-- line -->
 				<div class="flex align-items-center">
 					<div class="border-bottom height-1 w-full">
@@ -41,7 +41,7 @@
 					<span>Sign in with Google </span>
 				</div>
 			</button>
-				<span id="txtlink1">Don't have an account yet ?<a href="register.html" id="link2" >Sign up</a></span>
+				<span id="txtlink1">Don't have an account yet ?<a href="register.php" id="link2" >Sign up</a></span>
 			</div>
 		</div>
 		<div class="w-50">
