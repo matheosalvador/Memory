@@ -2,7 +2,6 @@
 body {
     background-color: #070320;
     font-family: "Arial", sans-serif;
-    color: white;
     margin: 0;
     padding: 0;
 }
@@ -41,7 +40,8 @@ h6{
     color: #E87D0E;
     font-size: 14px;
 }
-h3,h4{
+
+.wline, figcaption{
     color: white;
 }
 

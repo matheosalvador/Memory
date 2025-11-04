@@ -16,7 +16,7 @@
                 <img src="assets/images/Image-dilustration.png" alt="Image d'illustration">
                 <div class="text">
                     <h6>OUR ...</h6>
-                    <h4>Début de lorem sur fibra</h4>
+                    <h4 class="wline">Début de lorem sur fibra</h4>
                     <p>Description</p>
                     <a href="games.html" class="button">Start !</a>
                 </div>
@@ -24,7 +24,7 @@
         </section>
 
         <section class="games">
-            <h3>Our games</h3>
+            <h3 class="wline">Our games</h3>
             <div class="games-container">
                 <figure>
                     <img src="assets/images/memory.jpg" alt="Power of memory game">
