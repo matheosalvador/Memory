@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assets\css\main.css">
 	<title>HOME</title>
 </head>
+
+    <?php include 'partials\header-terminé.php' ?>
+
     <body>	
         <section class="main">
             <div class="content">
@@ -109,5 +112,8 @@
                 </div>
             </div>
         </section>
+
+        <?php include 'partials\footer-terminé.php' ?>
+
     </body>
 </html>

@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="assets\css\main.css">
         <title>The memory game</title>
     </head>
+
+    <?php include 'partials\header-terminé.php' ?>
+
     <body>    
         <span id="titlef">Our geographical locations and our headquarters</span>
         <span id="titlec">Our main location is currently in France.</span>
@@ -76,5 +79,8 @@
             <div class="tablzz">
                 <input class="verify" type="submit" name="submit" />
             </div>
+
+        <?php include 'partials\footer-terminé.php' ?>
+
     </body>
 </html>
