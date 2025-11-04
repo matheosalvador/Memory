@@ -38,7 +38,7 @@
   bottom: -4px;
   width: 0%;
   height: 3px;
-  background-color: rgb(216, 0, 39);
+  background-color: rgb(255, 0, 0);
   transition: width 0.3s ease;
 }
 
@@ -54,13 +54,13 @@
 
 /* Couleur du texte actif */
 .spaceh.active {
-  color: rgb(216, 0, 39);
+  color: rgb(255, 255, 255);
 }
 
 /* "Contact us" bouton style */
 .button-like {
-  background-color: rgb(216, 0, 39);
-  color: #000;
+  background-color: rgb(255, 0, 47);
+  color: #ffffff;
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: bold;
