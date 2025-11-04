@@ -6,7 +6,7 @@
                     <table>
                         <thead>
                             <th><a class="spaceh" href="index.php"> Home</a></th> <!-- redirection to home page-->
-                            <th><a class="spaceh" href="scores.php"> Scores</a></th> <!-- redirection to scores page-->
+                            <th><a class="spaceh" href="games\memory\scores.php"> Scores</a></th> <!-- redirection to scores page-->
                             <th><button><a href="contact.php">Contact us</a></button></th> <!-- redirection to contact page-->
                         </thead>
                     </table>
