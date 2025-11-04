@@ -1,4 +1,4 @@
-<!-- Sert à trouver l'URL de base
+<!-- Sert à trouver l'URL de base-->
 <?php
 
 function getBaseUrl(): string
