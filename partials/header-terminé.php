@@ -11,6 +11,9 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // request the give you back i
         <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
     </a>
 
+    <!-- player session's name -->
+
+
     <!-- navigation -->
     <nav class="nav-container" role="navigation" aria-label="Main navigation">
         <a href="<?= getBaseUrl(); ?>..\index.php" class="spaceh <?= $currentPage === 'index.php' ? 'active' : '' ?>">Home</a> <!-- redirection to home page-->

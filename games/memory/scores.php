@@ -1,4 +1,9 @@
-<?php require('../../utils/helper.php'); ?>
+<?php 
+
+require_once '../../utils/helper.php'; 
+require_once '../../utils/database.php';
+?>
+
 
 <!DOCTYPE html>
 
@@ -17,8 +22,41 @@
         <p class="startg">Scores</p>
         <p class="startj">Here you can see the scores by a rank system, the game mode, the player name, </p>
         <p class="startj">the game mode difficulty, the time and date.</p>
+
+        <form method="get" action="" class="search-form">
+            <input type="text" name="pseudo" placeholder="looking for a player?" value="<?= isset($_GET['pseudo']) ? htmlspecialchars($_GET['pseudo']) : '' ?>">
+            <button type="submit">Search</button>
+        </form>
+
+        <?php 
+        $pdo = getPDO();
+
+        $pseudo = $_GET['pseudo'] ?? '';
+
+        if ($pseudo) {
+            $stmt = $pdo->prepare("
+                SELECT s.id, u.pseudo AS player_name, g.game_name, s.difficulty, s.score, s.created_at
+                FROM score s
+                INNER JOIN main_user u ON s.user_id = u.id
+                INNER JOIN game g ON s.game_id = g.id
+                WHERE u.pseudo LIKE :pseudo
+                ORDER BY s.score ASC
+            ");
+            $stmt->execute(['pseudo' => "%$pseudo%"]);
+        } else {
+            $stmt = $pdo->query("
+                SELECT s.id, u.pseudo AS player_name, g.game_name, s.difficulty, s.score, s.created_at
+                FROM score s
+                INNER JOIN main_user u ON s.user_id = u.id
+                INNER JOIN game g ON s.game_id = g.id
+                ORDER BY s.score ASC
+            ");
+        }
+        $scores = $stmt->fetchAll();
+        ?>
+        
         <div class="scorea">
-            <table id="bodyta"><!-- scoreboard (in test)-->
+            <table id="bodyta">
                 <thead class="intern">
                     <tr>
                         <th class="scoreb">#</th>
@@ -30,22 +68,32 @@
                     </tr>
                 </thead>
                 <tbody id="bodytable">
-                    <tr id="bodytablho1">
-                        <td>1</td>
-                        <td class="bordhh"><img src="<?= getBaseUrl(); ?>/assets/images/mini_logo_memory.png">Power of memory</td>
-                        <td>John_Doe</td>
-                        <td>Hard</td>
-                        <td>1m35</td>
-                        <td>2025/09/28</td>
+                    <?php
+                    $position = 1;
+                    foreach ($scores as $score):
+                        $difficultylabel = match($score['difficulty']) {
+                            '1' => 'easy',
+                            '2' => 'medium',
+                            '3' => 'hard',
+                            default => 'Unknown'
+                        };
+                        $date = date('Y-m-d', strtotime($score['created_at']));
+                    ?>
+                    <tr>
+                        <td class='scoreb'>
+                            <?= $position ?>
+                            <?= $position == 1 ? 'st' : ($position == 2 ? 'nd' : ($position == 3 ? 'rd' : 'th')) ?>
+                        </td>
+                        <td class="scoreb"><?= htmlspecialchars($score['game_name']) ?></td>
+                        <td class="scoreb"><?= htmlspecialchars($score['player_name']) ?></td>
+                        <td class="scoreb"><?= htmlspecialchars($difficultylabel) ?></td>
+                        <td class="scoreb"><?= htmlspecialchars($score['score']) ?></td>
+                        <td class="scoreb"><?= htmlspecialchars($date) ?></td>
                     </tr>
-                    <tr id="bodytablho2">
-                        <td>2</td>
-                        <td class="bordhh"><img id="f"src="../../assets\images\mini_logo_memory.png">Power of memory</td>
-                        <td>Player 2</td>
-                        <td>Hard</td>
-                        <td>1m39</td>
-                        <td>2025/09/28</td>
-                    </tr>
+                    <?php
+                        $position++;
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
         </div>
