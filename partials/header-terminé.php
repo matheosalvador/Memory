@@ -13,14 +13,11 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // request the give you back i
 
     <!-- navigation -->
     <nav class="nav-container" role="navigation" aria-label="Main navigation">
-        <a href="<?= getBaseUrl(); ?>..\index.php" 
-           class="spaceh <?= $currentPage === 'index.php' ? 'active' : '' ?>">Home</a> <!-- redirection to home page-->
+        <a href="<?= getBaseUrl(); ?>..\index.php" class="spaceh <?= $currentPage === 'index.php' ? 'active' : '' ?>">Home</a> <!-- redirection to home page-->
 
-        <a href="<?= getBaseUrl(); ?>..\games\memory\scores.php"
-           class="spaceh <?= $currentPage === 'scores.php' ? 'active' : '' ?>">Scores</a> <!-- redirection to scores page-->
+        <a href="<?= getBaseUrl(); ?>..\games\memory\scores.php" class="spaceh <?= $currentPage === 'scores.php' ? 'active' : '' ?>">Scores</a> <!-- redirection to scores page-->
 
-        <a href="<?= getBaseUrl(); ?>../contact.php"
-           class="spaceh button-like <?= $currentPage === 'contact.php' ? 'active' : '' ?>">Contact us</a> <!-- redirection to contact page-->
+        <a href="<?= getBaseUrl(); ?>../contact.php" class="spaceh button-like <?= $currentPage === 'contact.php' ? 'active' : '' ?>">Contact us</a> <!-- redirection to contact page-->
     </nav>
 </header>
 <!-- header end -->
