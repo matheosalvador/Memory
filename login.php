@@ -25,7 +25,7 @@
 					<label for="password">Password</label>
 					<input id="checkpassword" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 					<a href="https://www.google.com/" id="link1"> Forgot Password? </a>
-					<input id="checkbutton" type="submit"><span id="parabutton">Sign in</span></button>
+					<input id="checkbutton" type="submit"><span id="txt-button">Sign in</span></button>
 				<!-- line -->
 				<div class="flex align-items-center">
 					<div class="border-bottom height-1 w-full">
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 				<!-- google button -->
-			<button id="google-sign-in-button">
+			<button id="google-button">
 				<div class="flex align-items-center justify-content-center gap-1">
 					<img id="google" width="25px" src="assets\images\google.png"/>
 					<span>Sign in with Google </span>

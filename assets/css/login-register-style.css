@@ -1,9 +1,9 @@
-#login-register {
-	column-gap: 50px;
-}
-
 body {
 	font-family: "Arial", sans-serif;
+}
+
+#login-register {
+	column-gap: 50px;
 }
 
 #login-register #welcome {
@@ -116,7 +116,7 @@ body {
 	padding: 16px 16px 16px;
 }
 
-#login-register #parabutton {
+#login-register #txt-button {
 	color: white;
 	font-weight: 400;
 	font-size: 20px;
@@ -144,7 +144,7 @@ body {
 	text-decoration: none;
 }
 
-#login-register #google-sign-in-button {  
+#login-register #google-button {  
 	/* Bouton */
 	padding: 12px 16px 12px 42px;
     border: none;
