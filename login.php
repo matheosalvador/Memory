@@ -42,6 +42,7 @@
 					<img id="google" width="25px" src="assets\images\google.png"/>
 					<span>Sign in with Google </span>
 				</div>
+				<!-- sign-up link -->
 			</button>
 				<span id="txtlink1">Don't have an account yet ?<a href="register.php" id="link2" >Sign up</a></span>
 			</div>
