@@ -81,6 +81,14 @@ body {
 	padding: 150px;
 }
 
+#login-register .form-container {
+	flex-direction: column;
+	justify-content:center;
+	row-gap: 10px;
+	padding: 48px;
+}
+
+
 #login-register #image {
 	width: 100%;
 	border-radius: 24px;
@@ -130,12 +138,17 @@ body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
 }
 
+#login-register #google-button:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+}
+
 /* formulaire */
 #login-register #check-email {
 	background-color: #F7FBFF;
 	border-radius: 12px;
 	padding: 10px;
 	border:1px solid #D4D7E3;
+	cursor: pointer;
 }
 
 #login-register #check-password {
@@ -143,6 +156,7 @@ body {
 	border-radius: 12px;
 	padding: 10px;
 	border:1px solid #D4D7E3;
+	cursor: pointer;
 }
 
 #login-register #check-confirmed-password {
@@ -150,11 +164,23 @@ body {
 	border-radius: 12px;
 	padding: 10px;
 	border:1px solid #D4D7E3;
+	cursor: pointer;
 }
 
 #login-register #check-button {
 	background-color: #162D3A;
 	border-radius: 12px;
 	border:1px solid #162D3A;
-	padding: 16px 16px 16px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#login-register #check-button:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+#login-register .form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
