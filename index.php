@@ -54,17 +54,21 @@
                 <img id="imagescomplementaire" src="assets/images/image_complementaire.jpg" alt="Image complémentaire">
             </div>
         </section>
+
         <!-- Section Stats modifiée selon l'image -->
         <section class="stats">
+            <?php   require  'utils/fonction_index_a.php';
+                $gamesPlayed = getGamesPlayed();
+                $recordtime =  getRecordTime();
+            ?>
             <img src="assets/images/statsi.jpg" alt="Background" class="stats-background">
             <div class="stats-header">
                 <h2>Lorem ipsum is simply dummy text of the printing<br>and typesetting industry.</h2>
                 <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             </div>
-            
         <div class="stats-cards">
             <div class="stat-container">
-                <p class="stat-number">310</p>
+                <p class="stat-number"><?= $gamesPlayed ?></p>
                 <p class="stat-label">Games played</p>
             </div>
             <div class="stat-container">
@@ -72,7 +76,7 @@
                 <p class="stat-label">Players online</p>
             </div>
             <div class="stat-container">
-                <p class="stat-number">10s</p>
+                <p class="stat-number"><?= $recordtime ?></p>
                 <p class="stat-label">Record time</p>
             </div>
             <div class="stat-container">

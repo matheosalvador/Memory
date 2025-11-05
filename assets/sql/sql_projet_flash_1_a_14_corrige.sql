@@ -352,3 +352,7 @@ WHERE
     (mp.user_sender_id = 2 AND mp.user_receiver_id = 1)
 ORDER BY mp.created_at ASC;
 -- fin user story 14
+
+--ajout de la colone temps de jeu sur la table score
+ALTER TABLE score
+ADD COLUMN time INT NOT NULL DEFAULT 0;
