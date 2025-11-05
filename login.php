@@ -22,11 +22,11 @@
 							Suspendisse scelerisque in tortor vitae sollicitudin.</p>
 							<!-- email, password and sign in button  -->
 							<label for="email">Email</label>
-							<input id="checkemail" name="email" type="email" placeholder="Example@email.com" required>
+							<input id="check-email" name="email" type="email" placeholder="Example@email.com" required>
 							<label for="password">Password</label>
-							<input id="checkpassword" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+							<input id="check-password" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 							<a href="https://www.google.com/" id="link1"> Forgot Password? </a>
-							<button id="checkbutton"><span id="txt-button">Sign in</span></button>
+							<button id="check-button"><span id="txt-button">Sign in</span></button>
 							<!-- line -->
 							<div class="flex align-items-center">
 							<div class="border-bottom height-1 w-full">
@@ -45,7 +45,7 @@
 					</div>
 						<!-- sign-up link -->
 					</button>
-						<span id="txtlink1">Already have an account?<a href="register.php" id="link2" >Sign in</a></span>
+						<span id="txt-link1">Already have an account?<a href="register.php" id="link2" >Sign in</a></span>
 					</div>
 				</div>
 				<div class="w-50">
