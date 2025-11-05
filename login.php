@@ -26,7 +26,7 @@
 							<label for="password">Password</label>
 							<input id="check-password" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 							<a href="https://www.google.com/" id="link1"> Forgot Password? </a>
-							<button id="check-button"><span id="txt-button">Sign in</span></button>
+							<button id="check-button"><span id="txt-button">Connexion</span></button>
 							<!-- line -->
 							<div class="flex align-items-center">
 							<div class="border-bottom height-1 w-full">
@@ -43,8 +43,8 @@
 						<img id="google" width="25px" src="assets\images\google.png"/>
 						<span>Sign in with Google </span>
 					</div>
-						<!-- sign-up link -->
-					</button>
+					</button>	
+					<!-- sign-up link -->
 						<span id="txt-link1">Already have an account?<a href="register.php" id="link2" >Sign in</a></span>
 					</div>
 				</div>

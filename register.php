@@ -26,7 +26,7 @@
 					<input id="check-password" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 					<label for="password">Confirm Password</label>
 					<input id="check-confirmed-password" name="confirm-password" type="password" placeholder="Minimum 8 characters" required minlength="8">
-					<input id="check-button"><span id="txt-button">Sign in</span></button>
+					<button type="submit" id="check-button"><span id="txt-button">Registration</span></button>
 				<!-- line -->
 				<div class="flex align-items-center">
 					<div class="border-bottom height-1 w-full">
@@ -38,8 +38,13 @@
 					</div>
 				</div>
 				<!-- google button -->
-				<input type="submit" id="google-button" ><img id="google" width="25px" hei src="assets\images\google.png"/>Sign in with Google</input>
-				<span id="txt-link1">No account?<a href="register.php" id="link2" >Sign up</a></span>
+				<button id="google-button">
+				<div class="flex align-items-center justify-content-center gap-1">
+					<img id="google" width="25px" src="assets\images\google.png"/>
+					<span>Sign in with Google </span>
+				</div>
+				</button>
+				<span id="txt-link1">No account?<a href="login.php" id="link2" >Sign up</a></span>
 			</div>
 		</div>
 		<div class="w-50">
