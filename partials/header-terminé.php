@@ -7,7 +7,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // request the give you back i
 
 <header class="main-header">
     <!-- logo -->
-    <a href="<?= getBaseUrl(); ?>index.php">
+    <a>
         <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
     </a>
 
