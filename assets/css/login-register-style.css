@@ -1,23 +1,7 @@
+/* generic tags */
+
 body {
 	font-family: "Arial", sans-serif;
-}
-
-#login-register {
-	column-gap: 50px;
-}
-
-#login-register #welcome {
-	color: #0C1421;
-	font-size: 36px;
-	font-weight: 600;
-	margin:0;
-}
-
-#login-register #details {
-	color: #313957;
-	font-size: 20px;
-	font-weight: 400;
-	margin:0;
 }
 
 #login-register input {
@@ -66,15 +50,35 @@ body {
 	display: flex;
 }
 
+#login-register .w-50 {
+	width: 50%;
+}
+
+/* other tags */
+
+#login-register {
+	column-gap: 50px;
+}
+
+#login-register #welcome {
+	color: #0C1421;
+	font-size: 36px;
+	font-weight: 600;
+	margin:0;
+}
+
+#login-register #details {
+	color: #313957;
+	font-size: 20px;
+	font-weight: 400;
+	margin:0;
+}
+
 #login-register .login-container {
 	flex-direction: column;
 	justify-content:center;
 	row-gap: 10px;
 	padding: 150px;
-}
-
-#login-register .w-50 {
-	width: 50%;
 }
 
 #login-register #image {
@@ -122,17 +126,6 @@ body {
 	font-size: 20px;
 }
 
-#login-register #googlebutton {
-	background-color: #F3F9FA;
-	padding: 10px;
-	border-radius: 12px;
-	border-color: #F3F9FA;
-}
-
-#login-register #googleparabutton {
-	color: #313957;
-}
-
 #login-register #txtlink1 {
 	display: flex;
 	justify-content: center;
@@ -145,11 +138,13 @@ body {
 }
 
 #login-register #google-button {  
-	/* Bouton */
+	/* Button */
+	background-color: #F3F9FA;
 	padding: 12px 16px 12px 42px;
     border: none;
     border-radius: 12px;
-	/* Texte */
+	border-color: #F3F9FA;
+	/* Txt */
     color: #313957;
 	font-size: 16px;
     font-weight: 400;
