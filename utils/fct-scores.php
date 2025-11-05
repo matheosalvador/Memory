@@ -40,7 +40,7 @@ function parseScore($score) {
     $timeSec = (int)$score;
     $minutes = floor($timeSec / 60);
     $seconds = $timeSec % 60;
-    return sprintf("%02d:%02d", $minutes, $seconds);
+    return sprintf("%02dm%02d", $minutes, $seconds);
 }
 
 function parseDate($date) {
