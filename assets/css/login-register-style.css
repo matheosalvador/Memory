@@ -99,25 +99,9 @@ body {
 	color: #1E4AE9;
 }
 
-#login-register #checkemail {
-	background-color: #F7FBFF;
-	border-radius: 12px;
-	padding: 10px;
-	border:1px solid #D4D7E3;
-}
-
-#login-register #checkpassword {
-	background-color: #F7FBFF;
-	border-radius: 12px;
-	padding: 10px;
-	border:1px solid #D4D7E3;
-}
-
-#login-register #checkbutton {
-	background-color: #162D3A;
-	border-radius: 12px;
-	border:1px solid #162D3A;
-	padding: 16px 16px 16px;
+#login-register #link2 {
+	color: #1E4AE9;
+	text-decoration: none;
 }
 
 #login-register #txt-button {
@@ -126,15 +110,10 @@ body {
 	font-size: 20px;
 }
 
-#login-register #txtlink1 {
+#login-register #txt-link1 {
 	display: flex;
 	justify-content: center;
 	padding-top: 48px;
-}
-
-#login-register #link2 {
-	color: #1E4AE9;
-	text-decoration: none;
 }
 
 #login-register #google-button {  
@@ -149,4 +128,33 @@ body {
 	font-size: 16px;
     font-weight: 400;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+
+/* formulaire */
+#login-register #check-email {
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
+}
+
+#login-register #check-password {
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
+}
+
+#login-register #check-confirmed-password {
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
+}
+
+#login-register #check-button {
+	background-color: #162D3A;
+	border-radius: 12px;
+	border:1px solid #162D3A;
+	padding: 16px 16px 16px;
 }
