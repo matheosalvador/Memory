@@ -71,7 +71,7 @@
                 $recordTodayCount = getRecordsBeatenToday('1');
                 $totalPlayers = getTotalPlayers();
                 // Convertir en format mm:ss pour l'affichage
-                $recordtime = sprintf("%02d:%02d", $minutes, $seconds);
+                $recordtime = sprintf("%02dm%02d", $minutes, $seconds);
 
             ?>
             <img src="assets/images/statsi.jpg" alt="Background" class="stats-background">

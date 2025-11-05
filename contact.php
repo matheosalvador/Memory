@@ -31,7 +31,7 @@
 
                 <div class="bar"></div>
 
-                <!-- Téléphone -->
+                
                 <div class="contactst">
                     <img class="telp" src="assets\images\tel_logo.png" alt="tel_logo">
                     <span class="bodyh">+33 6 01 02 03 04</span>
