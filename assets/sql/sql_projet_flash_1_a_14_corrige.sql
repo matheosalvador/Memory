@@ -352,3 +352,38 @@ WHERE
     (mp.user_sender_id = 2 AND mp.user_receiver_id = 1)
 ORDER BY mp.created_at ASC;
 -- fin user story 14
+
+--ajout de la colone temps de jeu sur la table score
+ALTER TABLE score
+ADD COLUMN time INT NOT NULL DEFAULT 0;
+
+CREATE TABLE records (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    difficulty ENUM('1','2','3') NOT NULL,  -- même type que dans score
+    record_time INT NOT NULL,               -- en secondes
+    player_id INT UNSIGNED NULL,            -- joueur qui détient le record
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_difficulty (difficulty),
+    FOREIGN KEY (player_id) REFERENCES main_user(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8;
+
+ALTER TABLE records
+ADD COLUMN record_count INT UNSIGNED NOT NULL DEFAULT 0;
+
+CREATE TABLE record_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    difficulty ENUM('1','2','3') NOT NULL,
+    record_time INT NOT NULL,      -- temps battu
+    player_id INT UNSIGNED NULL,
+    beaten_at DATE NOT NULL,        -- date où le record a été battu
+    FOREIGN KEY (player_id) REFERENCES main_user(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO records (difficulty, record_time, player_id, updated_at)
+VALUES (1, 120, 1, NOW());
+
+INSERT INTO record_history (difficulty, record_time, player_id, beaten_at)
+VALUES (1, 120, 1, CURDATE());
