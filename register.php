@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- Body -->
- <div id="login-register">
+<div id="login-register">
 	<div class="flex">
 		<div class="w-50">
 		<!-- title and paraphe -->
