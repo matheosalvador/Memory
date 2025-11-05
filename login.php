@@ -16,8 +16,8 @@
 		<div class="w-50">
 			<!-- title and paraphe -->
 			<div class="login-container flex"> 
-					<h1>It's nice to see you again  👋</h1>
-					<p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					<h1 id="welcome">It's nice to see you again  👋</h1>
+					<p id="details">zLorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Suspendisse scelerisque in tortor vitae sollicitudin.</p>
 					<!-- email, password and sign in button  -->
 					<label for="email">Email</label>

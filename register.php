@@ -16,8 +16,8 @@
 		<div class="w-50">
 		<!-- title and paraphe -->
 			<div class="login-container flex"> 
-					<h1>Welcome to our place ! 👋</h1>
-					<p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					<h1 id="welcome">Welcome to our place ! 👋</h1>
+					<p id="details">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Suspendisse scelerisque in tortor vitae sollicitudin.</p>
 					<!-- email, password and sign in button  -->
 					<label for="email">Email</label>

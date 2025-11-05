@@ -2,16 +2,18 @@
 	column-gap: 50px;
 }
 
-#login-register body {
+body {
 	font-family: "Arial", sans-serif;
 }
 
-#login-register h1 {
+#login-register #welcome {
 	color: #0C1421;
+	font-size: 36px;
+	font-weight: 600;
 	margin:0;
 }
 
-#login-register p {
+#login-register #details {
 	color: #313957;
 	font-size: 20px;
 	font-weight: 400;
