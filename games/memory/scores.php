@@ -1,7 +1,9 @@
 <?php 
 
 require_once '../../utils/helper.php'; 
-require_once '../../utils/database.php';
+
+require_once '../../utils/fct-scores.php';
+
 ?>
 
 
@@ -28,33 +30,6 @@ require_once '../../utils/database.php';
             <button type="submit">Search</button>
         </form>
 
-        <?php 
-        $pdo = getPDO();
-
-        $pseudo = $_GET['pseudo'] ?? '';
-
-        if ($pseudo) {
-            $stmt = $pdo->prepare("
-                SELECT s.id, u.pseudo AS player_name, g.game_name, s.difficulty, s.score, s.created_at
-                FROM score s
-                INNER JOIN main_user u ON s.user_id = u.id
-                INNER JOIN game g ON s.game_id = g.id
-                WHERE u.pseudo LIKE :pseudo
-                ORDER BY s.score ASC
-            ");
-            $stmt->execute(['pseudo' => "%$pseudo%"]);
-        } else {
-            $stmt = $pdo->query("
-                SELECT s.id, u.pseudo AS player_name, g.game_name, s.difficulty, s.score, s.created_at
-                FROM score s
-                INNER JOIN main_user u ON s.user_id = u.id
-                INNER JOIN game g ON s.game_id = g.id
-                ORDER BY s.score ASC
-            ");
-        }
-        $scores = $stmt->fetchAll();
-        ?>
-        
         <div class="scorea">
             <table id="bodyta">
                 <thead class="intern">
@@ -68,32 +43,19 @@ require_once '../../utils/database.php';
                     </tr>
                 </thead>
                 <tbody id="bodytable">
-                    <?php
-                    $position = 1;
-                    foreach ($scores as $score):
-                        $difficultylabel = match($score['difficulty']) {
-                            '1' => 'easy',
-                            '2' => 'medium',
-                            '3' => 'hard',
-                            default => 'Unknown'
-                        };
-                        $date = date('Y-m-d', strtotime($score['created_at']));
-                    ?>
+                    <?php $position = 1; ?>
+                    <?php foreach(getScores() as $score): ?>
                     <tr>
                         <td class='scoreb'>
-                            <?= $position ?>
-                            <?= $position == 1 ? 'st' : ($position == 2 ? 'nd' : ($position == 3 ? 'rd' : 'th')) ?>
+                            <?php echo $position++; ?>
                         </td>
                         <td class="scoreb"><?= htmlspecialchars($score['game_name']) ?></td>
                         <td class="scoreb"><?= htmlspecialchars($score['player_name']) ?></td>
-                        <td class="scoreb"><?= htmlspecialchars($difficultylabel) ?></td>
-                        <td class="scoreb"><?= htmlspecialchars($score['score']) ?></td>
-                        <td class="scoreb"><?= htmlspecialchars($date) ?></td>
+                        <td class="scoreb"><?= getDifficultyLabel($score['difficulty']) ?></td>
+                        <td class="scoreb"><?= parseScore($score['time']) ?></td>
+                        <td class="scoreb"><?= parseDate($score['created_at']) ?></td>
                     </tr>
-                    <?php
-                        $position++;
-                    endforeach;
-                    ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
