@@ -1,4 +1,7 @@
-<?php require('utils/helper.php'); ?>
+<?php require('utils/helper.php');
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL); ?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -13,6 +16,7 @@
     <?php include 'partials\header-terminé.php' ?>
 
     <body>	
+        
         <section class="main">
             <div class="content">
                 <img src="assets/images/Image-dilustration.png" alt="Image d'illustration">
@@ -59,14 +63,23 @@
         <section class="stats">
             <?php   require  'utils/fonction_index_a.php';
                 $gamesPlayed = getGamesPlayed();
-                $recordtime =  getRecordTime();
+                // Récupérer le meilleur record global pour le niveau 1 par exemple
+                $record = getRecordByDifficulty('1'); 
+                $recordtime = $record['record_time']; // secondes
+                $minutes = floor($recordtime / 60);
+                $seconds = $recordtime % 60;
+                $recordTodayCount = getRecordsBeatenToday('1');
+                $totalPlayers = getTotalPlayers();
+                // Convertir en format mm:ss pour l'affichage
+                $recordtime = sprintf("%02d:%02d", $minutes, $seconds);
+
             ?>
             <img src="assets/images/statsi.jpg" alt="Background" class="stats-background">
             <div class="stats-header">
                 <h2>Lorem ipsum is simply dummy text of the printing<br>and typesetting industry.</h2>
                 <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             </div>
-        <div class="stats-cards">
+            <div class="stats-cards">
             <div class="stat-container">
                 <p class="stat-number"><?= $gamesPlayed ?></p>
                 <p class="stat-label">Games played</p>
@@ -80,11 +93,11 @@
                 <p class="stat-label">Record time</p>
             </div>
             <div class="stat-container">
-                <p class="stat-number">9300</p>
+                <p class="stat-number"><?=$totalPlayers?></p>
                 <p class="stat-label">Registered players</p>
             </div>
             <div class="stat-container">
-                <p class="stat-number">2</p>
+                <p class="stat-number"><?= $recordTodayCount ?></p>
                 <p class="stat-label">Reccords broken</p>
             </div>
         </div>
