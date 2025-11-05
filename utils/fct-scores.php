@@ -41,8 +41,8 @@ function getDifficultyLabel($difficulty) {
 function parseScore($score) {
     $timeSec = (int)$score; // convert to integer seconds
     $minutes = floor($timeSec / 60);
-    $seconds = $timeSec % 60; // split into minutes and seconds
-    return sprintf("%02d:%02d", $minutes, $seconds); // format mm:ss
+    $seconds = $timeSec % 60;
+    return sprintf("%02d:%02d", $minutes, $seconds);
 }
 
 function parseDate($date) {
