@@ -387,3 +387,6 @@ VALUES (1, 120, 1, NOW());
 
 INSERT INTO record_history (difficulty, record_time, player_id, beaten_at)
 VALUES (1, 120, 1, CURDATE());
+
+ALTER TABLE main_user
+ADD COLUMN last_activity DATETIME DEFAULT NULL;

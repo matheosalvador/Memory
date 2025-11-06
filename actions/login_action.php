@@ -14,14 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = getUserByEmail($email);
 
     if ($user && password_verify($password, $user['mdp'])) {
-        // ✅ Connexion réussie
+        //  Connexion réussie
         $_SESSION['userId'] = $user['id'];
         $_SESSION['success'] = "Connexion réussie ! Bienvenue " . htmlspecialchars($user['email']) . " 👋";
 
         header('Location: ../index.php');
         exit;
     } else {
-        // ❌ Erreur de connexion
+        //  Erreur de connexion
         $_SESSION['errors'] = ["Email ou mot de passe incorrect."];
         header('Location: ../login.php');
         exit;

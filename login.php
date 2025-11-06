@@ -32,7 +32,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
 						Enter your account information to access the game.
 					</p>
 
-					<!-- ✅ Affichage des messages -->
+					<!--  Affichage des messages -->
 					<?php if (!empty($errors)): ?>
 						<div class="errors" style="color: red; margin-bottom: 15px;">
 							<ul>
@@ -47,7 +47,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
 						</div>
 					<?php endif; ?>
 
-					<!-- 🧾 Formulaire de connexion -->
+					<!--  Formulaire de connexion -->
 					<form class="form-login" action="actions/login_action.php" method="post">
 						<label for="email">Email</label>
 						<input id="check-email" name="email" type="email" placeholder="Example@email.com" required>
