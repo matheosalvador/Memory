@@ -1,7 +1,22 @@
-<?php require('utils/helper.php');
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL); ?>
+<?php 
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+if (isset($_SESSION['userId'])) {
+    echo "ID utilisateur en session : " . $_SESSION['userId'] . "<br>";
+    echo "Pseudo en session : " . $_SESSION['pseudo'];
+} else {
+    echo "Aucun utilisateur connecté.";
+}
+
+require('utils/helper.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL); 
+    
+
+
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">

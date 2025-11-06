@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user['mdp'])) {
             // Stocker l'ID et le pseudo dans la session
             $_SESSION['userId'] = $user['id'];       // User story 8
-            $_SESSION['pseudo'] = $user['pseudo'];   // User story 9		
+            $_SESSION['pseudo'] = $user['pseudo'];   // User story 8 et 9		
             
 			// Redirection vers la page d’accueil
             header('Location: ../index.php');
