@@ -5,7 +5,7 @@ require_once __DIR__ . '/utils/fonction_index_a.php';
 require_once __DIR__ . '/utils/helper.php';
 require_once __DIR__ . '/utils/update_last_activity.php';
 
-// Définir des valeurs par défaut pour éviter les erreurs
+// Définir des valeurs par défaut pour éviter les erreurs.
 $gamesPlayed = getGamesPlayed();
 $playersOnline = getPlayersOnline();
 $totalPlayers = getTotalPlayers();
