@@ -57,8 +57,6 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                         <label for="confirm_password">Confirm Password</label>
                         <input class="button" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
                         <button type="submit" id="check-button"><span id="txt-button">Registration</span></button>
-                    </form>
-
 
     				<!-- line -->
     				<div class="flex align-items-center">
@@ -83,6 +81,7 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                     <span id="txt-link1">No account?<a href="login.php" id="link2" >Sign up</a></span>
                 </div>
             </div>
+        </form>
             <div class="w-50">
                 <img id="image" src="assets/images/Image.jpg" alt=""/>
             </div>
