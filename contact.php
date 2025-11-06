@@ -54,6 +54,11 @@ require_once 'utils/update_last_activity.php';
         <hr id="linec">
 
         <h1 id="followc">Contact us!</h1>
+        <?php if ($error): ?>
+            <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php elseif ($success): ?>
+            <p class="success"><?= htmlspecialchars($success) ?></p>
+        <?php endif; ?>
 
         <form method="post" action="contact.php">
 
@@ -61,10 +66,10 @@ require_once 'utils/update_last_activity.php';
             <br />
             <div class="tabl">
                 <div><span class="whitee">Your first name:</span><br />
-                    <input class="inputbox1" type="first name" name="fisrt name" maxlength="25"/>
+                    <input class="inputbox1" type="text" name="first_name" maxlength="25"/>
                 </div>
                 <div><span class="whitee">Your last name:</span><br/>
-                    <input class="inputbox1" type="last name" name="last name" maxlength="25"/>
+                    <input class="inputbox1" type="text" name="last_name" maxlength="25"/>
                 </div>
             </div>
             <br />
