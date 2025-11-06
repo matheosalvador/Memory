@@ -1,5 +1,5 @@
-<?php
-require('utils/helper.php');
+<!-- Helper add into this page  -->
+<?php require('utils/helper.php');
 session_start();
 
 // Récupération des messages et anciennes valeurs
@@ -13,6 +13,8 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
 
 <!DOCTYPE HTML>
 <html lang="en">
+
+<!-- Head -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

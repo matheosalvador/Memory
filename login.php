@@ -1,8 +1,19 @@
 <!-- Helper add into this page  -->
-<?php require('utils/helper.php'); ?>
+<?php require('utils/helper.php'); 
+session_start();
+
+// Récupération des messages et valeurs anciennes
+$errors = $_SESSION['errors'] ?? [];
+$success = $_SESSION['success'] ?? '';
+$old = $_SESSION['old'] ?? ['email' => '', 'pseudo' => ''];
+
+// Nettoyage des sessions
+unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']); 
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
+
 	<!-- Head -->
 	<head>
 		<meta charset="utf-8">
