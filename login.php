@@ -48,11 +48,11 @@
 						<div class="flex align-items-center">
 							<div class="border-bottom height-1 w-full">
 							</div>
-						<div class="flex bg-white p1">
-							<span class="mt-3">Or</span>
-						</div>
-						<div class="border-bottom height-1 w-full">
-						</div>
+							<div class="flex bg-white p1">
+								<span class="mt-3">Or</span>
+							</div>
+							<div class="border-bottom height-1 w-full">
+							</div>
 						</div>
 
 							<!-- google button -->

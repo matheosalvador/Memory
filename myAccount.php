@@ -25,7 +25,6 @@
                 <p>Your name:</p>
             </div>
             <div>
-                <Select>
                 <p>Your email:</p>
             </div>
         </div>    

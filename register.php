@@ -19,11 +19,14 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/login-register-style.css">
     <title>Register</title>
 </head>
+
+<!-- body -->
 <body>
 <div id="login-register">
     <div class="flex">
         <div class="w-50">
             <div class="login-container flex">
+                <!-- title and paraphe -->
                 <h1 id="welcome">Welcome to our place ! 👋</h1>
                 <p id="details">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse scelerisque in tortor vitae sollicitudin.</p>
@@ -50,15 +53,20 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                     <label for="password">Password</label>
                     <input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
                     <label for="confirm_password">Confirm Password</label>
-                    <input id="check-confirmed-password" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
-                    <button type="submit" id="check-button"><span id="txt-button">Register</span></button>
+                    <input class="button" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
+                    <button type="submit" id="check-button"><span id="txt-button">Registration</span></button>
                 </form>
-
-                <div class="flex align-items-center"></div>
-                    <div class="border-bottom height-1 w-full"></div>
-                    <div class="flex bg-white p1"><span class="mt-3">Or</span></div>
-                    <div class="border-bottom height-1 w-full"></div>
-                </div>
+                
+				<!-- line -->
+				<div class="flex align-items-center">
+					<div class="border-bottom height-1 w-full">
+					</div>
+					<div class="flex bg-white p1">
+						<span class="mt-3">Or</span>
+					</div>
+					<div class="border-bottom height-1 w-full">
+					</div>
+				</div>
 
                 <!-- Google button -->
                 <button id="google-button">
@@ -68,7 +76,7 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                     </div>
                 </button>
 
-                <span id="txt-link1">Already have an account? <a href="login.php" id="link2">Sign in</a></span>
+                <span id="txt-link1">No account?<a href="login.php" id="link2" >Sign up</a></span>
             </div>
         </div>
         <div class="w-50">
