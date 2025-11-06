@@ -1,17 +1,20 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 require('utils/helper.php');
+require('utils/database.php');
+// Connexion à la base
+$pdo = getPDO(); // ta fonction qui retourne un objet PDO
 
-// // Connexion à la base
-// $pdo = getPDO(); // ta fonction qui retourne un objet PDO
+// Supposons que tu as stocké l'email du joueur connecté
+$userEmail = $_SESSION['email'] ?? null;
 
-// // Supposons que tu as stocké l'email du joueur connecté
-// $userEmail = $_SESSION['email'] ?? null;
-
-// // Requête pour récupérer ses infos
-// $stmt = $pdo->prepare("SELECT name, pseudo, email FROM main_user WHERE email = :email");
-// $stmt->execute(['email' => $userEmail]);
-// $user = $stmt->fetch(PDO::FETCH_ASSOC);
+// Requête pour récupérer ses infos
+$stmt = $pdo->prepare("SELECT pseudo, email FROM main_user WHERE email = :email");
+$stmt->execute(['email' => $userEmail]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +41,6 @@ require('utils/helper.php');
             <hr class="line-acc">
             <?php if ($user): ?>
         <div class="w-5">
-            <p class="title-acc">Your name: <strong><?= htmlspecialchars($user['name']); ?></strong></p>
-        </div>
-        <div>
             <p class="title-acc">Your pseudo: <strong><?= htmlspecialchars($user['pseudo']); ?></strong></p>
         </div>
         <div>
