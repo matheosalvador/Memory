@@ -317,6 +317,29 @@ body{
     overflow: hidden;
 }
 
+
+
+
+
+/* highlight */
+/* on force */
+#bodytable tr.highlight {
+    background-color: rgba(248, 221, 83, 0.4);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#bodytable tr.highlight:hover {
+    background-color: rgba(212, 184, 42, 0.7) !important;
+    cursor: pointer;
+}
+/* end highlight */
+
+
+
+
+
+
 /*round corner*/
 #bodytable tr td:first-child {
     border-top-left-radius: 5px;

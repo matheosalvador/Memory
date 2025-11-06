@@ -46,16 +46,20 @@ require_once '../../utils/fct-scores.php';
                 <tbody id="bodytable">
                     <?php $position = 1; ?>
                     <?php foreach(getScores() as $score): ?>
-                    <tr>
-                        <td class='scoreb'>
-                            <?php echo $position++; ?>
-                        </td>
-                        <td class="scoreb"><?= htmlspecialchars($score['game_name']) ?></td>
-                        <td class="scoreb"><?= htmlspecialchars($score['player_name']) ?></td>
-                        <td class="scoreb"><?= getDifficultyLabel($score['difficulty']) ?></td>
-                        <td class="scoreb"><?= parseScore($score['time']) ?></td>
-                        <td class="scoreb"><?= parseDate($score['created_at']) ?></td>
-                    </tr>
+                        <?php 
+                            // verify is current player connected is on score
+                            $isCurrentUser = isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === $score['player_name']; 
+                        ?>
+                        <tr class="<?= $isCurrentUser ? 'highlight' : '' ?>">
+                            <td class='scoreb'>
+                                <?= $position++; ?>
+                            </td>
+                            <td class="scoreb"><?= htmlspecialchars($score['game_name']) ?></td>
+                            <td class="scoreb"><?= htmlspecialchars($score['player_name']) ?></td>
+                            <td class="scoreb"><?= getDifficultyLabel($score['difficulty']) ?></td>
+                            <td class="scoreb"><?= parseScore($score['time']) ?></td>
+                            <td class="scoreb"><?= parseDate($score['created_at']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

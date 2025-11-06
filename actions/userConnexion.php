@@ -1,7 +1,10 @@
 <?php
-function getUserByEmail($email){
+require_once __DIR__ . '/../utils/database.php';
+
+function getUserByEmail($email) {
     $pdo = getPDO();
-    $stmt = $pdo->prepare("SELECT id, email, password FROM users WHERE email = ?");
+    $stmt = $pdo->prepare("SELECT id, email, mdp FROM main_user WHERE email = ?");
     $stmt->execute([$email]);
-    return $stmt->fetch(PDO::FETCH_ASSOC); // retourne false si aucun résultat
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+?>
