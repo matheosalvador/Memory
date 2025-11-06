@@ -1,5 +1,40 @@
 <!-- Helper add into this page  -->
-<?php require('utils/helper.php'); ?>
+<?php 
+session_start();
+require('utils/database.php'); // inclure la connexion PDO
+require('utils/helper.php'); 
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+	if (!empty($email) && !empty($password)) {
+        $pdo = getPDO(); // fonction qui retourne la connexion PDO
+
+		// Récupération de l'utilisateur correspondant à l'email
+        $stmt = $pdo->prepare("SELECT * FROM main_user WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+		// Vérification du mot de passe
+        if ($user && password_verify($password, $user['mdp'])) {
+            // Stocker l'ID et le pseudo dans la session
+            $_SESSION['userId'] = $user['id'];       // User story 8
+            $_SESSION['pseudo'] = $user['pseudo'];   // User story 9		
+            
+			// Redirection vers la page d’accueil
+            header('Location: ../index.php');
+            exit;
+        } else {
+            $error = "Email ou mot de passe incorrect.";
+        }
+    } else {
+        $error = "Veuillez remplir tous les champs.";
+    }
+}
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -31,20 +66,18 @@
 					</form>
 						<!-- line -->
 					<div class="flex align-items-center">
-						<div class="border-bottom height-1 w-full">
+						<div class="border-bottom height-1 w-full"></div>
+						<div class="flex bg-white p1">
+							<span class="mt-3">Or</span>
 						</div>
-					<div class="flex bg-white p1">
-						<span class="mt-3">Or</span>
-					</div>
-					<div class="border-bottom height-1 w-full">
-					</div>
+						<div class="border-bottom height-1 w-full"></div>
 					</div>
 						<!-- google button -->
 					<button id="google-button">
-					<div class="flex align-items-center justify-content-center gap-1">
-						<img id="google" width="25px" src="assets\images\google.png"/>
-						<span>Sign in with Google </span>
-					</div>
+						<div class="flex align-items-center justify-content-center gap-1">
+							<img id="google" width="25px" src="assets\images\google.png"/>
+							<span>Sign in with Google </span>
+						</div>
 					</button>	
 				<!-- sign-up link -->
 			<span id="txt-link1">Already have an account?<a href="register.php" id="link2" >Sign in</a></span>
