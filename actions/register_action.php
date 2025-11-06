@@ -1,6 +1,8 @@
 <?php
-require('utils/helper.php');
-require('utils/database.php')
+// Chemin vers tes fonctions helper et la base
+require_once(__DIR__ . '/../utils/helper.php');
+require_once(__DIR__ . '/../utils/database.php');
+
 session_start();
 
 $errors = [];
@@ -56,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['success'] = $success;
     $_SESSION['old'] = ['email' => $email, 'pseudo' => $pseudo];
 
-    // Redirection vers le formulaire pour affichage
-    header("Location: register.php");
+    // Redirection vers le formulaire
+    header("Location: ../register.php");
     exit;
 }
