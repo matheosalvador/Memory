@@ -15,7 +15,7 @@ require_once '../../utils/fct-scores.php';
         <meta charset="utf-8"> <!-- every character set here-->
         <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\contact-scores.css">
         <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\main.css">
-        <title>The memory game</title>
+        <title>Score</title>
     </head>
     <body>
 
@@ -70,7 +70,7 @@ require_once '../../utils/fct-scores.php';
             <div class="lefttxt">
                 <h3 class="titlemem">The memory game</h3>
                 <p class="mainmem">You will make mistakes. You might forget a move. But that doesn’t define you. It’s about how well you remember, how clearly you think, and how fiercely you compete. Every card you flip, every match you make — it counts.</p>
-                <a href="#" class="playbutton">Play</a>
+                <a href="index.php" class="playbutton">Play</a>
             </div>
             <div>
                 <img class="right-image" src="../../assets/images/memory_sec.png" alt="memory_image">
