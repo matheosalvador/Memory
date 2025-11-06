@@ -44,16 +44,17 @@ require_once '../../utils/fct-scores.php';
                     </tr>
                 </thead>
                 <tbody id="bodytable">
-                    <?php $position = 1; ?>
-                    <?php foreach(getScores() as $score): ?>
+                    <?php $position = 1; ?> <!-- initialize rank counter (start at 1) -->
+                    <?php foreach(getScores() as $score): ?> <!-- loop for each score record from the database -->
                         <?php 
                             // verify is current player connected is on score
-                            $isCurrentUser = isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === $score['player_name']; 
+                            $isCurrentUser = isset($_SESSION['userId']) && $_SESSION['userId'] === $score['user_id']; 
                         ?>
+                        <!-- detect if it's the current online player session -->
                         <tr class="<?= $isCurrentUser ? 'highlight' : '' ?>">
                             <td class='scoreb'>
                                 <?= $position++; ?>
-                            </td>
+                            </td> <!-- score line data for each player -->
                             <td class="scoreb"><?= htmlspecialchars($score['game_name']) ?></td>
                             <td class="scoreb"><?= htmlspecialchars($score['player_name']) ?></td>
                             <td class="scoreb"><?= getDifficultyLabel($score['difficulty']) ?></td>
@@ -61,6 +62,7 @@ require_once '../../utils/fct-scores.php';
                             <td class="scoreb"><?= parseDate($score['created_at']) ?></td>
                         </tr>
                     <?php endforeach; ?>
+                    <!-- end of the loop -->
                 </tbody>
             </table>
         </div>

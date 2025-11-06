@@ -7,7 +7,7 @@ function getScores() {
     if ($pseudo) {
         // if exist, we get sql request from most score table
         $stmt = $pdo->prepare("
-            SELECT s.id, u.pseudo AS player_name, g.game_name, s.difficulty, s.time, s.created_at
+            SELECT s.id, s.user_id, u.pseudo AS player_name, g.game_name, s.difficulty, s.time, s.created_at
             FROM score s
             INNER JOIN main_user u ON s.user_id = u.id
             INNER JOIN game g ON s.game_id = g.id
@@ -18,7 +18,7 @@ function getScores() {
     } else {
         // if no pseudo, get all scores
         $stmt = $pdo->query("
-            SELECT s.id, u.pseudo AS player_name, g.game_name, s.difficulty, s.time, s.created_at
+            SELECT s.id, s.user_id, u.pseudo AS player_name, g.game_name, s.difficulty, s.time, s.created_at
             FROM score s
             INNER JOIN main_user u ON s.user_id = u.id
             INNER JOIN game g ON s.game_id = g.id

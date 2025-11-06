@@ -50,15 +50,15 @@ unset($_SESSION['errors'], $_SESSION['success']);
 					<!--  Formulaire de connexion -->
 					<form class="form-login" action="actions/login_action.php" method="post">
 						<label for="email">Email</label>
-						<input id="check-email" name="email" type="email" placeholder="Example@email.com" required>
+						<input class="button" name="email" type="email" placeholder="Example@email.com" required>
 
 						<label for="password">Password</label>
-						<input id="check-password" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+						<input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 
 						<button type="submit" id="check-button">
 							<span id="txt-button">Sign in</span>
 						</button>
-					</form>
+					
 
 					<!-- Ligne de séparation -->
 					<div class="flex align-items-center">
@@ -81,7 +81,7 @@ unset($_SESSION['errors'], $_SESSION['success']);
 					<span id="txt-link1">No account? <a href="register.php" id="link2">Sign up</a></span>
 				</div>
 			</div>
-
+		</form>
 			<div class="w-50">
 				<img id="image" src="assets/images/Image.jpg" alt="login image" />
 			</div>
