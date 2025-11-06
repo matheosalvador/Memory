@@ -1,4 +1,7 @@
-<?php require('../../utils/helper.php'); ?>
+<?php
+session_start();
+require('../../utils/helper.php');
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">

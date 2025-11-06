@@ -1,13 +1,13 @@
 <?php 
 session_start();
 
-// Vérifier si l'utilisateur est connecté
-if (isset($_SESSION['userId'])) {
-    echo "ID utilisateur en session : " . $_SESSION['userId'] . "<br>";
-    echo "Pseudo en session : " . $_SESSION['pseudo'];
-} else {
-    echo "Aucun utilisateur connecté.";
-}
+// Vérifier si l'utilisateur est connecté (variable de test)
+//if (isset($_SESSION['userId']) && isset($_SESSION['pseudo'])) {
+//    echo "Utilisateur connecté : " . htmlspecialchars($_SESSION['pseudo']) . " (ID : " . $_SESSION['userId'] . ")";
+//} else {
+//    echo "Aucun utilisateur connecté.";
+//}
+
 
 require('utils/helper.php');
 ini_set('display_errors', 1);

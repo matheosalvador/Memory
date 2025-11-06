@@ -1,5 +1,6 @@
 <?php
 $currentPage = basename($_SERVER['SCRIPT_NAME']);
+
 ?>
 
 <header class="main-header">
@@ -8,12 +9,12 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
         <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
     </a>
 
-    <?php if (isset($_SESSION['pseudo'])): ?>
-      <div class="user-info">
-         <span class="user-pseudo"><?= htmlspecialchars($_SESSION['pseudo']) ?></span>
-         <span class="status-dot"></span>
-      </div>
-   <?php endif; ?>
+      <?php if (isset($_SESSION['pseudo'])): ?>
+         <div class="user-info">
+            <span class="user-pseudo"><?= htmlspecialchars($_SESSION['pseudo']) ?></span>
+            <span class="status-dot"></span>
+         </div>
+      <?php endif; ?>
 
     <!-- navigation -->
     <nav class="nav-container" role="navigation" aria-label="Main navigation">
