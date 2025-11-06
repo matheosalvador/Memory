@@ -1,6 +1,16 @@
 <?php
-$currentPage = basename($_SERVER['SCRIPT_NAME']);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+// Inclure le helper correctement
+require_once __DIR__ . '/../utils/helper.php';
+
+if (isset($_SESSION['pseudo'])) {
+    // déjà défini par la connexion
+} else {
+    $_SESSION['pseudo'] = 'Guest'; // temporaire si besoin
+}
 ?>
 
 <header class="main-header">
