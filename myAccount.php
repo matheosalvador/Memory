@@ -25,7 +25,7 @@
                 <p>Your name:</p>
             </div>
             <div>
-                <Select
+                <Select>
                 <p>Your email:</p>
             </div>
         </div>    
