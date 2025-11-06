@@ -118,7 +118,7 @@ error_reporting(E_ALL);
         </div>
         </section>
         <section class="team">
-            <h3>Our Team</h3>
+            <h3 class="wline">Our Team</h3>
             <div class="members">
                 <figure>
                     <img src="assets/images/member1.png" alt="Photo de Member #1">

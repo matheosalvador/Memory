@@ -28,7 +28,6 @@ require('utils/helper.php');
                 <p>Your name:</p>
             </div>
             <div>
-                <Select>
                 <p>Your email:</p>
             </div>
         </div>    

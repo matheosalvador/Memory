@@ -32,3 +32,4 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
            class="spaceh button-like <?= $currentPage === 'contact.php' ? 'active' : '' ?>">Contact us</a>
     </nav>
 </header>
+<!-- My Account sans le rouge -->
