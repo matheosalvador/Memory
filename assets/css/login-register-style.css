@@ -144,23 +144,7 @@ body {
 }
 
 /* formulaire */
-#login-register #check-email {
-	background-color: #F7FBFF;
-	border-radius: 12px;
-	padding: 10px;
-	border:1px solid #D4D7E3;
-	cursor: pointer;
-}
-
-#login-register #check-password {
-	background-color: #F7FBFF;
-	border-radius: 12px;
-	padding: 10px;
-	border:1px solid #D4D7E3;
-	cursor: pointer;
-}
-
-#login-register #check-confirmed-password {
+#login-register .button {
 	background-color: #F7FBFF;
 	border-radius: 12px;
 	padding: 10px;

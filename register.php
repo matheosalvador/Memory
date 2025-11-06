@@ -42,23 +42,19 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                 <?php endif; ?>
 
                 <!-- Formulaire d'inscription -->
-					<form class="form-login" action="<?= getBaseUrl(); ?>/register_process.php" method="post">
+				<form class="form-login" action="<?= getBaseUrl(); ?>/register_process.php" method="post">
                     <label for="email">Email</label>
-                    <input id="check-email" name="email" type="email" placeholder="Example@email.com" required value="<?= htmlspecialchars($old['email']) ?>">
-
+                    <input class="button" name="email" type="email" placeholder="Example@email.com" required value="<?= htmlspecialchars($old['email']) ?>">
                     <label for="pseudo">Pseudo</label>
-                    <input id="check-pseudo" name="pseudo" type="text" placeholder="4 characters min" required value="<?= htmlspecialchars($old['pseudo']) ?>">
-
+                    <input class="button" name="pseudo" type="text" placeholder="4 characters min" required value="<?= htmlspecialchars($old['pseudo']) ?>">
                     <label for="password">Password</label>
-                    <input id="check-password" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
-
+                    <input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
                     <label for="confirm_password">Confirm Password</label>
                     <input id="check-confirmed-password" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
-
                     <button type="submit" id="check-button"><span id="txt-button">Register</span></button>
                 </form>
 
-                <div class="flex align-items-center">
+                <div class="flex align-items-center"></div>
                     <div class="border-bottom height-1 w-full"></div>
                     <div class="flex bg-white p1"><span class="mt-3">Or</span></div>
                     <div class="border-bottom height-1 w-full"></div>
