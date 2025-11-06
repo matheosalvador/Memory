@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = getUserByEmail($email);
 
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && password_verify($password, $user['mdp'])) {
         // Connexion réussie
         $_SESSION['userId'] = $user['id'];
         $_SESSION['flash'][] = "Connexion réussie !";
