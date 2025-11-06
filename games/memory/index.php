@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('../../utils/helper.php');
-require_once 'update_last_activity.php';
+require_once '../../utils/update_last_activity.php';
 ?>
 
 <!DOCTYPE HTML>

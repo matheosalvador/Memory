@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 session_start();
 require('utils/helper.php');
 require('utils/database.php');
-require_once 'update_last_activity.php';
+require_once 'utils/update_last_activity.php';
 // Connexion à la base
 $pdo = getPDO(); // ta fonction qui retourne un objet PDO
 

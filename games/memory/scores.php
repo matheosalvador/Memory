@@ -2,7 +2,7 @@
 session_start();
 
 require_once '../../utils/helper.php'; 
-require_once 'update_last_activity.php';
+require_once '../../utils/update_last_activity.php';
 require_once '../../utils/fct-scores.php';
 
 ?>
