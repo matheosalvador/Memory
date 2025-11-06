@@ -22,7 +22,11 @@
             </div>
             <hr class="line-acc">
             <div class="w-5">
-                <h1>Hello</h1>    
+                <p>Your name:</p>
+            </div>
+            <div>
+                <Select
+                <p>Your email:</p>
             </div>
         </div>    
     </body>    

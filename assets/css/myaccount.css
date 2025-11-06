@@ -7,9 +7,6 @@
     justify-content: center;
 }
 
-.w-5 {
-	width: 5%;
-}
 
 .details-container {
 	flex-direction: column;
