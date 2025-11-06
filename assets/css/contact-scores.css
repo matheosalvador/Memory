@@ -46,7 +46,7 @@
 /*phone and adress logo left*/
 .contactst {
   display: flex;
-  align-items: senter;
+  align-items: center;
   gap: 12px;
   text-align: center;
 }
