@@ -1,4 +1,5 @@
 <?php
+$currentPage = basename($_SERVER['SCRIPT_NAME']);
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
