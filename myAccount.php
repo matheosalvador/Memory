@@ -70,6 +70,17 @@ include 'partials/header-terminé.php';
     <div>
         <p class="title-acc">Your email: <strong><?= htmlspecialchars($user['email']); ?></strong></p>
     </div>
+    <div class="title-acc">
+		<button type="submit" class="button">
+			<span id="txt-button">Change Email</span>
+		</button>
+		<button type="submit" class="button">
+		    <span id="txt-button">Change Password</span>
+        </button>
+		<button type="submit" class="button">
+		    <span id="txt-button">Disconnect</span>
+		</button>
+    </div>
 </body>
 <?php include 'partials/footer-terminé.php'; ?>
 </html>

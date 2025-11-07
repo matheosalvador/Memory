@@ -31,3 +31,11 @@
     width: 700px;
     
 }
+
+.button {
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
+	cursor: pointer;
+}
