@@ -1,5 +1,6 @@
 /* footer */
 /*background*/
+
 footer {
     margin-top: 100px;
     width: 100%;
@@ -7,20 +8,25 @@ footer {
     flex-direction: column;
 }
 
+
 .fhead {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+
+
 /*all the text*/
 footer p {
     color: black !important;
 }
 
+
 .tabl0 {
     justify-content: start;
     height: 215px;
 }
+
 
 .tabl1 {
     display: flex;
@@ -29,20 +35,24 @@ footer p {
     height: 215px;
 }
 
+
 .tabl2 {
     display: flex;
     flex-direction: column;
     align-items: start;
 }
 
+
 .tabl2 p {
     margin-bottom: 13px;
 }
+
 
 footer a {
     color: black !important;
     text-decoration: none;
 }
+
 
 #logo {
     height: 60px;
@@ -53,6 +63,7 @@ footer hr {
     border: 1px solid black;
 }
 
+
 /* all the links */
 #links {
     margin-top: 180px;
@@ -61,12 +72,14 @@ footer hr {
     align-items: end;
 }
 
+
 #endf {
     display: flex;
     justify-content: center;
     font-size: 13px;
     margin-top: 25px;
 }
+
 
 .linka {
     width: 40px;
@@ -75,9 +88,9 @@ footer hr {
     cursor: pointer;
     transition: transform 0.3s;
 }
-
 .linka:hover {
     transform: scale(1.2);    /* Zoom au survol */
 }
-/* end of footer */
+
+
 /* end of footer */
