@@ -44,7 +44,7 @@ include 'partials/header-terminé.php';
         <img src="assets/images/Image-dilustration.png" alt="Image d'illustration">
         <div class="text">
             <h6>OUR ...</h6>
-            <h4 class="wline">Début de lorem sur fibra</h4>
+            <h4 class="wline">Start from The power of Memory games </h4>
             <p>Description</p>
             <a href="games/memory/index.php" class="button">Start !</a>
         </div>

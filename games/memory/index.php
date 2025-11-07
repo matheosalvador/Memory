@@ -83,7 +83,7 @@ require_once '../../utils/update_last_activity.php';
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse scelerisque in tortor vitae sollicitudin.
             </p>
-            <button class="play-btn">Jouer</button>
+            <button class="play-btn">Play</button>
         </div>
 
         <div class="presentation-image">
@@ -92,21 +92,21 @@ require_once '../../utils/update_last_activity.php';
                 <div class="chat-header">Power Of Memory</div>
                 <div class="chat-body">
                     <div class="message left">
-                        <span class="sender">TM</span>
-                        <div class="bubble">👋 Hey ! Bien joué Clément !</div>
+                        <span class="sender">Tit</span>
+                        <div class="bubble">👋 Hey ! Great Job Clément !</div>
                     </div>
                     <div class="message right">
-                        <div class="bubble red">Yes ! Bien joué Clément !</div>
-                        <span class="time">Il y a 2 minutes</span>
+                        <div class="bubble red">Yeah ! Good Play Titouen !</div>
+                        <span class="time">two minutes ago</span>
                     </div>
                     <div class="message left">
                         <span class="sender">CP</span>
-                        <div class="bubble">Merci beaucoup !!</div>
-                        <span class="time">À l’instant</span>
+                        <div class="bubble">Thanks You Very much !!</div>
+                        <span class="time">Right Now</span>
                     </div>
                 </div>
                 <div class="chat-input">
-                    <input type="text" placeholder="Votre message..." disabled>
+                    <input type="text" placeholder="Your message..." disabled>
                 </div>
             </div>
         </div>
