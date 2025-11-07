@@ -34,7 +34,10 @@ $recordTimeFormatted = sprintf("%02dm%02d", $minutes, $seconds);
 </head>
 <body>
 
-<?php include 'partials/header-terminé.php'; ?>
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+include 'partials/header-terminé.php';
+?>
 
 <section class="main">
     <div class="content">

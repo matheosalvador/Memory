@@ -19,7 +19,9 @@ require_once '../../utils/fct-scores.php';
     </head>
     <body>
 
-        <?php include "../../partials\header-terminé.php" ?>
+        <?php $currentPage = basename($_SERVER['PHP_SELF']);
+        include "../../partials\header-terminé.php";
+        ?>
 
         <!-- smol text :>  -->
         <p class="startg">Scores</p>

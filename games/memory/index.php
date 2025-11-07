@@ -15,7 +15,10 @@ require_once '../../utils/update_last_activity.php';
 </head>
     <body>  
 
-        <?php include "../../partials\header-terminé.php" ?>
+        <?php 
+        $currentPage = basename($_SERVER['PHP_SELF']);
+        include "../../partials\header-terminé.php";
+         ?>
 
         <!-- memory.php -->
         <section class="memory-game">

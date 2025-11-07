@@ -27,7 +27,10 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <title>My Account</title>
     </head>
 
-    <?php include 'partials\header-terminé.php' ?>
+    <?php
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    include 'partials\header-terminé.php';
+    ?>
     <body>
         <div>
             <div class="flex-acc">

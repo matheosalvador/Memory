@@ -13,7 +13,10 @@ require_once 'utils/update_last_activity.php';
         <title>Contact us</title>
     </head>
 
-    <?php include 'partials\header-terminé.php' ?>
+    <?php
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    include 'partials\header-terminé.php';
+    ?>
 
     <body>    
         <span id="titlef">Our geographical locations and our headquarters</span>
