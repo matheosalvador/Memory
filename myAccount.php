@@ -89,7 +89,6 @@ include 'partials/header-terminé.php';
             </div>
         </div>
     </div>
-        <!-- ✅ Triangles décoratifs avant le footer -->
     <div class="triangle-container">
         <div class="triangle triangle-left"></div>
         <div class="triangle triangle-right"></div>
