@@ -1,3 +1,22 @@
+.account-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px); /* laisse de l'espace pour le footer */
+    background-color: #fff;
+    padding: 40px 0;
+}
+
+.account-box {
+    width: 80%;
+    max-width: 800px;
+    background: linear-gradient(135deg, #eef5ff 0%, #e3ecff 50%, #ffffff 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    position: relative;
+}
+
 .img {
     height: 200px;
 }
@@ -27,9 +46,12 @@
 }
 
 .line-acc {
-    height: 0.5px;
-    width: 700px;
-    
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #a0c4ff, #89b4f8, #a0c4ff);
+    width: 60%;
+    margin: 20px auto;
+    border-radius: 2px;
 }
 
 .button {
@@ -41,5 +63,31 @@
 }
 
 .button:hover {
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+    background-color: #eaf1ff;
+    transform: scale(1.03);
+    transition: 0.2s ease;
+}
+
+/* triangles décoratifs modernes */
+.account-box::before,
+.account-box::after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    opacity: 0.35;
+}
+
+.account-box::before {
+    left: 25%;
+    border-width: 25px 35px 0 35px;
+    border-color: #a0c4ff transparent transparent transparent;
+}
+
+.account-box::after {
+    right: 25%;
+    border-width: 25px 35px 0 35px;
+    border-color: #89b4f8 transparent transparent transparent;
 }

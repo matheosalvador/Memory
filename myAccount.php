@@ -54,37 +54,48 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 include 'partials/header-terminé.php';
 ?>
 <body>
-    <div class="flex-acc">
-        <img class="img" src="assets/images/Account-Logo.png" alt="logoaccount">
-    </div>
+    <div class="account-wrapper">
+        <div class="account-box">
+            <div class="flex-acc">
+                <img class="img" src="assets/images/Account-Logo.png" alt="logoaccount">
+            </div>
 
-    <div>
-        <span class="title-acc fs-35">Profil</span>
-    </div>
+            <div>
+                <span class="title-acc fs-35">Profil</span>
+            </div>
 
-    <hr class="line-acc">
+            <hr class="line-acc">
 
-    <div class="w-5">
-        <p class="title-acc">Your pseudo: <strong><?= htmlspecialchars($user['pseudo']); ?></strong></p>
+            <div class="w-5">
+                <p class="title-acc">Your pseudo: <strong><?= htmlspecialchars($user['pseudo']); ?></strong></p>
+            </div>
+            <div>
+                <p class="title-acc">Your email: <strong><?= htmlspecialchars($user['email']); ?></strong></p>
+            </div>
+            <div class="title-acc">
+	        	<input class="button" name="email" type="email" placeholder="Example@email.com" required>
+	        	<input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+            </div>
+            <div class="title-acc">
+	        	<button type="submit" class="button">
+	        		<span id="txt-button">Change Email</span>
+	        	</button>
+	        	<button type="submit" class="button">
+	        	    <span id="txt-button">Change Password</span>
+                </button>
+	        	<button type="submit" class="button">
+	        	    <span id="txt-button">Disconnect</span>
+	        	</button>
+            </div>
+        </div>
     </div>
-    <div>
-        <p class="title-acc">Your email: <strong><?= htmlspecialchars($user['email']); ?></strong></p>
-    </div>
-    <div class="title-acc">
-		<input class="button" name="email" type="email" placeholder="Example@email.com" required>
-		<input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
-    </div>
-    <div class="title-acc">
-		<button type="submit" class="button">
-			<span id="txt-button">Change Email</span>
-		</button>
-		<button type="submit" class="button">
-		    <span id="txt-button">Change Password</span>
-        </button>
-		<button type="submit" class="button">
-		    <span id="txt-button">Disconnect</span>
-		</button>
+        <!-- ✅ Triangles décoratifs avant le footer -->
+    <div class="triangle-container">
+        <div class="triangle triangle-left"></div>
+        <div class="triangle triangle-right"></div>
     </div>
 </body>
+
 <?php include 'partials/footer-terminé.php'; ?>
+
 </html>
