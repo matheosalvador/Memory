@@ -2,14 +2,24 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-session_start();
+
 require('utils/helper.php');
 require('utils/database.php');
+require('actions/login_action.php');
 require_once 'utils/update_last_activity.php';
+
+
 // Connexion à la base
 $pdo = getPDO(); // ta fonction qui retourne un objet PDO
+// Alerte si la connexion est un succés
+if (isset($_SESSION['success'])): ?>
+    <div class="alert-success">
+        <?= $_SESSION['success']; ?>
+    </div>
+    <?php unset($_SESSION['success']); // supprime le message après affichage ?>
+<?php endif; 
 
-// Supposons que tu as stocké l'email du joueur connecté
+// Normallement  tu as stocké l'email du joueur connecté
 $userEmail = $_SESSION['email'] ?? null;
 
 // Requête pour récupérer ses infos
