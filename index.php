@@ -174,7 +174,8 @@ include 'partials/header-terminé.php';
     </div>
 </section>
 
-<?php include 'partials/footer-terminé.php'; ?>
 
 </body>
+<?php include 'partials/footer-terminé.php'; ?>
+
 </html>

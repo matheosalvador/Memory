@@ -1,85 +1,102 @@
-/* footer */
-/*background*/
-
+/* FOOTER GLOBAL */
 footer {
+    width: 100vw;
+    margin: 0;
     margin-top: 100px;
-    width: 100%;
+    padding: 0;
     background-color: white;
-    flex-direction: column;
-}
-
-
-.fhead {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
 
-/*all the text*/
+/* CONTENEUR PRINCIPAL */
+.fhead {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start; /* tous les blocs commencent à gauche */
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+
+/* --- BLOC GAUCHE : logo + texte --- */
+.tabl0 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30%;
+    min-width: 250px;
+    margin-left: 20px;
+}
+
+#logo {
+    height: 60px;
+    margin: 0;
+}
+
 footer p {
     color: black !important;
 }
 
-
-.tabl0 {
-    justify-content: start;
-    height: 215px;
-}
-
-
+/* --- BLOC MILIEU : Menu --- */
 .tabl1 {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    height: 215px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 20%;
 }
 
-
-.tabl2 {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.tabl1 h4 {
+    margin-bottom: 20px;
 }
-
-
-.tabl2 p {
-    margin-bottom: 13px;
-}
-
 
 footer a {
     color: black !important;
     text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #555;
+}
+
+/* --- BLOC DROITE : Contact --- */
+.tabl2 {
+    width: 25%;
+    margin-left: 50px; /* ajuste cette valeur pour rapprocher Contact vers le menu */
 }
 
 
-#logo {
-    height: 60px;
-    margin: 0px;
+.tabl2 h4 {
+    margin-bottom: 8px;
 }
 
-footer hr { 
-    border: 1px solid black;
+.tabl2 p,
+.tabl2 span {
+    margin-bottom: 10px;
 }
 
-
-/* all the links */
+/* --- RÉSEAUX SOCIAUX --- */
 #links {
-    margin-top: 180px;
     display: flex;
     gap: 25px;
-    align-items: end;
+    justify-content: flex-end; /* tout à droite */
+    align-items: center;       /* alignement vertical */
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto 10px auto;  /* centré horizontalement et proche de la ligne */
 }
-
-
-#endf {
-    display: flex;
-    justify-content: center;
-    font-size: 13px;
-    margin-top: 25px;
-}
-
 
 .linka {
     width: 40px;
@@ -88,9 +105,45 @@ footer hr {
     cursor: pointer;
     transition: transform 0.3s;
 }
+
 .linka:hover {
-    transform: scale(1.2);    /* Zoom au survol */
+    transform: scale(1.2);
 }
 
+/* --- LIGNE ET COPYRIGHT --- */
+footer hr { 
+    border: 1px solid black;
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
 
-/* end of footer */
+#endf {
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    margin-top: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .fhead {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .tabl0,
+    .tabl1,
+    .tabl2 {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    #links {
+        justify-content: center;
+        margin: 20px 0 0 0;
+    }
+}
