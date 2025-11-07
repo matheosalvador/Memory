@@ -71,6 +71,10 @@ include 'partials/header-terminé.php';
         <p class="title-acc">Your email: <strong><?= htmlspecialchars($user['email']); ?></strong></p>
     </div>
     <div class="title-acc">
+		<input class="button" name="email" type="email" placeholder="Example@email.com" required>
+		<input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+    </div>
+    <div class="title-acc">
 		<button type="submit" class="button">
 			<span id="txt-button">Change Email</span>
 		</button>
