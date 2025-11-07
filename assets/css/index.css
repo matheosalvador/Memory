@@ -5,22 +5,63 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Main */
-.main .content {
+/* MAIN */
+.main {
+    position: relative; /* pour l'image en arrière-plan */
+    padding: 60px 20px;
     display: flex;
+    justify-content: flex-start; /* texte à gauche */
     align-items: center;
-    justify-content: center;
-    gap: 30px;  
-    flex-direction: row-reverse; 
-    padding: 40px 20px;
+    min-height: 400px;
+    background-color: #070320;
+    overflow: hidden;
+    left: 10%;
+}
+
+.main .content {
+    position: relative;
+    z-index: 2; /* texte devant l'image */
+    max-width: 600px;
+    color: white;
+    margin-left: 60px; /* décale le texte un peu vers la droite */
 }
 
 .main img {
-    max-width: 400px;
-    height: auto;
-    border-radius: 8px;          
+    position: relative;
+    right: 20%;         /* image à droite */
+    top: 0;
+    width: 40%;       /* occupe la moitié droite */
+    height: 0%;
+    object-fit: cover;
+    opacity: 0.5;    /* semi-transparente pour voir le texte */
+    border-radius: 8px;
+    z-index: 1;       /* derrière le texte */
 }
+
+
+
+.main .content h6 {
+    color: #E87D0E;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.main .content h4 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.main .content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Bouton */
+.main .button {
+    background: linear-gradient(to right, #d40032, #ff8c00); /* du rouge au orange */ 
+}
+
+
 
 .main .text {
     max-width: 500px;
@@ -32,6 +73,8 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    
+    
 }
 section{
     margin-bottom: 40px;
@@ -56,55 +99,134 @@ h6{
     text-decoration: none;
     color: white;
 }
-
-/* Jeux */
+.button:hover {
+    background: linear-gradient(to right, #ff8c00, #d40032); /* inversion au hover */
+}
+/* Games */
 .games h3{
     display: flex;
-    margin-left: 130px;
+    margin-left: 150px;
 }
 .games-container{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px; /* avant 20px */
     margin-top: 20px;
 }
 .games-container figure {
     text-align: center;
-    max-width: 200px;
+    width: 275px;   /* largeur fixe */
+    height: 275px;  /* hauteur fixe */
+    flex: none;     /* désactive l’auto-réduction dans le flex container */
+    border-radius: 20px; /* coins arrondis */
 }
-.games-container img{
+
+.games-container img {
+    width: 100%;     /* prend toute la largeur du figure */
+    height: 100%;    /* prend toute la hauteur du figure */
+    object-fit: cover; /* remplit la zone sans déformer l’image */
+    border-radius: 20px; /* coins arrondis identiques */
+}
+
+@media (min-width: 1024px) {
+    .games-container figure {
+        max-width: 350px;
+    }
+}
+
+/* ===== SECTION INFO ===== */
+.info {
+    background-color: #070320; 
+    padding: 40px 20px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 40px;
+    position: relative; /* nécessaire pour le décor absolu */
+}
+
+/* Titre centré au-dessus */
+.info-title {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+/* Conteneur texte + image */
+.info-content {
+    display: flex;
+    justify-content: flex-start; /* texte à gauche */
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-direction: column; /* texte au-dessus, image en bas */
+}
+
+/* Texte */
+.info-text {
+    max-width: 600px;
+    color: #cccccc;
+}
+
+.info-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.info-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Image en bas large */
+.info-image {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+}
+
+.info-image img {
+    width: 100%;      /* largeur maximale */
     height: auto;
     border-radius: 8px;
+    display: block;
 }
 
-/*info*/
-.inform{
-    display: flex;
-}
-.inform .info-text {
-    flex: 1;
-    min-width: 300px;
+/* Décor points rouges en haut à droite de l'image */
+.decor {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(red 2px, transparent 2px);
+    background-size: 10px 10px;
+    opacity: 0.9;
+    top: 0;
+    right: 0;
 }
 
-.inform p {
-    color: #cccccc;
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-.infop{
-    display: flex;
-    justify-content: center;
-}
-.info {
-    background-color: #0a0535;
-    padding: 20px;
-    border-radius: 8px;
-}
-.info span {
-    color: white;
-    font-weight: bold;
+/* Responsive */
+@media (max-width: 768px) {
+    .info-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .info-image {
+        width: 90%;
+    }
+
+    .decor {
+        display: none; /* cache le motif sur mobile */
+    }
 }
 
 /* Stat ecrito */
@@ -287,8 +409,8 @@ h6{
 
 .members {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px;
     flex-wrap: wrap;
     margin-top: 20px;
 }
@@ -306,69 +428,119 @@ h6{
     border: 3px solid white;
 }
 
-/* Newsletter */
+/* ===== SECTION NEWSLETTER ===== */
 .newsletter {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    color: black;
-}
-
-.newsletter .container {
+    background-color: transparent;
+    padding: 80px 20px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+    gap: 40px;
 }
 
-.newsletter h3 {
-    color: black;
-    margin: 0 0 10px 0;
-    font-size: 1.5rem;
+/* Texte au-dessus (blanc sur fond sombre) */
+.newsletter-toptext {
+    text-align: left;
+    max-width: 1100px;
+    width: 100%;
 }
 
-.newsletter p {
-    margin: 0;
+.newsletter-toptext h3 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.newsletter-toptext p {
+    color: #cccccc;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    margin: 0;
 }
 
+/* Boîte blanche */
+.newsletter .container {
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 12px;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1000px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte dans la boîte */
+.newsletter .text {
+    max-width: 500px;
+}
+
+.newsletter .text h3 {
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    color: #000;
+}
+
+.newsletter .text p {
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Formulaire */
 .newsletter .form {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .newsletter input {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    font-size: 1rem;
-    width: 250px;
-    background: #000000;
+    background-color: #000;
     color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    width: 250px;
+    font-size: 1rem;
+    outline: none;
 }
 
 .newsletter button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #d40032;
+    background-color: #d40032;
     color: white;
     font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .newsletter button:hover {
-    background: #a50025;
+    background-color: #a50025;
 }
-.stats {
-    position: relative;
-    margin: 60px 0;
-    overflow: hidden;
+
+/* Responsive */
+@media (max-width: 768px) {
+    .newsletter .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+
+    .newsletter .form {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .newsletter input {
+        width: 100%;
+    }
 }
 
 /* Image de fond */

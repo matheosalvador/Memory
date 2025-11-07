@@ -41,15 +41,14 @@ include 'partials/header-terminé.php';
 
 <section class="main">
     <div class="content">
-        <img src="assets/images/Image-dilustration.png" alt="Image d'illustration">
-        <div class="text">
-            <h6>OUR ...</h6>
-            <h4 class="wline">Start from The power of Memory games </h4>
-            <p>Description</p>
-            <a href="games/memory/index.php" class="button">Start !</a>
-        </div>
+        <h6>OUR ...</h6>
+        <h4 class="wline">Start from The power of Memory games</h4>
+        <p>Description</p>
+        <a href="games/memory/index.php" class="button">Start !</a>
     </div>
+    <img src="assets/images/Image-dilustration.png" alt="Image d'illustration">
 </section>
+
 
 <section class="games">
     <h3 class="wline">Our games</h3>
@@ -70,19 +69,28 @@ include 'partials/header-terminé.php';
 </section>
 
 <section class="info">
-    <div class="infop">
-        <span>Lorem ipsum sit amet, consectetur adipiscing elit</span>
-    </div>
-    <div class="inform">
+    <h3 class="info-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+
+    <div class="info-content">
+            <h3 class="info-title">Lorem Ipsum</h3>
+
         <div class="info-text">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                Suspendisse scelerisque in tortor vitae sollicitudin.<br>
+                Aliquam lacus augue, rhoncus eget porta et, egestas ut augue.
+            </p>
         </div>
-        <img id="imagescomplementaire" src="assets/images/image_complementaire.jpg" alt="Image complémentaire">
+
+        <div class="info-image">
+            <img src="assets/images/image_complementaire.jpg" alt="Image complémentaire">
+            <div class="decor" style="top:10%; right:10%;"></div>
+        </div>
     </div>
 </section>
 
-<!-- Section Stats -->
+
+
 <!-- Section Stats -->
 <section class="stats">
     <!-- Image de fond -->
@@ -140,16 +148,28 @@ include 'partials/header-terminé.php';
         </figure>
     </div>
 </section>
-
 <section class="newsletter">
+    <!-- Texte blanc au-dessus -->
+    <div class="newsletter-toptext">
+        <h3>Lorem Ipsum</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+            Suspendisse scelerisque in tortor vitae sollicitudin. 
+            Aliquam lacus augue, rhoncus eget porta et, egestas ut augue.
+        </p>
+    </div>
+
+    <!-- Bloc blanc -->
     <div class="container">
         <div class="text">
-            <h3>Stay informed</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque in tortor vitae sollicitudin.</p>
+            <h3>Restez informé</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+               Suspendisse scelerisque in tortor vitae sollicitudin.</p>
         </div>
         <div class="form">
             <input name="email" type="email" placeholder="Adresse email">
-            <button type="submit">Validate</button>
+            <button type="submit">Valider</button>
         </div>
     </div>
 </section>
