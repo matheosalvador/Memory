@@ -89,10 +89,6 @@ include 'partials/header-terminé.php';
             </div>
         </div>
     </div>
-    <div class="triangle-container">
-        <div class="triangle triangle-left"></div>
-        <div class="triangle triangle-right"></div>
-    </div>
 </body>
 
 <?php include 'partials/footer-terminé.php'; ?>

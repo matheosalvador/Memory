@@ -67,27 +67,3 @@
     transform: scale(1.03);
     transition: 0.2s ease;
 }
-
-/* triangles décoratifs modernes */
-.account-box::before,
-.account-box::after {
-    content: "";
-    position: absolute;
-    bottom: -25px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    opacity: 0.35;
-}
-
-.account-box::before {
-    left: 25%;
-    border-width: 25px 35px 0 35px;
-    border-color: #a0c4ff transparent transparent transparent;
-}
-
-.account-box::after {
-    right: 25%;
-    border-width: 25px 35px 0 35px;
-    border-color: #89b4f8 transparent transparent transparent;
-}
