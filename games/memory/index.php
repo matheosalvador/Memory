@@ -16,7 +16,6 @@ require_once '../../utils/update_last_activity.php';
     <body>  
 
         <?php 
-        $currentPage = basename($_SERVER['PHP_SELF']);
         include "../../partials\header-terminé.php";
          ?>
 
@@ -115,4 +114,5 @@ require_once '../../utils/update_last_activity.php';
     <?php include "../../partials/footer-terminé.php" ?>
 
     </body>
+    
 </html>
