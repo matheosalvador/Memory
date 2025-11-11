@@ -28,8 +28,7 @@ $recordTimeFormatted = sprintf("%02dm%02d", $minutes, $seconds);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/index.css">
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/main.css">
-
-
+    <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>HOME</title>
 </head>
 <body>

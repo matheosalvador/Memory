@@ -10,6 +10,7 @@ require_once 'utils/update_last_activity.php';
         <meta charset="utf-8"> <!-- every character set here-->
         <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\contact-scores.css">
         <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\main.css">
+        <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
         <title>Contact us</title>
     </head>
 

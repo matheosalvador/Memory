@@ -11,6 +11,7 @@ require_once '../../utils/update_last_activity.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\indexgames.css">
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\main.css">
+    <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>Games</title>
 </head>
     <body>  
