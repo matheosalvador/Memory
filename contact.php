@@ -15,8 +15,8 @@ require_once 'utils/update_last_activity.php';
 
     <?php
     $currentPage = basename($_SERVER['PHP_SELF']);
-    include 'partials\header-terminé.php';
-    ?>
+    include __DIR__ . '/partials/header-terminé.php'; ?>
+
 
     <body>    
         <span id="titlef">Our geographical locations and our headquarters</span>
