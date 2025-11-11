@@ -83,9 +83,9 @@ include 'partials/header-terminé.php';
 	        	<button type="submit" class="button">
 	        	    <span id="txt-button">Change Password</span>
                 </button>
-	        	<button type="submit" class="button">
+	        	<a href="actions\logout_action.php" class="button">
 	        	    <span id="txt-button">Disconnect</span>
-	        	</button>
+                </a>
             </div>
         </div>
     </div>
