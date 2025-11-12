@@ -3,18 +3,20 @@
         <img src="<?= getBaseUrl(); ?>/assets/images/logo_memory.png" alt="logo" class="logohead">
     </a>
 
-    <?php if (isset($_SESSION['pseudo'])): ?>
-        <div class="user-info">
-            <span class="user-pseudo"><?= htmlspecialchars($_SESSION['pseudo']) ?></span>
-            <span class="status-dot"></span>
-        </div>
-    <?php endif; ?>
+    <div class="header-right">
+        <?php if (isset($_SESSION['pseudo'])): ?>
+            <div class="user-info">
+                <span class="user-pseudo"><?= htmlspecialchars($_SESSION['pseudo']) ?></span>
+                <span class="status-dot"></span>
+            </div>
+        <?php endif; ?>
 
-    <button class="burger" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+        <button class="burger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div> <!-- test -->
 
     <nav class="nav-container" role="navigation" aria-label="Main navigation">
         <a href="<?= getBaseUrl(); ?>/index.php" 
@@ -28,17 +30,14 @@
 
         <a href="<?= getBaseUrl(); ?>/contact.php"
            class="spaceh button-like <?= $currentPage === 'contact.php' ? 'active' : '' ?>">Contact us</a>
+
+        <!-- pseudo et pastille intégrés aussi dans le menu mobile -->
+        <?php if (isset($_SESSION['pseudo'])): ?>
+            <div class="user-info-mobile">
+                <span class="user-pseudo"><?= htmlspecialchars($_SESSION['pseudo']) ?></span>
+                <span class="status-dot"></span>
+            </div>
+        <?php endif; ?>
     </nav>
 </header>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-container');
-
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('active');
-        nav.classList.toggle('mobile-active');
-    });
-});
-</script>

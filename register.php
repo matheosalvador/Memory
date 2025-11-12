@@ -19,6 +19,7 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/login-register-style.css">
+        <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
         <title>Register</title>
     </head>
     <!-- Body -->
