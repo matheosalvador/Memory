@@ -13,14 +13,17 @@ require_once '../../utils/fct-scores.php';
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/contact-scores.css">
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/main.css">
+    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/contact-scores.css">
     <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>Score</title>
 </head>
 <body>
 
-    <?php include "../../partials/header-terminé.php"; ?>
+    <?php 
+    $currentPage = basename($_SERVER['PHP_SELF']);
+
+    include __DIR__ . '/../../partials/header-terminé.php'; ?>
 
     <!-- Text introduction -->
     <p class="startg">Scores</p>
@@ -77,6 +80,7 @@ require_once '../../utils/fct-scores.php';
             <img class="right-image" src="../../assets/images/memory_sec.png" alt="memory_image">
         </div>
     </div>
+    <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
     <?php include "../../partials/footer-terminé.php"; ?>
 

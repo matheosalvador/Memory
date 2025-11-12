@@ -173,9 +173,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
     </div>
 </section>
+<script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
-
-</body>
 <?php include 'partials/footer-terminé.php'; ?>
+</body>
+
 
 </html>

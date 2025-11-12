@@ -90,8 +90,8 @@ include 'partials/header-terminé.php';
             </div>
         </div>
     </div>
+    <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
+    <?php include 'partials/footer-terminé.php'; ?>
+
 </body>
-
-<?php include 'partials/footer-terminé.php'; ?>
-
 </html>

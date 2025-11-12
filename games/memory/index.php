@@ -111,6 +111,7 @@ require_once '../../utils/update_last_activity.php';
             </div>
         </div>
     </section>
+    <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
     <?php include "../../partials/footer-terminé.php" ?>
 

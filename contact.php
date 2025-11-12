@@ -92,6 +92,7 @@ require_once 'utils/update_last_activity.php';
             <div class="tablzz">
                 <input class="verify" type="submit" name="submit" />
             </div>
+        <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
         <?php include 'partials\footer-terminé.php' ?>
 
