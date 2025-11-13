@@ -98,7 +98,7 @@
 
 .logotel {
     width: 50px;
-    border-radius: 50px;
+    border-radius: px;
 }
 
 #linec {
@@ -211,7 +211,7 @@
 /*       BODY BASE          */
 /* ======================== */
 body {
-    background-color: rgb(39, 19, 167);
+    background-color: rgb(7, 3, 32);
     font-family: "Arial", sans-serif;
     margin: 0px;
 }
