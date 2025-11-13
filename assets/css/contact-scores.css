@@ -81,13 +81,11 @@
     gap: 15px;
 }
 
-#linka {
+.linka {
     width: 40px;
-    height: 40px;
-    transition: tranform 0.2s ease;
 }
 
-#linka:hover {
+.linka:hover {
     transform: scale(1.1);
 }
 
@@ -98,10 +96,9 @@
     min-height: 50px;
 }
 
-#poslogo 
-.telp, .linka {
-    width: 40px;
-    height: 40px;
+.logotel {
+    width: 50px;
+    border-radius: 50px;
 }
 
 #linec {
@@ -214,7 +211,7 @@
 /*       BODY BASE          */
 /* ======================== */
 body {
-    background-color: rgb(7, 3, 32);
+    background-color: rgb(39, 19, 167);
     font-family: "Arial", sans-serif;
     margin: 0px;
 }

@@ -43,7 +43,7 @@ require_once 'utils/update_last_activity.php';
 
                 
                 <div class="contactst">
-                    <img class="telp" src="assets\images\tel_logo.png" alt="tel_logo">
+                    <img class="logotel" src="assets\images\tel_logo.png" alt="tel_logo">
                     <span class="bodyh">+33 6 01 02 03 04</span>
                 </div>
 
@@ -51,7 +51,7 @@ require_once 'utils/update_last_activity.php';
 
                 <!-- Adresse -->
                 <div class="contactst">
-                    <img id="poslogo"src="assets\images\position_logo.png" alt="position_logo">
+                    <img class="logotel"src="assets\images\position_logo.png" alt="position_logo">
                     <span class="bodyh">23 street of Paris<br>75002 Paris</span>
                 </div>
             </div>  
