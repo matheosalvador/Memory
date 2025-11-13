@@ -55,7 +55,7 @@
     justify-content: center;
     align-items: center;
     gap: 100px;
-    flex-wrap: center; /* adaptation tel */
+    flex-wrap: wrap;
     text-align: center;
     padding: 4vh 2rem;
 }
@@ -102,42 +102,6 @@
 .telp, .linka {
     width: 40px;
     height: 40px;
-}
-
-@media (mex-width: 768px) {
-    .contactb {
-        flex-direction: column;
-        gap: 20px;
-        padding: 2rem 1rem;
-    }
-
-    .bar {
-        width: 80%;
-        height: 1px;
-        margin: 0 auto;
-    }
-
-    .contactst {
-        flex-direction: column;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .contacts {
-        gap: 8px;
-    }
-
-    .socials {
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    #poslogo, .telp, .linka {
-        width: 35px;
-        height: 35px;
-    }
-
 }
 
 #linec {
