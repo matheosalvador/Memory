@@ -1,9 +1,19 @@
 /* ======================== */
 /*       CONTACT SECTION    */
 /* ======================== */
+
+#titlesec {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* <-- centre tout à l’intérieur horizontalement */
+    text-align: center;
+    padding: 5vh 2rem;
+}
+
 #titlef {
     display: flex;
     justify-content: center;
+    text-align: center;
     color: white;
     font-weight: bold;
     font-size: 44px;
@@ -13,6 +23,7 @@
 #titlec {
     display: flex;
     justify-content: center;
+    text-align: center;
     color: white;
     font-size: 21px;
     margin-top: 40px;
@@ -20,21 +31,33 @@
 
 #titled {
     display: flex;
+    justify-content: center; /* ✅ centre horizontalement le contenu */
+    width: 100%;
+    margin-top: 4vh;
+}
+
+#titled img{
+    display: block;
     justify-content: center;
-    margin-top: 80px;
-    color: white;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
 }
 
 .bodyh {
     color: white;
-    font-size: 20px;
+    font-size: clamp(16px, 2vw, 20px);
 }
 
 .contactb {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 200px;
+    gap: 100px;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 4vh 2rem;
 }
 
 .contacts {
@@ -46,24 +69,36 @@
 .contactst {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
-    text-align: center;
+    flex-wrap: wrap;
 }
 
 .socials {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
+}
+
+.linka {
+    width: 40px;
+}
+
+.linka:hover {
+    transform: scale(1.1);
 }
 
 .bar {
     width: 1px;
     background: white;
     align-self: stretch;
+    min-height: 50px;
 }
 
-#poslogo {
+.logotel {
     width: 50px;
-    height: 50px;
+    border-radius: px;
 }
 
 #linec {

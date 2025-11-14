@@ -19,11 +19,13 @@ require_once 'utils/update_last_activity.php';
     include __DIR__ . '/partials/header-terminé.php'; ?>
 
 
-    <body>    
-        <span id="titlef">Our geographical locations and our headquarters</span>
-        <span id="titlec">Our main location is currently in France.</span>
-        <p id="titled"><img src="assets\images\perfect_map.png" width="1500px" alt="logo"></p>
-        
+    <body>
+        <section class="titlesec">
+            <span id="titlef">Our geographical locations and our headquarters</span>
+            <span id="titlec">Our main location is currently in France.</span>
+            <p id="titled"><img src="assets\images\perfect_map.png" alt="logo"></p>
+        </section>
+
         <div class="contactb">
 
             <!-- Réseaux sociaux -->
@@ -41,7 +43,7 @@ require_once 'utils/update_last_activity.php';
 
                 
                 <div class="contactst">
-                    <img class="telp" src="assets\images\tel_logo.png" alt="tel_logo">
+                    <img class="logotel" src="assets\images\tel_logo.png" alt="tel_logo">
                     <span class="bodyh">+33 6 01 02 03 04</span>
                 </div>
 
@@ -49,7 +51,7 @@ require_once 'utils/update_last_activity.php';
 
                 <!-- Adresse -->
                 <div class="contactst">
-                    <img id="poslogo"src="assets\images\position_logo.png" alt="position_logo">
+                    <img class="logotel"src="assets\images\position_logo.png" alt="position_logo">
                     <span class="bodyh">23 street of Paris<br>75002 Paris</span>
                 </div>
             </div>  
