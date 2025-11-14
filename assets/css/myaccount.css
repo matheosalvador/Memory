@@ -67,3 +67,11 @@
     transform: scale(1.03);
     transition: 0.2s ease;
 }
+
+.input {
+  	all: unset;
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
+}

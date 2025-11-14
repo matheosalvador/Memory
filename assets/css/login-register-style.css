@@ -5,7 +5,11 @@ body {
 }
 
 #login-register input {
-  all: unset;
+  	all: unset;
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
 }
 
 #login-register .mb-15 {
