@@ -1,25 +1,53 @@
-/*start header*/
-/*header background*/
+/* =======================
+   HEADER BASE
+======================= */
 .main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 60px;
-  background-color: rgb(7, 3, 32); /* même fond que ton body */
+  background-color: rgb(7, 3, 32);
+  position: relative;
+  z-index: 100;
+  flex-wrap: wrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .logohead {
   height: 65px;
 }
 
-/* Nav container */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: white;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(80, 255, 80);
+}
+
+/* =======================
+   NAVIGATION (desktop)
+======================= */
 .nav-container {
   display: flex;
   gap: 60px;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
-/* Liens principaux */
+/* Liens */
 .spaceh {
   position: relative;
   color: white;
@@ -30,7 +58,6 @@
   transition: color 0.3s ease;
 }
 
-/* Barre rouge sous le lien */
 .spaceh::after {
   content: '';
   position: absolute;
@@ -42,22 +69,11 @@
   transition: width 0.3s ease;
 }
 
-/* Effet hover */
-.spaceh:hover::after {
-  width: 100%;
-}
-
-/* Lien actif : barre visible */
+.spaceh:hover::after,
 .spaceh.active::after {
   width: 100%;
 }
 
-/* Couleur du texte actif */
-.spaceh.active {
-  color: rgb(255, 255, 255);
-}
-
-/* "Contact us" bouton style */
 .button-like {
   background-color: rgb(255, 0, 47);
   color: #ffffff;
@@ -68,32 +84,94 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover sur le bouton */
 .button-like:hover {
   background-color: #ff4b4b;
   transform: scale(1.05);
 }
 
-/* Quand Contact est la page active */
-.button-like.active {
-  box-shadow: 0 4px 12px rgba(216, 0, 39, 0.4);
+/* =======================
+   BURGER
+======================= */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
 }
 
-/* Responsive : mobile */
+.burger span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animation croix */
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
 @media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    padding: 15px;
-    gap: 10px;
+  .burger {
+    display: flex;
+  }
+
+  /* On garde le pseudo visible en haut */
+  .user-info {
+    display: flex;
   }
 
   .nav-container {
-    flex-wrap: wrap;
-    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    flex-direction: column;
     gap: 20px;
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(7, 3, 32);
+    padding: 80px 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    z-index: 1000;
   }
 
-  .spaceh {
-    font-size: 18px;
+  .nav-container.mobile-active {
+    right: 0;
+  }
+
+  .user-info-mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 10px;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .main-header {
+    padding: 15px 20px;
   }
 }

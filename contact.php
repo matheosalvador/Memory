@@ -1,4 +1,21 @@
-<?php require('utils/helper.php'); ?>
+<?php
+session_start();
+require('utils/helper.php');
+require_once 'utils/update_last_activity.php';
+
+$error = "";
+$success = "";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // valid example
+    if (empty($_POST["email"])) {
+        $error = "Email required";
+    } else {
+        $success = "Message sent!";
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en"> <!-- language define to english-->
@@ -6,61 +23,75 @@
         <meta charset="utf-8"> <!-- every character set here-->
         <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\contact-scores.css">
         <link rel="stylesheet" href="<?= getBaseUrl(); ?>\assets\css\main.css">
-        <title>The memory game</title>
+        <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
+        <title>Contact us</title>
     </head>
 
-    <?php include 'partials\header-terminé.php' ?>
+    <?php
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    include __DIR__ . '/partials/header-terminé.php'; ?>
 
-    <body>    
-        <span id="titlef">Our geographical locations and our headquarters</span>
-        <span id="titlec">Our main location is currently in France.</span>
-        <p id="titled"><img src="assets\images\perfect_map.png" width="1500px" alt="logo"></p>
-        
+
+    <body>
+        <section class="titlesec">
+            <span id="titlef">Our geographical locations and our headquarters</span>
+            <span id="titlec">Our main location is currently in France.</span>
+            <p id="titled"><img src="assets\images\perfect_map.png" alt="logo"></p>
+        </section>
+
         <div class="contactb">
-    
-        <!-- Réseaux sociaux -->
-        <div class="contacts">
-            <span class="bodyh">Follow us:</span>
-                <div class="socials">
-                    <a href="https://www.facebook.com/profile.php?id=61581419054379"><img src="assets\images\facebook_logo.png" alt="Facebook" class="linka"></a>
-                    <a href="https://x.com/MemoryContact"><img src="assets\images\twitter_logo.png" alt="Twitter" class="linka"></a>
-                    <a href="https://www.instagram.com/contact.memory.games/"><img src="assets\images\instagram_logo.png" alt="Instagram" class="linka"></a>
-                    <a href="https://www.linkedin.com/in/memory-games-168488388/"><img src="assets\images\linkedin_logo.png" alt="linkdin" class="linka"></a>
-                </div>
-            </div>
-            
-            <div class="bar"></div>
-            
-            <!-- Téléphone -->
-            <div class="contactst">
-                <img class="telp" src="assets\images\tel_logo.png" alt="tel_logo">
-                <span class="bodyh">+33 6 01 02 03 04</span>
-            </div>
-            
-            <div class="bar"></div>
 
-            <!-- Adresse -->
-            <div class="contactst">
-                <img id="poslogo"src="assets\images\position_logo.png" alt="position_logo">
-                <span class="bodyh">23 street of Paris<br>75002 Paris</span>
-            </div>
-    
+            <!-- Réseaux sociaux -->
+            <div class="contacts">
+                <span class="bodyh">Follow us:</span>
+                    <div class="socials">
+                        <a href="https://www.facebook.com/profile.php?id=61581419054379"><img src="assets\images\facebook_logo.png" alt="Facebook" class="linka"></a>
+                        <a href="https://x.com/MemoryContact"><img src="assets\images\twitter_logo.png" alt="Twitter" class="linka"></a>
+                        <a href="https://www.instagram.com/contact.memory.games/"><img src="assets\images\instagram_logo.png" alt="Instagram" class="linka"></a>
+                        <a href="https://www.linkedin.com/in/memory-games-168488388/"><img src="assets\images\linkedin_logo.png" alt="linkdin" class="linka"></a>
+                    </div>
+                </div>
+
+                <div class="bar"></div>
+
+                
+                <div class="contactst">
+                    <img class="logotel" src="assets\images\tel_logo.png" alt="tel_logo">
+                    <span class="bodyh">+33 6 01 02 03 04</span>
+                </div>
+
+                <div class="bar"></div>
+
+                <!-- Adresse -->
+                <div class="contactst">
+                    <img class="logotel"src="assets\images\position_logo.png" alt="position_logo">
+                    <span class="bodyh">23 street of Paris<br>75002 Paris</span>
+                </div>
+            </div>  
         </div>
 
         <hr id="linec">
 
         <h1 id="followc">Contact us!</h1>
 
-        <from method="post" action="my-form.php">
+
+        <?php if ($error): ?>
+            <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php elseif ($success): ?>
+            <p class="success"><?= htmlspecialchars($success) ?></p>
+        <?php endif; ?>
+
+
+        <form method="post" action="contact.php">
 
             <p id="subfolc">If you have any questions or even if you want to be part of our team, just let us know!</p>
             <br />
             <div class="tabl">
                 <div><span class="whitee">Your first name:</span><br />
-                    <input class="inputbox1" type="first name" name="fisrt name" maxlength="25"/>
+                    <input class="inputbox1" type="text" name="first_name" maxlength="25"/>
                 </div>
                 <div><span class="whitee">Your last name:</span><br/>
-                    <input class="inputbox1" type="last name" name="last name" maxlength="25"/>
+                    <input class="inputbox1" type="text" name="last_name" maxlength="25"/>
                 </div>
             </div>
             <br />
@@ -79,6 +110,7 @@
             <div class="tablzz">
                 <input class="verify" type="submit" name="submit" />
             </div>
+        <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
         <?php include 'partials\footer-terminé.php' ?>
 

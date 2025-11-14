@@ -7,10 +7,10 @@ CREATE DATABASE projet_flash CHARACTER SET 'utf8';
 CREATE TABLE main_user (
     id INT UNSIGNED  AUTO_INCREMENT,
     email VARCHAR(256) NOT NULL UNIQUE, -- textarea de lemail avec 256 caractère max
-    mdp VARCHAR(256) NOT NULL UNIQUE, -- textarea du mot de passe avec 256 caractère max
+    mdp VARCHAR(256) NOT NULL , -- textarea du mot de passe avec 256 caractère max
     pseudo VARCHAR(256) NOT NULL UNIQUE, -- textarea du pseudo avec 256 caractère max
     created_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, -- inscription 
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, -- derniere connexion
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- derniere connexion
     PRIMARY KEY (id)
 )
 CHARACTER SET 'utf8'
@@ -387,3 +387,6 @@ VALUES (1, 120, 1, NOW());
 
 INSERT INTO record_history (difficulty, record_time, player_id, beaten_at)
 VALUES (1, 120, 1, CURDATE());
+
+ALTER TABLE main_user
+ADD COLUMN last_activity DATETIME DEFAULT NULL;
