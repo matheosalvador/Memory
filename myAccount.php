@@ -9,6 +9,7 @@ require('utils/database.php');
 require('actions/login_action.php');
 require_once 'utils/update_last_activity.php';
 
+
 // Connexion à la base
 $pdo = getPDO();
 
@@ -21,6 +22,9 @@ if (isset($_SESSION['success'])): ?>
 <?php endif; ?>
 
 <?php
+$errors = $_SESSION['errors'] ?? [];
+$success = $_SESSION['success'] ?? '';
+
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     // Redirige vers la page de connexion si non connecté
@@ -29,10 +33,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Récupérer les infos utilisateur à partir de l'id stocké dans la session
-$stmt = $pdo->prepare("SELECT id, pseudo, email FROM main_user WHERE id = :id");
+$stmt = $pdo->prepare("SELECT id, pseudo, email, mdp FROM main_user WHERE id = :id");
 $stmt->execute(['id' => $_SESSION['user_id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
 // Si l'utilisateur n'existe pas (cas rare)
 if (!$user) {
     echo "<p class='title-acc'>Utilisateur introuvable.</p>";
@@ -64,7 +67,6 @@ include 'partials/header-terminé.php';
             <div>
                 <span class="title-acc fs-35">Profil</span>
             </div>
-
             <hr class="line-acc">
 
             <div class="w-5">
@@ -73,21 +75,37 @@ include 'partials/header-terminé.php';
             <div>
                 <p class="title-acc">Your email: <strong><?= htmlspecialchars($user['email']); ?></strong></p>
             </div>
-            <div class="title-acc">
-	        	<input class="button" name="email" type="email" placeholder="Example@email.com" required>
-	        	<input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+            <div>
+                <p class="title-acc">Your password: <strong><?= htmlspecialchars($user['mdp']); ?></strong></p>
             </div>
-            <div class="title-acc">
-	        	<button type="submit" class="button">
-	        		<span id="txt-button">Change Email</span>
-	        	</button>
-	        	<button type="submit" class="button">
-	        	    <span id="txt-button">Change Password</span>
-                </button>
-	        	<a href="actions\logout_action.php" class="button">
-	        	    <span id="txt-button">Disconnect</span>
-                </a>
-            </div>
+            
+            <!-- Affichage des erreurs / succès -->
+                    <?php if(!empty($errors)): ?>
+                        <div class="errors">
+                            <ul>
+                                <?php foreach($errors as $error): ?>
+                                    <li><?= htmlspecialchars($error) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php elseif($success): ?>
+                        <div class="success"><?= htmlspecialchars($success) ?></div>
+                    <?php endif; ?>
+            
+            <form action="actions/account_action.php" method="post">
+                <div class="title-acc">
+                    <input class="input" name="email" type="email" value="<?= htmlspecialchars($user['email']); ?>" required>
+                    <input class="input" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+                </div>
+                <div class="title-acc">
+                    <button type="submit" class="button">
+                        <span id="txt-button">Save changes</span>
+                    </button>
+                    <a href="actions\logout_action.php" class="button">
+                        <span id="txt-button">Disconnect</span>
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>

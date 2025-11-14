@@ -51,10 +51,10 @@ unset($_SESSION['errors'], $_SESSION['success']);
 					<!--  Formulaire de connexion -->
 					<form class="form-login" action="actions/login_action.php" method="post">
 						<label for="email">Email</label>
-						<input class="button" name="email" type="email" placeholder="Example@email.com" required>
+						<input class="input" name="email" type="email" placeholder="Example@email.com" required>
 
 						<label for="password">Password</label>
-						<input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+						<input class="input" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
 
 						<button type="submit" id="check-button">
 							<span id="txt-button">Sign in</span>

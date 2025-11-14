@@ -50,13 +50,13 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                     <!-- Formulaire -->
                     <form class="form-login" action="actions/register_action.php" method="post">
                         <label for="email">Email</label>
-                        <input class="button" name="email" type="email" placeholder="Example@email.com" required value="<?= htmlspecialchars($old['email']) ?>">
+                        <input class="input" name="email" type="email" placeholder="Example@email.com" required value="<?= htmlspecialchars($old['email']) ?>">
                         <label for="pseudo">Pseudo</label>
-                        <input class="button" name="pseudo" type="text" placeholder="4 characters min" required value="<?= htmlspecialchars($old['pseudo']) ?>">
+                        <input class="input" name="pseudo" type="text" placeholder="4 characters min" required value="<?= htmlspecialchars($old['pseudo']) ?>">
                         <label for="password">Password</label>
-                        <input class="button" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+                        <input class="input" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
                         <label for="confirm_password">Confirm Password</label>
-                        <input class="button" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
+                        <input class="input" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
                         <button type="submit" id="check-button"><span id="txt-button">Registration</span></button>
 
     				<!-- line -->
