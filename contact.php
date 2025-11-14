@@ -2,6 +2,19 @@
 session_start();
 require('utils/helper.php');
 require_once 'utils/update_last_activity.php';
+
+$error = "";
+$success = "";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // valid example
+    if (empty($_POST["email"])) {
+        $error = "Email required";
+    } else {
+        $success = "Message sent!";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -60,11 +73,14 @@ require_once 'utils/update_last_activity.php';
         <hr id="linec">
 
         <h1 id="followc">Contact us!</h1>
+
+
         <?php if ($error): ?>
             <p class="error"><?= htmlspecialchars($error) ?></p>
         <?php elseif ($success): ?>
             <p class="success"><?= htmlspecialchars($success) ?></p>
         <?php endif; ?>
+
 
         <form method="post" action="contact.php">
 
