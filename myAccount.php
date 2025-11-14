@@ -61,12 +61,18 @@ include 'partials/header-terminé.php';
     <div class="account-wrapper">
         <div class="account-box">
             <div class="flex-acc">
-                <img class="img" src="assets/images/Account-Logo.png" alt="logoaccount">
+                <img class="img" src="userfiles\{userId}\Account-Logo.png" alt="logoaccount">
             </div>
-
+            
+            <div class="title-acc">
+                <input type="file" id="file" class="hidden-input">
+                <label for="file" class="button">Uploader un fichier</label>
+            </div>
+            
             <div>
                 <span class="title-acc fs-35">Profil</span>
             </div>
+            
             <hr class="line-acc">
 
             <div class="w-5">
