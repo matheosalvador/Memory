@@ -75,9 +75,6 @@ include 'partials/header-terminé.php';
             <div>
                 <p class="title-acc">Your email: <strong><?= htmlspecialchars($user['email']); ?></strong></p>
             </div>
-            <div>
-                <p class="title-acc">Your password: <strong><?= htmlspecialchars($user['mdp']); ?></strong></p>
-            </div>
             
             <!-- Affichage des erreurs / succès -->
                     <?php if(!empty($errors)): ?>
