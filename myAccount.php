@@ -98,11 +98,9 @@ include 'partials/header-terminé.php';
                     <button type="submit" class="button">
                         <span id="txt-button">Save changes</span>
                     </button>
-                    <a href="actions\logout_action.php" class="button">
-                        <span id="txt-button">Disconnect</span>
-                    </a>
                 </div>
             </form>
+            <a href="actions\logout_action.php">Disconnect</a>
         </div>
     </div>
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
