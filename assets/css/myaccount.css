@@ -75,3 +75,7 @@
 	padding: 10px;
 	border:1px solid #D4D7E3;
 }
+
+.hidden-input {
+    display: none; /* cache l’input natif */
+}
