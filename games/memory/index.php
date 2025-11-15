@@ -17,7 +17,7 @@ require_once '../../utils/update_last_activity.php';
     <body>  
 
         <?php 
-        include "../../partials\header-terminé.php";
+        include "../../partials/header-terminé.php";
          ?>
 
         <!-- memory.php -->
@@ -86,34 +86,102 @@ require_once '../../utils/update_last_activity.php';
             <button class="play-btn">Play</button>
         </div>
 
+
+
+
         <div class="presentation-image">
             <img src="../../assets/images/manette.png" alt="Manette de jeu" class="gamepad">
+            
+
+
+
             <div class="chatbox">
                 <div class="chat-header">Power Of Memory</div>
-                <div class="chat-body">
-                    <div class="message left">
-                        <span class="sender">Tit</span>
-                        <div class="bubble">👋 Hey ! Great Job Clément !</div>
-                    </div>
-                    <div class="message right">
-                        <div class="bubble red">Yeah ! Good Play Titouen !</div>
-                        <span class="time">two minutes ago</span>
-                    </div>
-                    <div class="message left">
-                        <span class="sender">CP</span>
-                        <div class="bubble">Thanks You Very much !!</div>
-                        <span class="time">Right Now</span>
-                    </div>
-                </div>
+                <div class="chat-body"></div>
                 <div class="chat-input">
-                    <input type="text" placeholder="Your message..." disabled>
+                    <input type="text" placeholder="Your message...">
                 </div>
             </div>
+
+
+
         </div>
+
+
+
     </section>
+
+    <button id="chat-toggle" title="Chat" aria-label="Open chat">
+        &#9650; <!-- arrow up -->
+    </button>
+
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
     <?php include "../../partials/footer-terminé.php" ?>
+
+    <script>
+
+    const USER_ID = <?= json_encode($_SESSION['user_id'] ?? 0) ?>;
+    const chatBody = document.querySelector('.chat-body');
+    const chatInput = document.querySelector('.chat-input input');
+
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.querySelector('.chatbox');
+
+
+    //chatbox hide
+    chatBox.style.display = 'none';
+
+    chatToggle.addEventListener('click', () => {
+        const isOpen = chatBox.style.display === 'flex';
+        chatBox.style.display = isOpen ? 'none' : 'flex';
+        chatToggle.classList.toggle('open', !isOpen);
+    });
+
+    function loadMessages() {
+        fetch("../../actions/chat.php?action=load")
+        .then(res => res.json())
+        .then(messages => {
+            chatBody.innerHTML = "";
+            messages.forEach(msg => {
+                const isMe = msg.user_id == USER_ID;
+                chatBody.innerHTML += `
+                    <div class="message ${isMe ? "right" : "left"}">
+                        <span class="sender">${isMe ? "You" : msg.pseudo}</span>
+                        <div class="bubble ${isMe ? "red" : ""}">
+                            ${msg.message}
+                        </div>
+                        <span class="time">${msg.created_at}</span>
+                    </div>
+                `;
+            });
+            chatBody.scrollTop = chatBody.scrollHeight;
+        })
+    }
+
+    // sending message
+    chatInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter" && chatInput.value.trim() !== "") {
+            fetch("../../actions/chat.php?action=send", {
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: "message=" + encodeURIComponent(chatInput.value)
+            })
+            .then(res => res.text())
+            .then(text => {
+                console.log('send response:', text);  // <-- ça montre si OK ou erreur
+                chatInput.value = "";
+                loadMessages();
+            });
+        }
+    });
+
+    // refresh
+
+    setInterval(loadMessages, 60000);
+    loadMessages();
+
+    </script>
 
     </body>
     
