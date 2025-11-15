@@ -269,6 +269,14 @@ body {
   z-index: 1000;
 }
 
+.chat-gif {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  display: block;
+}
+
+
 /* Responsive */
 @media (max-width: 900px) {
   .game-presentation {
