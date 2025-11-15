@@ -390,3 +390,115 @@ VALUES (1, 120, 1, CURDATE());
 
 ALTER TABLE main_user
 ADD COLUMN last_activity DATETIME DEFAULT NULL;
+
+SELECT 
+    stats.annee,
+    stats.mois,
+
+    -- TOP 1
+    (SELECT u.pseudo
+     FROM score s2
+     JOIN main_user u ON u.id = s2.user_id
+     WHERE YEAR(s2.created_at) = stats.annee
+       AND MONTH(s2.created_at) = stats.mois
+     GROUP BY s2.user_id
+     ORDER BY SUM(s2.score) DESC
+     LIMIT 1) AS top1,
+
+    -- TOP 2
+    (SELECT u.pseudo
+     FROM score s2
+     JOIN main_user u ON u.id = s2.user_id
+     WHERE YEAR(s2.created_at) = stats.annee
+       AND MONTH(s2.created_at) = stats.mois
+     GROUP BY s2.user_id
+     ORDER BY SUM(s2.score) DESC
+     LIMIT 1 OFFSET 1) AS top2,
+
+    -- TOP 3
+    (SELECT u.pseudo
+     FROM score s2
+     JOIN main_user u ON u.id = s2.user_id
+     WHERE YEAR(s2.created_at) = stats.annee
+       AND MONTH(s2.created_at) = stats.mois
+     GROUP BY s2.user_id
+     ORDER BY SUM(s2.score) DESC
+     LIMIT 1 OFFSET 2) AS top3,
+
+    -- TOTAL PARTIES
+    stats.total_parties,
+
+    -- JEU LE PLUS JOUÉ
+    (SELECT g.game_name
+     FROM score s2
+     JOIN game g ON g.id = s2.game_id
+     WHERE YEAR(s2.created_at) = stats.annee
+       AND MONTH(s2.created_at) = stats.mois
+     GROUP BY s2.game_id
+     ORDER BY COUNT(*) DESC
+     LIMIT 1) AS jeu_le_plus_joue
+
+FROM (
+    SELECT
+        YEAR(s.created_at) AS annee,
+        MONTH(s.created_at) AS mois,
+        COUNT(*) AS total_parties
+    FROM score s
+    WHERE YEAR(s.created_at) = 2025
+    GROUP BY YEAR(s.created_at), MONTH(s.created_at)
+) AS stats
+ORDER BY stats.mois ASC;
+
+SELECT 
+    stats.annee,
+    stats.mois,
+
+    -- TOTAL PARTIES DU JOUEUR
+    stats.total_parties,
+
+    -- JEU LE PLUS JOUÉ (par le joueur)
+    (SELECT g.game_name
+     FROM score s2
+     JOIN game g ON g.id = s2.game_id
+     WHERE s2.user_id = :player_id
+       AND YEAR(s2.created_at) = stats.annee
+       AND MONTH(s2.created_at) = stats.mois
+     GROUP BY s2.game_id
+     ORDER BY COUNT(*) DESC
+     LIMIT 1) AS jeu_le_plus_joue,
+
+    -- SCORE MOYEN DU JOUEUR DANS LE MOIS
+    stats.score_moyen
+
+SELECT 
+    stats.annee,
+    stats.mois,
+
+    stats.total_parties,
+
+    -- Jeu le plus joué du joueur dans le mois
+    (SELECT g.game_name
+     FROM score s2
+     JOIN game g ON g.id = s2.game_id
+     WHERE s2.user_id = 1
+       AND YEAR(s2.created_at) = stats.annee
+       AND MONTH(s2.created_at) = stats.mois
+     GROUP BY s2.game_id
+     ORDER BY COUNT(*) DESC
+     LIMIT 1) AS jeu_le_plus_joue,
+
+    stats.score_moyen
+
+FROM (
+    SELECT 
+        YEAR(s.created_at) AS annee,
+        MONTH(s.created_at) AS mois,
+        COUNT(*) AS total_parties,
+        AVG(s.score) AS score_moyen
+    FROM score s
+    WHERE s.user_id = 1
+      AND YEAR(s.created_at) = 2025
+    GROUP BY YEAR(s.created_at), MONTH(s.created_at)
+) AS stats
+
+ORDER BY stats.mois ASC;
