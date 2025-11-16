@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email'] = $user['email'];
         $_SESSION['success'] = "Connexion réussie ! Bienvenue " . htmlspecialchars($user['pseudo']) . " 👋";
 
-        header('Location: ../index.php');
+        header('Location: ../myAccount.php');
         exit;
     } else {
         //  Erreur de connexion
