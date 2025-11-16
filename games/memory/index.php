@@ -129,6 +129,7 @@ require_once '../../utils/update_last_activity.php';
     const chatBox = document.querySelector('.chatbox');
 
 
+
     //chatbox hide
     chatBox.style.display = 'none';
 
@@ -145,11 +146,16 @@ require_once '../../utils/update_last_activity.php';
             chatBody.innerHTML = "";
             messages.forEach(msg => {
                 const isMe = msg.user_id == USER_ID;
+                const isImage = /\.(gif|png|jpg|jpeg)$/i.test(msg.message);
+                const content = isImage
+                    ? `<img src="${msg.message}" class="chat-gif">`
+                    : msg.message;
+
                 chatBody.innerHTML += `
                     <div class="message ${isMe ? "right" : "left"}">
                         <span class="sender">${isMe ? "You" : msg.pseudo}</span>
                         <div class="bubble ${isMe ? "red" : ""}">
-                            ${msg.message}
+                            ${content}
                         </div>
                         <span class="time">${msg.created_at}</span>
                     </div>

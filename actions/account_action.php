@@ -11,6 +11,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+    // Initialization des Variables
 $errors = [];
 $success = "";
 $email = $_POST["email"];
@@ -39,6 +40,7 @@ if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$/', $_POST["password"])) {
     $errors[] = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
 }
 
+    //  Verification des erreurs avant de sauvegarder  
 if (empty($errors)) {
     $result = updateUser($email, $password, $id);
     if($result){
