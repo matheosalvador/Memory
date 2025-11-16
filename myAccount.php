@@ -61,13 +61,24 @@ include 'partials/header-terminé.php';
     <div class="account-wrapper">
         <div class="account-box">
             <div class="flex-acc">
-                <img class="img" src="userfiles\{userId}\Account-Logo.png" alt="logoaccount">
+                <img class="img" 
+                    src="userfiles/<?= $_SESSION['user_id']; ?>/Account-Logo.png" 
+                    alt="profile-picture"
+                    onerror="this.src='userfiles/$id/default-picture.png'">
             </div>
             
-            <div class="title-acc">
-                <input type="file" id="file" class="hidden-input">
-                <label for="file" class="button">Uploader un fichier</label>
-            </div>
+            <form action="actions/profile_action.php" method="post" enctype="multipart/form-data">
+                <div class="title-acc">
+                    <input type="file" class="hidden-input" id="file" name="picture_change" 
+                        accept=".jpg,.jpeg,.png,.gif,.bmp,.tif,.tiff,.webp,.avif,.heif,.heic,.jxr,.raw,.cr2,.nef,.arw,.svg,.eps,.pdf,.ai,.apng,.ico,.psd,.xcf,.pcx" >
+                    <label for="file" class="button">Uploader un fichier</label>
+                </div>
+                <div class="title-acc">
+                    <button type="submit" class="button">
+                        <span id="txt-button">Save changes</span>
+                    </button>
+                </div>
+            </form>
             
             <div>
                 <span class="title-acc fs-35">Profil</span>
