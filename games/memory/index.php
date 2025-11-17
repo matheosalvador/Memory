@@ -49,118 +49,6 @@ require_once '../../utils/update_last_activity.php';
 
             <div class="grid">
 
-                <div class="card" data-id="1">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="1">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="2">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="2">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="3">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="3">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="4">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="4">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="5">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="5">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="6">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="6">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="7">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="7">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="8">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="8">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
         </section>
 
         <script>
@@ -264,7 +152,7 @@ require_once '../../utils/update_last_activity.php';
     </button>
 
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
-
+    <script src="<?= getBaseUr1(); ?>/assets/js/indexg.js"></script>
     <?php include "../../partials/footer-terminé.php" ?>
 
 
