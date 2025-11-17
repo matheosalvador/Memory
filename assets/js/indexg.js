@@ -1,56 +1,60 @@
-document.getElementById("generate-btn").addEventListener("click", generateGrid);
+document.addEventListener("DOMContentLoaded", () => {
 
-function generateGrid() {
-    const size = document.getElementById("grid-size").value;
-    const theme = document.getElementById("thème").value;
+    document.getElementById("generate-btn").addEventListener("click", generateGrid);
 
-    const pairsCount = {
-        "4x4": 8,
-        "6x6": 18,
-        "8x8": 32
-    }[size];
+    async function generateGrid() {
+        const size = document.getElementById("grid-size").value;
+        const theme = document.getElementById("thème").value;
 
-    fetch(`../../assets/images/thèmes/${theme}/`)
-        .then(res => res.text())
-        .then(text => {
+        const pairsCount = {
+            "4x4": 8,
+            "6x6": 18,
+            "8x8": 32
+        }[size];
 
-            const files = [...text.matchAll(/href="([^"]+\.(png|jpg|jpeg|gif))"/gi)]
-                .map(e => e[1]);
+        // --- FETCH du dossier avec directory listing ---
+        const response = await fetch(`../../assets/images/thèmes/${theme}/`);
+        const text = await response.text();
 
-            if (files.length < pairsCount) {
-                alert("Pas assez d’images dans ce thème !");
-                return;
-            }
+        // --- Extraction des fichiers image depuis le listing HTML ---
+        const files = [...text.matchAll(/href="([^"]+\.(png|jpg|jpeg|gif))"/gi)]
+            .map(e => e[1]);
 
-            const selected = shuffle(files).slice(0, pairsCount);
-            const finalCards = shuffle([...selected, ...selected]);
+        if (files.length < pairsCount) {
+            alert("Pas assez d’images dans ce thème !");
+            return;
+        }
 
-            const grid = document.querySelector(".grid");
-            grid.style.gridTemplateColumns = `repeat(${size.split("x")[0]}, 1fr)`;
+        const selected = shuffle(files).slice(0, pairsCount);
+        const finalCards = shuffle([...selected, ...selected]);
 
-            //  Version finale avec recto/verso
-            grid.innerHTML = finalCards.map((img, index) => `
-                <div class="card" data-id="${img}">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <img src="../../assets/images/manette.png" alt="dos de carte">
-                        </div>
-                        <div class="card-back">
-                            <img src="../../assets/images/thèmes/${theme}/${img}" alt="carte">
-                        </div>
+        const grid = document.querySelector(".grid");
+        grid.style.gridTemplateColumns = `repeat(${size.split("x")[0]}, 1fr)`;
+
+        // --- Construction de la grille ---
+        grid.innerHTML = finalCards.map(img => `
+            <div class="card" data-id="${img}">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="../../assets/images/manette.png" alt="dos de carte">
+                    </div>
+                    <div class="card-back">
+                        <img src="../../assets/images/thèmes/${theme}/${img}" alt="carte">
                     </div>
                 </div>
-            `).join("");
-        });
-}
-
-function shuffle(array) {
-    let i = array.length, j, temp;
-    while (i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+            </div>
+        `).join("");
     }
-    return array;
-}
+
+    function shuffle(array) {
+        let i = array.length, j, temp;
+        while (i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
+});

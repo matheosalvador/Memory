@@ -264,7 +264,7 @@ require_once '../../utils/update_last_activity.php';
     <button id="chat-toggle" title="Chat" aria-label="Open chat">
         &#9650; <!-- arrow up -->
     </button>
-
+    <script src="<?= getBaseUrl(); ?>/assets/js/indexg.js"></script>
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
     <?php include "../../partials/footer-terminé.php" ?>
 
