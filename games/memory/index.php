@@ -33,6 +33,8 @@ require_once '../../utils/update_last_activity.php';
                     <label for="grid-size">GRID SIZE</label>
                     <select id="grid-size">
                         <option value="4x4">4x4</option>
+                        <option value="6x6">6x6</option>
+                        <option value="8x8">8x8</option>
                     </select>
                 </div>
 
