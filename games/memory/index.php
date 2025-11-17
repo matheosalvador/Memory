@@ -85,7 +85,6 @@ require_once '../../utils/update_last_activity.php';
             
         });
 
-
         function checkMatch() {
             let [card1, card2] = flippedCards;
             let id1 = card1.dataset.id;
@@ -224,6 +223,18 @@ require_once '../../utils/update_last_activity.php';
             });
         }
     });
+
+    // Envoie un GIF de chat au chargement de la page
+
+    function sendRandomCatGif() {
+        fetch("https://api.thecatapi.com/v1/images/search?mime_types=gif")
+        .then(res => res.json())
+        .then(data => {
+            if (!data[0] || !data[0].url) return;
+
+            const
+        })
+    }
 
     // refresh
 
