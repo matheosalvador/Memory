@@ -42,8 +42,8 @@ require_once '../../utils/update_last_activity.php';
                     <label for="thème">THEMES</label>
                     <select id="thème">
                         <option value="Hollow_knight">Hollow Knight</option>
-                        <option value="Hollow_Knight_silksong">Hollow Knight Silksong</option>
-                        <option value="Ori">Ori</option>
+                        <option value="Minecraft">Minecraft</option>
+                        <option value="The_Legend_Of_Zelda">The Legend Of Zelda</option>
                     </select>
                 </div>
                 <button id="generate-btn">Generate a grid</button>
@@ -54,8 +54,8 @@ require_once '../../utils/update_last_activity.php';
         </section>
 
         <script>
-        let flippedCards = [];
-        let lockboard = false;
+        let flippedCards    = [];
+        var lockBoard       = false;
 
         document.addEventListener('click', function(event) {
             const card = event.target.closest('.card');
@@ -63,7 +63,7 @@ require_once '../../utils/update_last_activity.php';
             // Si la cible n'est pas la carte
             if(!card) return;
 
-            if(lockboard) return; // Cooldown
+            if(lockBoard) return; // Cooldown
 
             if(card.classList.contains("matched")) return; // empeche de clicker sur une carte deja retourner
             
@@ -85,22 +85,21 @@ require_once '../../utils/update_last_activity.php';
             
         });
 
-
         function checkMatch() {
             let [card1, card2] = flippedCards;
             let id1 = card1.dataset.id;
             let id2 = card2.dataset.id;
 
-            console.log(id1, id2);
+            lockBoard = true;
 
             if (id1 === id2) {
                 // si match
                 card1.classList.add("matched");
                 card2.classList.add("matched");
+                lockBoard = false;
                 flippedCards = [];
             } else {
                 // si non match -> retourne
-                lockBoard = true; // blocage
                 setTimeout(() => {
                     flippedCards = [];
                     lockBoard = false; // deblocage
@@ -224,6 +223,18 @@ require_once '../../utils/update_last_activity.php';
             });
         }
     });
+
+    // Envoie un GIF de chat au chargement de la page
+
+    function sendRandomCatGif() {
+        fetch("https://api.thecatapi.com/v1/images/search?mime_types=gif")
+        .then(res => res.json())
+        .then(data => {
+            if (!data[0] || !data[0].url) return;
+
+            const
+        })
+    }
 
     // refresh
 
