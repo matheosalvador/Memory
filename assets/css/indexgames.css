@@ -48,7 +48,7 @@ body {
   color: #0b0b2b;
   font-size: 1rem;
 }
-#generate-btn {
+#generatebtn {
   padding: 10px 20px;
   background-color: #ff392b;
   border: none;
@@ -136,10 +136,27 @@ body {
   position: relative;
   transition: transform 0.6s;
   transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;;
 }
 
 .card.flipped .card-inner {
   transform: rotateY(180deg);
+  box-shadow: 0 0 25px 12px rgba(255, 255, 0, 0.75);
+  animation: box-shadow 0.3s ease;
+}
+
+.card.matched .card-inner {
+  box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.75);
+  animation: glowPulse 1s infinite alternate; /* j'ai cherché ça */
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 15px 6px rgba(0, 255, 0, 0.75);
+  }
+  to {
+    box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.9);
+  }
 }
 
 .card-front,
@@ -197,7 +214,7 @@ body {
   right: 20px;
   width: 400px;
   max-height: 400px;
-  background-color: rgba(255,255,255,0.95);
+  background-color: rgba(255,255,255,0.7);
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
