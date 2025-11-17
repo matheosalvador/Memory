@@ -41,7 +41,7 @@ require_once '../../utils/update_last_activity.php';
                 <div class="control">
                     <label for="thème">THEMES</label>
                     <select id="thème">
-                        <option value="Hollow knight">Hollow Knight</option>
+                        <option value="Hollow_knight">Hollow Knight</option>
                         <option value="Hollow_Knight_silksong">Hollow Knight Silksong</option>
                         <option value="Ori">Ori</option>
                     </select>
@@ -50,118 +50,6 @@ require_once '../../utils/update_last_activity.php';
             </div>
 
             <div class="grid">
-
-                <div class="card" data-id="1">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="1">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="2">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="2">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="3">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="3">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="4">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="4">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="5">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="5">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="6">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="6">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="imgalea"></div>
-                        <div class="card-back"><img src="img"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="7">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="7">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="8">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
-
-                <div class="card" data-id="8">
-                    <div class="card-inner">
-                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
-                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -185,7 +73,12 @@ require_once '../../utils/update_last_activity.php';
             card.classList.add("flipped");
 
             // Ajouter dans le tableau seulement si moins de 2 élements
-            if(flippedCards.length < 2) flippedCards.push(card);
+            if(flippedCards.length < 2) {
+                // Verifier que la carte n'est pas déjà présente
+                if(!flippedCards.includes(card)) {
+                    flippedCards.push(card);
+                }
+            }
             
             // si 2 carte retourné -> verification (en dessous)
             if (flippedCards.length === 2)  checkMatch();
