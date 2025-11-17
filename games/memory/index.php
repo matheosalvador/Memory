@@ -227,14 +227,28 @@ require_once '../../utils/update_last_activity.php';
     // Envoie un GIF de chat au chargement de la page
 
     function sendRandomCatGif() {
-        fetch("https://api.thecatapi.com/v1/images/search?mime_types=gif")
+    fetch("https://api.thecatapi.com/v1/images/search?mime_types=gif")
         .then(res => res.json())
         .then(data => {
             if (!data[0] || !data[0].url) return;
 
-            const
-        })
+            const gifUrl = data[0].url;
+
+            fetch("../../actions/chat.php?action=send", {
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: "message=" + encodeURIComponent(gifUrl)
+            })
+            .then(res => res.text())
+            .then(() => {
+                loadMessages();
+            });
+        });
     }
+
+    // on attend 1 seconde pour éviter les doublons
+    setTimeout(sendRandomCatGif, 1000);
+
 
     // refresh
 
