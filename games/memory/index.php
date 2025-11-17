@@ -185,7 +185,12 @@ require_once '../../utils/update_last_activity.php';
             card.classList.add("flipped");
 
             // Ajouter dans le tableau seulement si moins de 2 élements
-            if(flippedCards.length < 2) flippedCards.push(card);
+            if(flippedCards.length < 2) {
+                // Verifier que la carte n'est pas déjà présente
+                if(!flippedCards.includes(card)) {
+                    flippedCards.push(card);
+                }
+            }
             
             // si 2 carte retourné -> verification (en dessous)
             if (flippedCards.length === 2)  checkMatch();
