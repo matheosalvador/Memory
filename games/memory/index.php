@@ -54,8 +54,8 @@ require_once '../../utils/update_last_activity.php';
         </section>
 
         <script>
-        let flippedCards = [];
-        let lockboard = false;
+        let flippedCards    = [];
+        var lockBoard       = false;
 
         document.addEventListener('click', function(event) {
             const card = event.target.closest('.card');
@@ -63,7 +63,7 @@ require_once '../../utils/update_last_activity.php';
             // Si la cible n'est pas la carte
             if(!card) return;
 
-            if(lockboard) return; // Cooldown
+            if(lockBoard) return; // Cooldown
 
             if(card.classList.contains("matched")) return; // empeche de clicker sur une carte deja retourner
             
@@ -91,16 +91,16 @@ require_once '../../utils/update_last_activity.php';
             let id1 = card1.dataset.id;
             let id2 = card2.dataset.id;
 
-            console.log(id1, id2);
+            lockBoard = true;
 
             if (id1 === id2) {
                 // si match
                 card1.classList.add("matched");
                 card2.classList.add("matched");
+                lockBoard = false;
                 flippedCards = [];
             } else {
                 // si non match -> retourne
-                lockBoard = true; // blocage
                 setTimeout(() => {
                     flippedCards = [];
                     lockBoard = false; // deblocage
