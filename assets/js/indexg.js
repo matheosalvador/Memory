@@ -2,7 +2,7 @@ document.getElementById("generate-btn").addEventListener("click", generateGrid);
 
 function generateGrid() {
     const size = document.getElementById("grid-size").value;
-    const theme = document.getElementById("theme").value;
+    const theme = document.getElementById("thème").value;
 
     const pairsCount = {
         "4x4": 8,
@@ -10,7 +10,7 @@ function generateGrid() {
         "8x8": 32
     }[size];
 
-    fetch(`../../assets/images/themes/${theme}/`)
+    fetch(`../../assets/images/thèmes/${theme}/`)
         .then(res => res.text())
         .then(text => {
 
@@ -36,7 +36,7 @@ function generateGrid() {
                             <img src="../../assets/images/manette.png" alt="dos de carte">
                         </div>
                         <div class="card-back">
-                            <img src="../../assets/images/themes/${theme}/${img}" alt="carte">
+                            <img src="../../assets/images/thèmes/${theme}/${img}" alt="carte">
                         </div>
                     </div>
                 </div>

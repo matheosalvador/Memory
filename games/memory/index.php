@@ -33,15 +33,17 @@ require_once '../../utils/update_last_activity.php';
                     <label for="grid-size">GRID SIZE</label>
                     <select id="grid-size">
                         <option value="4x4">4x4</option>
+                        <option value="6x6">6x6</option>
+                        <option value="8x8">8x8</option>
                     </select>
                 </div>
 
                 <div class="control">
-                    <label for="theme">THEMES</label>
-                    <select id="theme">
-                        <option value="game">Hollow Knight</option>
-                        <option value="game">Hollow Knight Silksong</option>
-                        <option value="game">Ori</option>
+                    <label for="thème">THEMES</label>
+                    <select id="thème">
+                        <option value="Hollow knight">Hollow Knight</option>
+                        <option value="Hollow_Knight_silksong">Hollow Knight Silksong</option>
+                        <option value="Ori">Ori</option>
                     </select>
                 </div>
                 <button id="generate-btn">Generate a grid</button>
@@ -49,6 +51,118 @@ require_once '../../utils/update_last_activity.php';
 
             <div class="grid">
 
+                <div class="card" data-id="1">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="1">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="2">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="2">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="3">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="3">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="4">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="4">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="5">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="5">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="6">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="6">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="7">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="7">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="8">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="8">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <script>
@@ -152,7 +266,6 @@ require_once '../../utils/update_last_activity.php';
     </button>
 
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
-    <script src="<?= getBaseUr1(); ?>/assets/js/indexg.js"></script>
     <?php include "../../partials/footer-terminé.php" ?>
 
 
