@@ -33,8 +33,6 @@ require_once '../../utils/update_last_activity.php';
                     <label for="grid-size">GRID SIZE</label>
                     <select id="grid-size">
                         <option value="4x4">4x4</option>
-                        <option value="6x6">6x6</option>
-                        <option value="8x8">8x8</option>
                     </select>
                 </div>
 
@@ -50,25 +48,173 @@ require_once '../../utils/update_last_activity.php';
             </div>
 
             <div class="grid">
-                <!-- 16 cartes blanches -->
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/memory_Card.jpg" alt=""></div>
-                <div class="card"><img src="../../assets/images/HK.png" alt=""></div>
-            </div>
+
+                <div class="card" data-id="1">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="1">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="2">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="2">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="3">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="3">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="4">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="4">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="5">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="5">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="6">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="6">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="imgalea"></div>
+                        <div class="card-back"><img src="img"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="7">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="7">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="8">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="8">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="..\..\assets\images\thèmes\Hollow_Knight\HK.png"></div>
+                        <div class="card-back"><img src="..\..\assets\images\thèmes\Ori\game2.jpg"></div>
+                    </div>
+                </div>
+
         </section>
+
+        <script>
+        let flippedCards = [];
+        let lockboard = false;
+
+        document.addEventListener('click', function(event) {
+            const card = event.target.closest('.card');
+
+            // Si la cible n'est pas la carte
+            if(!card) return;
+
+            if(lockboard) return; // Cooldown
+
+            if(card.classList.contains("matched")) return; // empeche de clicker sur une carte deja retourner
+            
+            // Ajouter la classe flipped : ON FLIPPE LA CASE
+            card.classList.toggle('flipped');
+
+            card.classList.add("flipped");
+
+            // Ajouter dans le tableau seulement si moins de 2 élements
+            if(flippedCards.length < 2) flippedCards.push(card);
+            
+            // si 2 carte retourné -> verification (en dessous)
+            if (flippedCards.length === 2)  checkMatch();
+            
+        });
+
+
+        function checkMatch() {
+            let [card1, card2] = flippedCards;
+            let id1 = card1.dataset.id;
+            let id2 = card2.dataset.id;
+
+            console.log(id1, id2);
+
+            if (id1 === id2) {
+                // si match
+                card1.classList.add("matched");
+                card2.classList.add("matched");
+                flippedCards = [];
+            } else {
+                // si non match -> retourne
+                lockBoard = true; // blocage
+                setTimeout(() => {
+                    flippedCards = [];
+                    lockBoard = false; // deblocage
+                    card1.classList.remove("flipped");
+                    card2.classList.remove("flipped");
+                }, 1000);
+            }
+        }
+        </script>
 
     <!-- SECTION IMAGE + CHATBOX FINALE -->
     <section class="game-presentation">
@@ -121,8 +267,9 @@ require_once '../../utils/update_last_activity.php';
 
     <?php include "../../partials/footer-terminé.php" ?>
 
-    <script>
 
+    <script>
+    // partie simple
     const USER_ID = <?= json_encode($_SESSION['user_id'] ?? 0) ?>;
     const chatBody = document.querySelector('.chat-body');
     const chatInput = document.querySelector('.chat-input input');
@@ -131,8 +278,8 @@ require_once '../../utils/update_last_activity.php';
     const chatBox = document.querySelector('.chatbox');
 
 
-
-    //chatbox hide
+    // partie complex
+    // chatbox hide
     chatBox.style.display = 'none';
 
     chatToggle.addEventListener('click', () => {
@@ -146,7 +293,7 @@ require_once '../../utils/update_last_activity.php';
         .then(res => res.json())
         .then(messages => {
             chatBody.innerHTML = "";
-            messages.forEach(msg => {
+            messages.forEach(msg => { // boucle
                 const isMe = msg.user_id == USER_ID;
                 const isImage = /\.(gif|png|jpg|jpeg)$/i.test(msg.message);
                 const content = isImage
@@ -186,8 +333,25 @@ require_once '../../utils/update_last_activity.php';
 
     // refresh
 
-    setInterval(loadMessages, 60000);
+    setInterval(loadMessages, 10000);
     loadMessages();
+
+    //function addition(a, b) {
+    //    return a + b;
+    //}
+
+    //function diff(a, b) {
+    //    return a - b;
+    //}
+
+    //function prod(a, b) {
+    //    return a * b;
+    //}
+
+    //function quo(a, b) {
+    //    return a / b;
+    //}
+
 
     </script>
 
