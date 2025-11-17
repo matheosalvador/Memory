@@ -149,6 +149,7 @@ body {
   height: 100%;
   backface-visibility: hidden;
   border-radius: 10px;
+  background-color: #e00034;
 }
 
 .card-front img,
