@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    let timerInterval = null;
+    let milliseconds = 0;
     let lockBoard = false; // bloque le bouton "generate"
     let lockCards = false; // bloque les clics lors de comparaison
     let flippedCards = []; // follow les carte retourné
@@ -55,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
             lockBoard = false;
             return;
         }
-
         const selected = shuffle(files).slice(0, pairsCount);
         const finalCards = shuffle([...selected, ...selected]);
 
@@ -138,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startBtn.addEventListener("click", () => {
         
+        startTimer();
         lockCards = false;
 
         startBtn.disabled = true;
@@ -152,11 +154,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
     
+    function startTimer() {
+    clearInterval(timerInterval);
+    milliseconds = 0;
+
+    const timerDisplay = document.getElementById("timer");
+
+    timerInterval = setInterval(() => {
+        milliseconds+=10;
+
+        let min = String(Math.floor(milliseconds / 60000)).padStart(2, "0");
+        let sec = String(Math.floor((milliseconds % 60000) / 1000)).padStart(2, "0");
+        let ms = String(Math.floor((milliseconds % 1000) / 10)).padStart(2, "0");
+        timerDisplay.textContent = `${min}:${sec}:${ms}`;
+    }, 10);
+    }
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    
     // deblocage
     function checkWin() {
         const allMatched = [...grid.querySelectorAll(".card")].every(c => c.classList.contains("matched"));
         if(allMatched) {
-            
+            stopTimer(); // ← ARRÊTE LE TIMER
             lockBoard = false;
             generateBtn.disabled = false;
             gridSizeS.disabled = false;

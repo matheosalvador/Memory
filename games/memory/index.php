@@ -48,6 +48,7 @@ require_once '../../utils/update_last_activity.php';
                 </div>
                 <button id="generatebtn">Generate a grid</button>
                 <button id="playbtn">Start</button>
+                <div id="timer" class="timer">00:00</div>
             </div>
 
             <div class="grid">

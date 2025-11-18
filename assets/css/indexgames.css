@@ -7,6 +7,15 @@ body {
 .wwline{
   color: white;
 }
+
+.timer {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-left: 20px;
+}
+
 .memory-game {
   max-width: 800px;
   margin: 0 auto;
