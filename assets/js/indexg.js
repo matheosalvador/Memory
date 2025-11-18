@@ -24,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // generation grid
     async function generateGrid() {
 
-        if(lockBoard) return; // Empêche de générer une grille si partie en cours
 
-        lockBoard = true;
+        lockBoard = false;
         flippedCards = []; // reset des cartes retournées
         lockCards = false;
 
@@ -74,12 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join("");
 
         // blocage
-        generateBtn.disabled = true;
-        gridSizeS.disabled = true;
-        themeS.disabled = true;
-        generateBtn.style.opacity = 0.3; // mrc blockbench
-        gridSizeS.style.opacity = 0.3;
-        themeS.style.opacity = 0.3;
+        generateBtn.disabled = false;
+        gridSizeS.disabled = false;
+        themeS.disabled = false;
+        generateBtn.style.opacity = 1; // mrc blockbench
+        gridSizeS.style.opacity = 1;
+        themeS.style.opacity = 1;
     }
 
     // clics cartes
