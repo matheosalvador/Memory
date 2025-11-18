@@ -4,10 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let lockCards = false; // bloque les clics lors de comparaison
     let flippedCards = []; // follow les carte retourné
 
+    const startBtn = document.getElementById('playbtn');
     const generateBtn = document.getElementById('generatebtn');
     const gridSizeS = document.getElementById('gridsizes');
     const themeS = document.getElementById('themes');
     const grid = document.querySelector(".grid");
+
+    startBtn.disabled = true;
+    startBtn.style.opacity = 0.3;
 
     // fct de melange des cartes
     function shuffle(array) {
@@ -79,10 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
         generateBtn.style.opacity = 1; // mrc blockbench
         gridSizeS.style.opacity = 1;
         themeS.style.opacity = 1;
+
+        lockCards = true; // ajout
+        startBtn.disabled = false; // ajout
+        startBtn.style.opacity = 1; // ajout
     }
 
     // clics cartes
-    grid.addEventListener("click", (event) => {
+    grid.addEventListener("click", (event) => { 
 
         if (lockCards) return;
 
@@ -127,18 +135,38 @@ document.addEventListener("DOMContentLoaded", () => {
         flippedCards = [];
         lockCards = false; // libere de click
     }
+
+    startBtn.addEventListener("click", () => {
+        
+        lockCards = false;
+
+        startBtn.disabled = true;
+        generateBtn.disabled = true;
+        gridSizeS.disabled = true;
+        themeS.disabled = true;
+
+        startBtn.style.opacity = 0.3;
+        generateBtn.style.opacity = 0.3;
+        gridSizeS.style.opacity = 0.3;
+        themeS.style.opacity = 0.3;
+
+    });
     
     // deblocage
     function checkWin() {
         const allMatched = [...grid.querySelectorAll(".card")].every(c => c.classList.contains("matched"));
         if(allMatched) {
+            
             lockBoard = false;
             generateBtn.disabled = false;
             gridSizeS.disabled = false;
             themeS.disabled = false;
+            startBtn.disabled = true;
             generateBtn.style.opacity = 1;
             gridSizeS.style.opacity = 1;
             themeS.style.opacity = 1;
+
+            lockCards = true;
         }
     }
 
