@@ -63,9 +63,9 @@ body {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 40px;
+  place-content: center;
 }
 
 /* === SECTION AVEC IMAGE DE MANETTE + CHATBOX === */
