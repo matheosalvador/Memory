@@ -151,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
         generateBtn.style.opacity = 0.3;
         gridSizeS.style.opacity = 0.3;
         themeS.style.opacity = 0.3;
-
     });
     
     function startTimer() {

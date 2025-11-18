@@ -187,7 +187,7 @@ chatInput.addEventListener("keypress", function(e) {
     }
 });
 
-
+//message_privée
 
     // refresh
     setInterval(loadMessages, 10000);
