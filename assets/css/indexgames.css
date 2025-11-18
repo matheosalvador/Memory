@@ -133,6 +133,39 @@ body {
 
 
 
+/*
+.modified-popup {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+
+  font-size: 14px;
+  font-weight: bold;
+  color: #2ecc71;
+  opacity: 1;
+
+  animation: popupUp 1.2s ease-out forwards; /* cette ligne mrc chat gpt */
+  /*pointer-events: none;
+}
+/*
+@keyframes popupUp {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: transition(-50%, -25px);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
 
 
 /* debut card flip */
