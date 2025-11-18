@@ -7,10 +7,6 @@ body {
 .wwline{
   color: white;
 }
-.fake {
-  display: flex;
-  margin-top: 20px;
-}
 .memory-game {
   max-width: 800px;
   margin: 0 auto;
