@@ -7,10 +7,12 @@
   justify-content: space-between;
   padding: 20px 60px;
   background-color: rgb(7, 3, 32);
-  position: relative;
-  z-index: 100;
+  position: sticky;      /* ← juste ça */
+  top: 0;                /* ← obligatoire pour sticky */
+  z-index: 1000;
   flex-wrap: wrap;
 }
+
 
 .header-right {
   display: flex;
