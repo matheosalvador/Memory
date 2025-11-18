@@ -1,10 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.getElementById("generate-btn").addEventListener("click", generateGrid);
+    let lockBoard = false; // bloque le bouton "generate"
+    let lockCards = false; // bloque les clics lors de comparaison
+    let flippedCards = []; // follow les carte retourné
 
+    const generateBtn = document.getElementById('generatebtn');
+    const gridSizeS = document.getElementById('gridsizes');
+    const themeS = document.getElementById('themes');
+    const grid = document.querySelector(".grid");
+
+    // fct de melange des cartes
+    function shuffle(array) {
+        let i = array.length, j, temp;
+        while (i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
+    // generation grid
     async function generateGrid() {
-        const size = document.getElementById("grid-size").value;
-        const theme = document.getElementById("thème").value;
+
+        if(lockBoard) return; // Empêche de générer une grille si partie en cours
+
+        lockBoard = true;
+        flippedCards = []; // reset des cartes retournées
+        lockCards = false;
+
+        const size = gridSizeS.value;
+        const theme = themeS.value;
 
         const pairsCount = {
             "4x4": 8,
@@ -12,26 +39,24 @@ document.addEventListener("DOMContentLoaded", () => {
             "8x8": 32
         }[size];
 
-        // --- FETCH du dossier avec directory listing ---
+        // fetch dossier avec directory listing
         const response = await fetch(`../../assets/images/thèmes/${theme}/`);
         const text = await response.text();
 
-        // --- Extraction des fichiers image depuis le listing HTML ---
         const files = [...text.matchAll(/href="([^"]+\.(png|jpg|jpeg|gif))"/gi)]
             .map(e => e[1]);
 
         if (files.length < pairsCount) {
             alert("Pas assez d’images dans ce thème !");
+            lockBoard = false;
             return;
         }
 
         const selected = shuffle(files).slice(0, pairsCount);
         const finalCards = shuffle([...selected, ...selected]);
 
-        const grid = document.querySelector(".grid");
         grid.style.gridTemplateColumns = `repeat(${size.split("x")[0]}, 1fr)`;
 
-        // --- Construction de la grille ---
         grid.innerHTML = finalCards.map(img => `
             <div class="card" data-id="${img}">
                 <div class="card-inner">
@@ -44,17 +69,77 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
         `).join("");
+
+        // blocage
+        generateBtn.disabled = true;
+        gridSizeS.disabled = true;
+        themeS.disabled = true;
+        generateBtn.style.opacity = 0.5; // mrc blockbench
+        gridSizeS.style.opacity = 0.5;
+        themeS.style.opacity = 0.5;
     }
 
-    function shuffle(array) {
-        let i = array.length, j, temp;
-        while (i--) {
-            j = Math.floor(Math.random() * (i + 1));
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+    // clics cartes
+    grid.addEventListener("click", (event) => {
+
+        if (lockCards) return;
+
+        const card = event.target.closest(".card");
+        if(!card || card.classList.contains("flipped") || card.classList.contains("matched")) return;
+
+        card.classList.add("flipped");
+        flippedCards.push(card);
+
+        if(flippedCards.length === 2) {
+            checkMatch();
         }
-        return array;
+    });
+
+    // verification des pairs
+    function checkMatch() {
+        lockCards = true;
+
+        const [card1, card2] = flippedCards;
+
+        const id1 = card1.dataset.id;
+        const id2 = card2.dataset.id;
+
+        if(id1 === id2) {
+            card1.classList.add("matched"); // match
+            card2.classList.add("matched");
+
+            resetTurn();
+            checkWin();
+        } else {
+            setTimeout(() => {
+                card1.classList.remove("flipped"); // pas match
+                card2.classList.remove("flipped");
+
+                resetTurn();
+            }, 1000);
+        }
     }
+
+    function resetTurn() {
+        flippedCards = [];
+        lockCards = false; // libere de click
+    }
+    
+    // deblocage
+    function checkWin() {
+        const allMatched = [...grid.querySelectorAll(".card")].every(c => c.classList.contains("matched"));
+        if(allMatched) {
+            lockBoard = false;
+            generateBtn.disabled = false;
+            gridSizeS.disabled = false;
+            themeS.disabled = false;
+            generateBtn.style.opacity = 1;
+            gridSizeS.style.opacity = 1;
+            themeS.style.opacity = 1;
+        }
+    }
+
+    // event bouton generation
+    generateBtn.addEventListener("click", generateGrid);
 
 });
