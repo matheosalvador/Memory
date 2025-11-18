@@ -154,23 +154,39 @@ require_once '../../utils/update_last_activity.php';
             }
         });
     }
+//send
+chatInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        const msg = chatInput.value.trim();
 
-    // sending message
-    chatInput.addEventListener("keypress", function(e) {
-        if (e.key === "Enter" && chatInput.value.trim() !== "") {
-            fetch("../../actions/chat.php?action=send", {
-                method: "POST",
-                headers: {"Content-Type": "application/x-www-form-urlencoded"},
-                body: "message=" + encodeURIComponent(chatInput.value)
-            })
-            .then(res => res.text())
-            .then(text => {
-                console.log('send response:', text);  // <-- ça montre si OK ou erreur
+        // Vérification côté navigateur
+        if (msg.length < 3) {
+            alert("Votre message doit contenir au moins 3 caractères.");
+            return;
+        }
+
+        fetch("../../actions/chat.php?action=send", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "message=" + encodeURIComponent(msg)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("SEND RESPONSE:", data);
+
+            if (data.status === "OK") {
                 chatInput.value = "";
                 loadMessages();
-            });
-        }
-    });
+            } else {
+                console.error("Erreur send:", data);
+            }
+        });
+    }
+});
+
+
 
     // refresh
     setInterval(loadMessages, 10000);

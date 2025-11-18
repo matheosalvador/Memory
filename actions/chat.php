@@ -12,13 +12,11 @@ if (!$userId) {
     exit;
 }
 
-$gameId = 1; //game : power of memory
+$gameId = 1;
 
-
-
-//generate chat message
-
+// LOAD messages
 if ($action === "load") {
+
     $sql = "
         SELECT 
             m.id,
@@ -35,14 +33,13 @@ if ($action === "load") {
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$gameId]);
+
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     exit;
 }
 
 
-
-// send message
-
+// SEND message
 if ($action === "send") {
 
     if (!isset($_POST['message']) || trim($_POST['message']) === "") {
@@ -51,16 +48,18 @@ if ($action === "send") {
     }
 
     $msg = trim($_POST['message']);
+
     $sql = "INSERT INTO message (game_id, user_id, message) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($sql);
 
     if ($stmt->execute([$gameId, $userId, $msg])) {
         echo json_encode(['status' => 'OK']);
     } else {
-        $err = $stmt->errorInfo();
-        echo json_encode(['status' => 'error', 'info' => $err[2]]);
+        echo json_encode([
+            'status' => 'error',
+            'info' => $stmt->errorInfo()[2]
+        ]);
     }
-
     exit;
 }
 
