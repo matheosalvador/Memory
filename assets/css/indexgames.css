@@ -58,6 +58,19 @@ body {
   cursor: pointer;
   transition: background 0.2s;
 }
+
+#playbtn {
+  padding: 10px 20px;
+  background-color: #ff392b;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+
+}
+
 #generate-btn:hover {
   background-color: #e82e24;
 }

@@ -18,7 +18,7 @@ require_once '../../utils/update_last_activity.php';
 
         <?php 
         include "../../partials/header-terminé.php";
-        ?>
+         ?>
 
         <!-- memory.php -->
         <section class="memory-game">
@@ -47,6 +47,7 @@ require_once '../../utils/update_last_activity.php';
                     </select>
                 </div>
                 <button id="generatebtn">Generate a grid</button>
+                <button id="playbtn">Start</button>
             </div>
 
             <div class="grid">
