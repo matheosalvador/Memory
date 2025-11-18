@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const files = [...text.matchAll(/href="([^"]+\.(png|jpg|jpeg|gif))"/gi)]
             .map(e => e[1]);
 
+        // alerte si pas de carte trouvé
         if (files.length < pairsCount) {
             alert("Pas assez d’images dans ce thème !");
             lockBoard = false;
@@ -55,8 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const selected = shuffle(files).slice(0, pairsCount);
         const finalCards = shuffle([...selected, ...selected]);
 
+        // repetition deu placement des cartes
         grid.style.gridTemplateColumns = `repeat(${size.split("x")[0]}, 1fr)`;
 
+        // generation cartes
         grid.innerHTML = finalCards.map(img => `
             <div class="card" data-id="${img}">
                 <div class="card-inner">
@@ -74,9 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
         generateBtn.disabled = true;
         gridSizeS.disabled = true;
         themeS.disabled = true;
-        generateBtn.style.opacity = 0.5; // mrc blockbench
-        gridSizeS.style.opacity = 0.5;
-        themeS.style.opacity = 0.5;
+        generateBtn.style.opacity = 0.3; // mrc blockbench
+        gridSizeS.style.opacity = 0.3;
+        themeS.style.opacity = 0.3;
     }
 
     // clics cartes
@@ -120,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // cooldown (jsp)
     function resetTurn() {
         flippedCards = [];
         lockCards = false; // libere de click
