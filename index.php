@@ -66,19 +66,19 @@ include __DIR__ . '/partials/header-terminé.php';
 
 
 <section class="games">
-    <h3 class="wline">Our games</h3>
+    <h3  class="wline" data-audio="assets/audio/accueil/nosjeux.mp3">Our games</h3>
     <div class="games-container">
         <figure>
             <img src="assets/images/memory.jpg" alt="Power of memory game">
-            <figcaption>Memory Game</figcaption>
+            <figcaption data-audio="assets/audio/accueil/memorygame.mp3">Memory Game</figcaption>
         </figure>
         <figure>
             <img src="assets/images/game2.jpg" alt="game2">
-            <figcaption>doctorwho</figcaption>
+            <figcaption data-audio="assets/audio/accueil/docteurwho.mp3">doctorwho</figcaption>
         </figure>
         <figure>
             <img src="assets/images/puissance_4.jpg" alt="game3">
-            <figcaption>puissance4 </figcaption>
+            <figcaption data-audio="assets/audio/accueil/puissance4.mp3">puissance4 </figcaption>
         </figure>
     </div>
 </section>
@@ -139,11 +139,11 @@ include __DIR__ . '/partials/header-terminé.php';
 </section>
 
 <section class="team">
-    <h3 class="wline">Our Team</h3>
+    <h3 class="wline" data-audio="assets/audio/accueil/notreequipe.mp3">Our Team</h3>
 
     <div class="team-layout">
         <div class="members-right">
-            <h3 class="main-team-title">Main Team</h3>
+            <h3 class="main-team-title" data-audio="assets/audio/accueil/mainteam.mp3">Main Team</h3>
 
             <figure>
                 <a href="https://31.media.tumblr.com/ee77592e071b02c0d7c4f13c716cb196/tumblr_mv2b7jklvs1qeafupo1_500.gif">
@@ -170,7 +170,7 @@ include __DIR__ . '/partials/header-terminé.php';
         <div class="separator"></div>
 
         <div class="members-external">
-            <h3 class="external-title">External</h3>
+            <h3 class="external-title" data-audio="assets/audio/accueil/external.mp3">External</h3>
 
             <figure>
                 <a href="https://linktr.ee/tezc4t">
@@ -215,6 +215,21 @@ include __DIR__ . '/partials/header-terminé.php';
 
 
 <!-- JS audio -->
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Audio sur les titres H3 portant un data-audio
+    document.querySelectorAll("h3[data-audio]").forEach(title => {
+        title.style.cursor = "pointer";
+
+        title.addEventListener("mouseenter", () => {
+            const audio = new Audio(title.getAttribute("data-audio"));
+            audio.play();
+        });
+    });
+
+});
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("figcaption[data-audio]").forEach(caption => {
