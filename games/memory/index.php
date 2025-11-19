@@ -94,7 +94,7 @@ require_once '../../utils/update_last_activity.php';
         </div>
 
         <div class="presentation-image">
-            <img src="../../assets/images/game.png" alt="Solitary" class="game">
+            <img src="../../assets/images/game2.jpg" alt="doctorwho" class="game">
 
             <div class="chatbox">
                 <div class="chat-header">Power Of Memory</div>
