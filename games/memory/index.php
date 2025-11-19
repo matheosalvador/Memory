@@ -109,7 +109,7 @@ require_once '../../utils/update_last_activity.php';
 
 
     <script>
-    // partie ez
+    // partie ez ez 
     const USER_ID = <?= json_encode($_SESSION['user_id'] ?? 0) ?>;
     const chatBody = document.querySelector('.chat-body');
     const chatInput = document.querySelector('.chat-input input');
