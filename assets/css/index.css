@@ -642,3 +642,71 @@ h6{
     flex-wrap: wrap;
     gap: 20px;
 }
+/* --- MENU DE SELECTION DE JEUX (Start menu) --- */
+.game-menu {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000000;
+}
+
+.game-menu.hidden {
+    display: none;
+}
+
+.game-menu-content {
+    background: #1b1742;
+    padding: 40px 50px;
+    border-radius: 16px;
+    text-align: center;
+    width: 350px;
+    animation: popMenu 0.4s ease-out;
+}
+
+@keyframes popMenu {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.game-menu-content h2 {
+    margin-bottom: 25px;
+    color: white;
+}
+
+.game-option {
+    display: block;
+    margin: 12px 0;
+    padding: 12px 20px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.game-option:hover {
+    transform: scale(1.05);
+}
+
+.game-option.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+#closeGameMenu {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    background: #d40032;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#closeGameMenu:hover {
+    transform: scale(1.05);
+}
+

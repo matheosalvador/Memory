@@ -31,22 +31,38 @@ $recordTimeFormatted = sprintf("%02dm%02d", $minutes, $seconds);
     <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>HOME</title>
 </head>
+
 <body>
 
 <?php
 $currentPage = basename($_SERVER['PHP_SELF']);
- include __DIR__ . '/partials/header-terminé.php'; ?>
-
+include __DIR__ . '/partials/header-terminé.php'; 
+?>
 
 <section class="main">
     <div class="content">
         <h6>OUR ...</h6>
         <h4 class="wline">Start from The power of Memory games</h4>
         <p>Description</p>
-        <a href="games/memory/index.php" class="button">Start !</a>
+
+        <!-- BOUTON START QUI OUVRE LE MENU -->
+        <a href="#" id="openGameMenu" class="button">Start !</a>
     </div>
     <img src="assets/images/Image-dilustration.png" alt="Image d'illustration">
 </section>
+
+<!-- MENU DES JEUX  -->
+<div id="gameMenu" class="game-menu hidden">
+    <div class="game-menu-content">
+        <h2>Select a game</h2>
+
+        <a href="games/memory/index.php" class="game-option">🧠 Memory Game</a>
+        <a href="games/puissance_4/index.php" class="game-option">⭕ Puissance 4</a>
+        <a class="game-option disabled">🔒  doctorwho (coming soon)</a>
+
+        <button id="closeGameMenu">Close</button>
+    </div>
+</div>
 
 
 <section class="games">
@@ -58,11 +74,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </figure>
         <figure>
             <img src="assets/images/game2.jpg" alt="game2">
-            <figcaption>Game 2</figcaption>
+            <figcaption>doctorwho</figcaption>
         </figure>
         <figure>
-            <img src="assets/images/game3.jpg" alt="game3">
-            <figcaption>Game 3</figcaption>
+            <img src="assets/images/puissance_4.jpg" alt="game3">
+            <figcaption>puissance4 </figcaption>
         </figure>
     </div>
 </section>
@@ -71,7 +87,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <h3 class="info-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
 
     <div class="info-content">
-            <h3 class="info-title">Lorem Ipsum</h3>
+        <h3 class="info-title">Lorem Ipsum</h3>
 
         <div class="info-text">
             <p>
@@ -88,22 +104,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 </section>
 
-
-
-<!-- Section Stats -->
 <section class="stats">
-    <!-- Image de fond -->
     <img src="assets/images/statsi.jpg" alt="Stats Background" class="stats-background">
 
-    <!-- Contenu par-dessus l'image -->
     <div class="stats-content">
-        <!-- Texte au-dessus -->
         <div class="stats-header">
             <h2>Our Game Statistics</h2>
             <p>Discover the current state of the game: number of players, records, and achievements.</p>
         </div>
 
-        <!-- Cartes des stats -->
         <div class="stats-cards">
             <div class="stat-container">
                 <p class="stat-number"><?= $gamesPlayed ?></p>
@@ -129,13 +138,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 </section>
 
-
 <section class="team">
     <h3 class="wline">Our Team</h3>
 
     <div class="team-layout">
-
-        <!-- 3 membres à GAUCHE -->
         <div class="members-right">
             <h3 class="main-team-title">Main Team</h3>
 
@@ -161,10 +167,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </figure>
         </div>
 
-        <!-- Trait blanc -->
         <div class="separator"></div>
 
-        <!-- Externes à DROITE -->
         <div class="members-external">
             <h3 class="external-title">External</h3>
 
@@ -182,16 +186,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <figcaption data-audio="assets/audio/accueil/gaulois.mp3">volunteer</figcaption>
             </figure>
         </div>
-
     </div>
 </section>
 
-
 <section class="newsletter">
-    <!-- Texte blanc au-dessus -->
     <div class="newsletter-toptext">
         <h3>Lorem Ipsum</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
             Suspendisse scelerisque in tortor vitae sollicitudin. 
@@ -199,7 +200,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </p>
     </div>
 
-    <!-- Bloc blanc -->
     <div class="container">
         <div class="text">
             <h3>Restez informé</h3>
@@ -212,25 +212,47 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
     </div>
 </section>
+
+
+<!-- JS audio -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    // Sélectionne tous les figcaption qui ont l'attribut data-audio
-    const captions = document.querySelectorAll("figcaption[data-audio]");
-
-    captions.forEach(caption => {
-        caption.style.cursor = "pointer"; // pour indiquer que c'est cliquable
+    document.querySelectorAll("figcaption[data-audio]").forEach(caption => {
+        caption.style.cursor = "pointer";
         caption.addEventListener("click", () => {
-            const audioSrc = caption.getAttribute("data-audio");
-            const audio = new Audio(audioSrc);
-            audio.play();
+            new Audio(caption.getAttribute("data-audio")).play();
         });
     });
 });
 </script>
+
+<!-- JS MENU -->
+<script>
+const menu = document.getElementById("gameMenu");
+const openBtn = document.getElementById("openGameMenu");
+const closeBtn = document.getElementById("closeGameMenu");
+
+openBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    menu.classList.remove("hidden");
+});
+
+// Bouton close
+closeBtn.addEventListener("click", () => {
+    menu.classList.add("hidden");
+});
+
+// Fermer en cliquant en dehors du panneau
+menu.addEventListener("click", (e) => {
+    if (e.target === menu) { 
+        menu.classList.add("hidden");
+    }
+});
+</script>
+
+
 <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
 <?php include 'partials/footer-terminé.php'; ?>
 </body>
-
-
 </html>
