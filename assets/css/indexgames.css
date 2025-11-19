@@ -377,7 +377,7 @@ body {
   align-items: center;
 }
 
-.presentation-image .gamepad {
+.game {
   width: 100%;
   height: 450px;
   object-fit: cover;
