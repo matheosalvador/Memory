@@ -81,7 +81,7 @@ include 'partials/header-terminé.php';
             </form>
             
             <div>
-                <span class="title-acc fs-35">Profil</span>
+                <span class="title-acc fs-35" data-audio="assets/audio/footer-contact-puissance4/profil.mp3">Profil</span>
             </div>
             
             <hr class="line-acc">
@@ -122,6 +122,20 @@ include 'partials/header-terminé.php';
     </div>
     <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
     <?php include 'partials/footer-terminé.php'; ?>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Sélectionne tous les éléments qui possèdent l'attribut data-audio
+    const audioElements = document.querySelectorAll('[data-audio]');
+
+    audioElements.forEach(el => {
+        el.addEventListener('click', () => {
+            const audioSrc = el.getAttribute('data-audio');
+            const audio = new Audio(audioSrc);
+            audio.play().catch(err => console.error("Erreur audio :", err));
+        });
+    });
+});
+</script>
 
 </body>
 </html>

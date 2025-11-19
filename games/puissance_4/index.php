@@ -21,7 +21,10 @@ require_once '../../utils/update_last_activity.php';
 
 <div id="endgame-popup" class="popup hidden" role="dialog" aria-modal="true">
     <div class="popup-content">
-        <h2 id="winner-title">Félicitations !</h2>
+        <h2 id="winner-title" 
+            data-audio="<?= getBaseUrl(); ?>/assets/audio/footer-contact-puissance4/travailsup.mp3">
+            Félicitations !
+        </h2>
         <p id="winner-sub">Le joueur <span id="winner-player"></span> a gagné.</p>
         <button id="restartbtn">Recommencer</button>
     </div>
@@ -43,6 +46,11 @@ require_once '../../utils/update_last_activity.php';
 <script src="<?= getBaseUrl(); ?>/assets/js/burger.js" defer></script>
 
 <?php include "../../partials/footer-terminé.php"; ?>
-
+<script>
+function playAudio(src) {
+    const audio = new Audio(src);
+    audio.play().catch(err => console.error("Erreur audio :", err));
+}
+</script>
 </body>
 </html>

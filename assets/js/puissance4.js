@@ -59,23 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // marque visuellement la case finale
         const cell = boardDiv.children[c].children[r];
         if (cell) {
-            // on garde la classe token dans l'intérieur pour l'apparence
             const settled = document.createElement("div");
             settled.className = `token ${currentPlayer}`;
             settled.style.width = "100%";
             settled.style.height = "100%";
             settled.style.borderRadius = "50%";
-            // nettoie l'ancienne éventuelle structure
             cell.appendChild(settled);
-            // pop effect
             cell.classList.add("pop");
             setTimeout(() => cell.classList.remove("pop"), 220);
         }
 
-        // recherche des cellules gagnantes (si il y en a)
+        // recherche des cellules gagnantes
         const winning = getWinningCells(r, c);
         if (winning.length) {
-            // highlight
             winning.forEach(([wr, wc]) => {
                 const slot = boardDiv.children[wc].children[wr];
                 if (slot) slot.classList.add("winner");
@@ -110,59 +106,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
             colDiv.appendChild(token);
 
-            // calc positions avec getBoundingClientRect (responsive)
             const colRect = colDiv.getBoundingClientRect();
             const cellRect = targetCell.getBoundingClientRect();
             const targetY = cellRect.top - colRect.top;
 
-            // lancer l'animation
             requestAnimationFrame(() => {
                 token.style.top = `${targetY}px`;
             });
 
-            // gestion transitionend (unique)
             const onEnd = () => {
                 token.removeEventListener("transitionend", onEnd);
-                // retire token animé
                 if (token.parentElement) token.parentElement.removeChild(token);
                 resolve();
             };
             token.addEventListener("transitionend", onEnd);
 
-            // fallback : si transitionend n'arrive pas
             setTimeout(() => {
                 if (token.parentElement) onEnd();
             }, 700);
         });
     }
 
-    /**
-     * getWinningCells(row, col)
-     * Retourne un tableau de coordonnées [ [r,c], ... ] s'il y a une ligne de 4+,
-     * sinon retourne [].
-     */
     function getWinningCells(row, col) {
         const color = board[row][col];
         if (!color) return [];
 
         const directions = [
-            [0, 1],  // horizontal (dc)
-            [1, 0],  // vertical (dr)
-            [1, 1],  // diag down-right
-            [1, -1]  // diag down-left
+            [0, 1],
+            [1, 0],
+            [1, 1],
+            [1, -1]
         ];
 
         for (const [dr, dc] of directions) {
             const matched = [[row, col]];
 
-            // forward direction
             let r = row + dr, c = col + dc;
             while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === color) {
                 matched.push([r, c]);
                 r += dr; c += dc;
             }
 
-            // backward direction
             r = row - dr; c = col - dc;
             while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === color) {
                 matched.unshift([r, c]);
@@ -187,16 +171,24 @@ document.addEventListener("DOMContentLoaded", () => {
             if (winnerPlayer) winnerPlayer.textContent = winner === "red" ? "Rouge" : "Jaune";
         }
 
+        // 🔊 AUDIO DE VICTOIRE
+        const title = document.getElementById("winner-title");
+        if (title) {
+            const audioSrc = title.getAttribute("data-audio");
+            if (audioSrc) {
+                const audio = new Audio(audioSrc);
+                audio.play().catch(err => console.error("Erreur audio :", err));
+            }
+        }
+
         if (resetBtn) resetBtn.disabled = false;
     }
 
     function resetHighlights() {
         document.querySelectorAll(".winner").forEach(e => e.classList.remove("winner"));
-        // vider les tokens éventuels dans les cellules
         document.querySelectorAll(".cell .token").forEach(tok => tok.remove());
     }
 
-    // boutons
     if (restartBtn) restartBtn.addEventListener("click", () => {
         resetHighlights();
         initBoard();
@@ -207,6 +199,5 @@ document.addEventListener("DOMContentLoaded", () => {
         initBoard();
     });
 
-    // initialisation
     initBoard();
 });

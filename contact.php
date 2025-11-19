@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <hr id="linec">
 
-        <h1 id="followc">Contact us!</h1>
+        <h1 id="followc" data-audio="assets/audio/footer-contact-puissance4/nouscontacter.mp3">Contact us!</h1>
 
 
         <?php if ($error): ?>
@@ -113,6 +113,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
         <?php include 'partials\footer-terminé.php' ?>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("[data-audio]").forEach(item => {
+                item.style.cursor = "pointer";
+
+                item.addEventListener("mouseenter", () => {
+                const soundPath = item.getAttribute("data-audio");
+                if (soundPath) {
+                    new Audio(soundPath).play();
+                }
+            });
+        });
+    });
+    </script>
 
     </body>
 </html>

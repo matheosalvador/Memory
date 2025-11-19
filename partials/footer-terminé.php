@@ -18,7 +18,7 @@
 
         <!-- DROITE : Contact -->
         <div class="tabl2">
-            <h4>Contact us</h4>
+            <h4 data-audio="assets/audio/footer-contact-puissance4/nouscontacter.mp3">Contact us</h4>
             <span>We are at your disposal for any questions.</span>
             <p>contact.memory.games@gmail.com</p>
         </div>
@@ -45,4 +45,16 @@
         <span>© 2025 all rights reserved</span>
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-audio]").forEach(item => {
+        item.style.cursor = "pointer";
+
+        item.addEventListener("mouseenter", () => {
+            const audio = new Audio(item.getAttribute("data-audio"));
+            audio.play();
+        });
+    });
+});
+</script>
 <!-- end of footer -->
