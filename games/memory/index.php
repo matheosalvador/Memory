@@ -63,7 +63,7 @@ require_once '../../utils/update_last_activity.php';
                         <option id="theme3" value="The_Legend_Of_Zelda">The Legend Of Zelda</option>
                     </select>
                 </div>
-                <button id="generatebtn">Generate a grid</button>
+                <button id="generatebtn">Generate grid</button>
                 <button id="playbtn">Start</button>
                 <!-- Bouton Indice (caché par défaut) -->
                 <button id="hint-btn" style="display:none;">🔍 Clue</button>
@@ -90,11 +90,11 @@ require_once '../../utils/update_last_activity.php';
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse scelerisque in tortor vitae sollicitudin.
             </p>
-            <button class="play-btn">Play</button>
+            <button class="play-link">Play</button>
         </div>
 
         <div class="presentation-image">
-            <img src="../../assets/images/manette.png" alt="Manette de jeu" class="gamepad">
+            <img src="../../assets/images/game.png" alt="Solitary" class="game">
 
             <div class="chatbox">
                 <div class="chat-header">Power Of Memory</div>
