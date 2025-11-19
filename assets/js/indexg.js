@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let flippedCards = []; // follow les carte retourné
     
 
+    const endgamePopup = document.getElementById('endgame-popup');
+    const scoreValue = document.getElementById('score-value');
+    const closeBtn = document.getElementById('restartbtn');
     const startBtn = document.getElementById('playbtn');
     const generateBtn = document.getElementById('generatebtn');
     const gridSizeS = document.getElementById('gridsizes');
@@ -208,12 +211,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const allMatched = [...grid.querySelectorAll(".card")].every(c => c.classList.contains("matched"));
         if(allMatched) {
             stopTimer(); // ← ARRÊTE LE TIMER
-
             if(currentBG) currentBG.pause(); // stop bg music
             let winAudio = winSFX[themeS.value];
             winAudio.currentTime = 0;
             winAudio.play();
+            
+            const score = timerInterval;    // Exemple de calcul de score
 
+            if(score !== undefined) {
+              scoreValue.textContent = score; // Mettre à jour le score dans la popup
+            }   
+            
+            endgamePopup.style.display = 'flex'; // ou 'block' selon votre CSS
             lockBoard = false;
             generateBtn.disabled = false;
             gridSizeS.disabled = false;
@@ -226,6 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
             lockCards = true;
         }
     }
+
+    closeBtn.addEventListener('click', () => {
+      endgamePopup.style.display = 'none';
+    });
 
     function startTimer() {
         clearInterval(timerInterval);

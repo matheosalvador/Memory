@@ -20,6 +20,15 @@ require_once '../../utils/update_last_activity.php';
         <?php 
         include "../../partials/header-terminé.php";
         ?>
+
+        <div id="endgame-popup" class="popup">
+            <div class="popup-content">
+                <h2>Félicitations !</h2>
+                <p>Votre score est : <span id="score-value">0</span></p>
+                <button id="restartbtn">Restart</button>
+            </div>
+        </div>
+
         <div class="audio-settings">
             <button id="soundToggle" class="gear-btn">⚙️</button> 
             <div id="sound-panel" class="sound-panel hidden">
@@ -57,7 +66,7 @@ require_once '../../utils/update_last_activity.php';
                 <button id="generatebtn">Generate a grid</button>
                 <button id="playbtn">Start</button>
                 <!-- Bouton Indice (caché par défaut) -->
-                <button id="hint-btn" style="display:none;">🔍 Indice</button>
+                <button id="hint-btn" style="display:none;">🔍 Clue</button>
 
                 <div id="timer" class="timer">00:00</div>
             </div>
@@ -109,7 +118,7 @@ require_once '../../utils/update_last_activity.php';
 
 
     <script>
-    // partie ez
+    // partie ez ez 
     const USER_ID = <?= json_encode($_SESSION['user_id'] ?? 0) ?>;
     const chatBody = document.querySelector('.chat-body');
     const chatInput = document.querySelector('.chat-input input');
@@ -211,33 +220,16 @@ require_once '../../utils/update_last_activity.php';
         const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
         let konamiPos = 0;
 
-        // on rajoute le bouton indice directement dans la page :
-        const hintBtn = document.createElement("button");
-        hintBtn.id = "hint-btn";
-        hintBtn.textContent = "🔍 clue";
-        hintBtn.style.display = "none";
-        hintBtn.style.marginLeft = "10px";
-        hintBtn.style.padding = "8px 12px";
-        hintBtn.style.borderRadius = "8px";
-        hintBtn.style.background = "#2ecc71";
-        hintBtn.style.border = "none";
-        hintBtn.style.cursor = "pointer";
-        hintBtn.style.color = "white";
-        hintBtn.style.fontWeight = "bold";
-
-        // bouton à côté de Start :
-        const playBtn = document.getElementById("playbtn");
-        playBtn.insertAdjacentElement("afterend", hintBtn);
+        // Récupère le bouton déjà existant dans le HTML
+        const hintBtn = document.getElementById("hint-btn");
 
         // Détection Konami Code
         document.addEventListener("keydown", (e) => {
             if (e.keyCode === konami[konamiPos]) {
                 konamiPos++;
-
                 if (konamiPos === konami.length) {
-                    // => Konami réussi !
-                    hintBtn.style.display = "inline-block";
-                    hintBtn.classList.add("found");
+                    hintBtn.style.display = "inline-block"; // rend visible le bouton
+                    hintBtn.classList.add("found");         // animation pop
                     console.log("Konami code activé !");
                     konamiPos = 0;
                 }
@@ -246,12 +238,35 @@ require_once '../../utils/update_last_activity.php';
             }
         });
 
-        // Action quand il clique sur Indice
+        // Gestion du bouton indice
+        let hintUsed = false; // empêcher plusieurs utilisations
         hintBtn.addEventListener("click", () => {
-            alert("Indice : Observe bien où sont les premières cartes retournées !");
-            // Veritable Indice a mettre ici
+            if (hintUsed) return; 
+            hintUsed = true;
+
+            const cards = [...document.querySelectorAll(".card:not(.matched)")];
+            if (cards.length < 2) return;
+
+            // Choix aléatoire d'une carte
+            const card1 = cards[Math.floor(Math.random() * cards.length)];
+            const cardId = card1.dataset.id;
+
+            // Trouver la paire correspondante
+            const card2 = cards.find(c => c !== card1 && c.dataset.id === cardId);
+            if (!card2) return;
+
+            // Ajout effet scintillant
+            card1.classList.add("hint-glow");
+            card2.classList.add("hint-glow");
+
+            // Retirer l'effet après 2,5s
+            setTimeout(() => {
+                card1.classList.remove("hint-glow");
+                card2.classList.remove("hint-glow");
+            }, 2500);
         });
     </script>
+
     <!-- FIN DU KONAMI CODE -->
     </body>
     
