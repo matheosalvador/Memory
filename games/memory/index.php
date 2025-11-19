@@ -46,9 +46,9 @@ require_once '../../utils/update_last_activity.php';
                 <div class="control">
                     <label for="themes">THEMES</label>
                     <select id="themes">
-                        <option value="Hollow_knight">Hollow Knight</option>
-                        <option value="Minecraft">Minecraft</option>
-                        <option value="The_Legend_Of_Zelda">The Legend Of Zelda</option>
+                        <option id="theme1" value="Hollow_knight">Hollow Knight</option>
+                        <option id="theme2" value="Minecraft">Minecraft</option>
+                        <option id="theme3" value="The_Legend_Of_Zelda">The Legend Of Zelda</option>
                     </select>
                 </div>
                 <button id="generatebtn">Generate a grid</button>

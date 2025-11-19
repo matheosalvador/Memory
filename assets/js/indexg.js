@@ -138,6 +138,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    themeS.addEventListener("change", () => {
+        startBtn.disabled = true;
+        startBtn.style.opacity = 0.3;
+    });
+
+    gridSizeS.addEventListener("change", () => {
+        startBtn.disabled = true;
+        startBtn.style.opacity = 0.3;
+    });
+
     // cooldown (jsp)
     function resetTurn() {
         flippedCards = [];
