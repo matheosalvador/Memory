@@ -20,6 +20,15 @@ require_once '../../utils/update_last_activity.php';
         <?php 
         include "../../partials/header-terminé.php";
         ?>
+
+        <div id="endgame-popup" class="popup">
+            <div class="popup-content">
+                <h2>Félicitations !</h2>
+                <p>Votre score est : <span id="score-value">0</span></p>
+                <button id="restartbtn">Restart</button>
+            </div>
+        </div>
+
         <div class="audio-settings">
             <button id="soundToggle" class="gear-btn">⚙️</button> 
             <div id="sound-panel" class="sound-panel hidden">
