@@ -179,6 +179,9 @@ body {
   height: 120px;
   perspective: 800px;
   cursor: pointer;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
 }
 
 .card-inner {
@@ -232,6 +235,49 @@ body {
   transform: rotateY(180deg);
 }
 /* fin card flip */
+
+
+
+
+
+
+
+/* début animation autour d'une carte */
+/* particule */
+.card.matched .card-inner::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgb(120, 235, 145);
+  border-radius: 50%;
+  top: -7px;
+  left: calc(100% - 7px);
+  z-index: -1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px #ffffff) drop-shadow(0 0 30px #ffffff);
+  animation: particle-loop 1.2s linear infinite; /* j'ai recherché */
+}
+
+/* animation (tour) */
+@keyframes particle-loop { /* j'ai un petit peu recherché sur internet ça */
+  0% { top: -7px; left: calc(100% - 7px); }
+  25% { top: calc(100% - 7px); left: calc(100% - 7px); }
+  50% { top: calc(100% - 7px); left: -7px; }
+  75% { top: -7px; left: -7px; }
+  100% { top: -7px; left: calc(100% - 7px); }
+} /* 30 min merci Thibaud tes idées sont sublimes -_- */
+/* fin animation autour d'une carte */
+
+/* sons */
+.audio-settings {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+
+
 
 
 

@@ -18,14 +18,19 @@ require_once '../../utils/update_last_activity.php';
 
         <?php 
         include "../../partials/header-terminé.php";
-         ?>
+        ?>
+
+        <div class="audio-settings">
+            <label>Background music: <input type="range" min="0" max="1" step="0.01" value="0.5"></label>
+            <label>SFX volume: <input type="range" min="0" max="1" step="0.01" value="0.5"></label>
+        </div>
 
         <!-- memory.php -->
         <section class="memory-game">
             <h1 class="wwline">The Power Of Memory</h1>
             <p class="wwline">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-            Suspendisse scelerisque in tortor vitae sollicitudin.
+            Match all the cards to win the game!<br>
+            (Quick info : we've added sound! You can adjust the volume at the top of the page.)
             </p>
 
             <div class="controls">
@@ -155,39 +160,39 @@ require_once '../../utils/update_last_activity.php';
             }
         });
     }
-//send
-chatInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        const msg = chatInput.value.trim();
+    //send
+    chatInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            const msg = chatInput.value.trim();
 
-        // Vérification côté navigateur
-        if (msg.length < 3) {
-            alert("Votre message doit contenir au moins 3 caractères.");
-            return;
-        }
-
-        fetch("../../actions/chat.php?action=send", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "message=" + encodeURIComponent(msg)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log("SEND RESPONSE:", data);
-
-            if (data.status === "OK") {
-                chatInput.value = "";
-                loadMessages();
-            } else {
-                console.error("Erreur send:", data);
+            // Vérification côté navigateur
+            if (msg.length < 3) {
+                alert("Votre message doit contenir au moins 3 caractères.");
+                return;
             }
-        });
-    }
-});
 
-//message_privée
+            fetch("../../actions/chat.php?action=send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "message=" + encodeURIComponent(msg)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log("SEND RESPONSE:", data);
+
+                if (data.status === "OK") {
+                    chatInput.value = "";
+                    loadMessages();
+                } else {
+                    console.error("Erreur send:", data);
+                }
+            });
+        }
+    });
+
+    //message_privée
 
     // refresh
     setInterval(loadMessages, 10000);
