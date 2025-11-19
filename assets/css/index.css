@@ -398,34 +398,86 @@ h6{
     font-weight: normal;
 }
 
-/* Team */
+/* ====== TEAM SECTION ====== */
+
 .team {
     text-align: center;
 }
 
 .team h3 {
     margin-bottom: 30px;
+    color: white;
 }
 
-.members {
+/* Nouveau layout : 3 membres à gauche + trait + 2 externes droite */
+.team-layout {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+/* Membres internes (gauche) */
+.members-right {
+    display: flex;
+    flex-direction: column;
     gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 20px;
 }
 
-.members figure {
+/* Membres externes (droite) */
+.members-external {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.external-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     text-align: center;
-    max-width: 200px;
 }
 
-.members img {
+/* Trait séparateur */
+.separator {
+    width: 3px;
+    background-color: white;
+    align-self: stretch; /* <-- rend le trait aussi haut que les colonnes */
+    border-radius: 2px;
+}
+/* Style commun aux avatars */
+.members-right img,
+.members-external img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid white;
+}
+.main-team-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+/* Figures */
+.members-right figure,
+.members-external figure {
+    text-align: center;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .team-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .separator {
+        width: 80%;
+        height: 3px;
+    }
 }
 
 /* ===== SECTION NEWSLETTER ===== */
