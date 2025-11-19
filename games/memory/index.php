@@ -56,6 +56,9 @@ require_once '../../utils/update_last_activity.php';
                 </div>
                 <button id="generatebtn">Generate a grid</button>
                 <button id="playbtn">Start</button>
+                <!-- Bouton Indice (caché par défaut) -->
+                <button id="hint-btn" style="display:none;">🔍 Indice</button>
+
                 <div id="timer" class="timer">00:00</div>
             </div>
 
@@ -202,7 +205,54 @@ require_once '../../utils/update_last_activity.php';
     loadMessages();
 
     </script>
+    <!-- >>>> Debut du Konammi code <<<< -->
+    <script>
+        // Konami code : ↑ ↑ ↓ ↓ ← → ← → B A
+        const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        let konamiPos = 0;
 
+        // on rajoute le bouton indice directement dans la page :
+        const hintBtn = document.createElement("button");
+        hintBtn.id = "hint-btn";
+        hintBtn.textContent = "🔍 clue";
+        hintBtn.style.display = "none";
+        hintBtn.style.marginLeft = "10px";
+        hintBtn.style.padding = "8px 12px";
+        hintBtn.style.borderRadius = "8px";
+        hintBtn.style.background = "#2ecc71";
+        hintBtn.style.border = "none";
+        hintBtn.style.cursor = "pointer";
+        hintBtn.style.color = "white";
+        hintBtn.style.fontWeight = "bold";
+
+        // bouton à côté de Start :
+        const playBtn = document.getElementById("playbtn");
+        playBtn.insertAdjacentElement("afterend", hintBtn);
+
+        // Détection Konami Code
+        document.addEventListener("keydown", (e) => {
+            if (e.keyCode === konami[konamiPos]) {
+                konamiPos++;
+
+                if (konamiPos === konami.length) {
+                    // => Konami réussi !
+                    hintBtn.style.display = "inline-block";
+                    hintBtn.classList.add("found");
+                    console.log("Konami code activé !");
+                    konamiPos = 0;
+                }
+            } else {
+                konamiPos = (e.keyCode === konami[0]) ? 1 : 0;
+            }
+        });
+
+        // Action quand il clique sur Indice
+        hintBtn.addEventListener("click", () => {
+            alert("Indice : Observe bien où sont les premières cartes retournées !");
+            // Veritable Indice a mettre ici
+        });
+    </script>
+    <!-- FIN DU KONAMI CODE -->
     </body>
     
 </html>
