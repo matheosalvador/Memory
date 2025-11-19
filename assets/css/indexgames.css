@@ -7,10 +7,15 @@ body {
 .wwline{
   color: white;
 }
-.fake {
-  display: flex;
-  margin-top: 20px;
+
+.timer {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-left: 20px;
 }
+
 .memory-game {
   max-width: 800px;
   margin: 0 auto;
@@ -48,7 +53,7 @@ body {
   color: #0b0b2b;
   font-size: 1rem;
 }
-#generate-btn {
+#generatebtn {
   padding: 10px 20px;
   background-color: #ff392b;
   border: none;
@@ -58,25 +63,27 @@ body {
   cursor: pointer;
   transition: background 0.2s;
 }
+
+#playbtn {
+  padding: 10px 20px;
+  background-color: #ff392b;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+
+}
+
 #generate-btn:hover {
   background-color: #e82e24;
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  justify-items: center;
-}
-.card {
-  width: 100px;
-  height: 100px;
-  background: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-.card:hover {
-  transform: scale(1.05);
+  grid-template-columns: repeat(8, 1fr);
+  gap: 40px;
+  place-content: center;
 }
 
 /* === SECTION AVEC IMAGE DE MANETTE + CHATBOX === */
@@ -126,6 +133,160 @@ body {
   background-color: #c3002b;
 }
 
+
+
+
+
+
+/*
+.modified-popup {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+
+  font-size: 14px;
+  font-weight: bold;
+  color: #2ecc71;
+  opacity: 1;
+
+  animation: popupUp 1.2s ease-out forwards; /* cette ligne mrc chat gpt */
+  /*pointer-events: none;
+}
+/*
+@keyframes popupUp {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: transition(-50%, -25px);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* debut card flip */
+.card {
+  width: 120px;
+  height: 120px;
+  perspective: 800px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 25px 12px rgba(255, 255, 0, 0.75);
+  animation: box-shadow 0.3s ease;
+}
+
+.card.matched .card-inner {
+  box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.75);
+  animation: glowPulse 1s infinite alternate; /* j'ai cherché ça */
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 15px 6px rgba(0, 255, 0, 0.75);
+  }
+  to {
+    box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.9);
+  }
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  background-color: #e00034;
+}
+
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+/* fin card flip */
+
+
+
+
+
+
+
+/* début animation autour d'une carte */
+/* particule */
+.card.matched .card-inner::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgb(120, 235, 145);
+  border-radius: 50%;
+  top: -7px;
+  left: calc(100% - 7px);
+  z-index: -1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px #ffffff) drop-shadow(0 0 30px #ffffff);
+  animation: particle-loop 1.2s linear infinite; /* j'ai recherché */
+}
+
+/* animation (tour) */
+@keyframes particle-loop { /* j'ai un petit peu recherché sur internet ça */
+  0% { top: -7px; left: calc(100% - 7px); }
+  25% { top: calc(100% - 7px); left: calc(100% - 7px); }
+  50% { top: calc(100% - 7px); left: -7px; }
+  75% { top: -7px; left: -7px; }
+  100% { top: -7px; left: calc(100% - 7px); }
+} /* 30 min merci Thibaud tes idées sont sublimes -_- */
+/* fin animation autour d'une carte */
+
+/* sons */
+.audio-settings {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Image plein côté droit */
 /* Conteneur de l'image + chatbox */
 .presentation-image {
@@ -145,97 +306,137 @@ body {
 }
 
 .chatbox {
-  position: absolute;
-  right: -80px;     /* décale légèrement vers la droite */
-  bottom: 20px;     /* reste en bas de la section */
-  width: 360px;
-  min-height: 450px;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  font-family: Arial, sans-serif;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 400px;
+  max-height: 400px;
+  background-color: rgba(255,255,255,0.7);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  z-index: 999;
   overflow: hidden;
 }
 
+/* Header */
 .chat-header {
-  background-color: #e00034;
-  color: white;
-  padding: 12px 14px;
+  background-color: #f44336; /* rouge */
+  color: #fff;
+  padding: 10px;
   font-weight: bold;
-  font-size: 1rem;
+  text-align: center;
 }
 
+/* Body */
 .chat-body {
-  background-color: #fafafa;
-  padding: 12px;
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  flex: 1;            /* prend tout l’espace restant */
-  overflow-y: auto;   /* scroll si beaucoup de messages */
+  gap: 5px;
 }
 
+/* Input */
+.chat-input {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* Chat input */
+.chat-input {
+  flex: 0 0 auto;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.chat-input input {
+  width: 95%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Messages */
 .message {
   display: flex;
   flex-direction: column;
   max-width: 80%;
 }
 
+/* message received */
 .message.left {
   align-self: flex-start;
 }
 
+/* message send (from me) */
 .message.right {
   align-self: flex-end;
-  text-align: right;
+}
+
+/* Bubble (s'adapte au texte) */
+.bubble {
+  padding: 8px 12px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  display: inline-block;
 }
 
 .sender {
-  font-size: 0.7rem;
-  color: #888;
-  margin-bottom: 3px;
-}
-
-.bubble {
-  background-color: #eee;
-  border-radius: 10px;
-  padding: 8px 12px;
-  display: inline-block;
-  font-size: 0.9rem;
-  color: #222;
-}
-
-.bubble.red {
-  background-color: #e00034;
-  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  color: #b63a3a; /* gris pour pseudo */
+  margin-bottom: 2px;
+  align-self: flex-end;
 }
 
 .time {
-  font-size: 0.7rem;
-  color: #aaa;
-  margin-top: 3px;
+  font-size: 10px;
+  color: #777; /* gris pour la date */
+  margin-top: 2px;
+  align-self: flex-end;
 }
 
-.chat-input {
-  border-top: 1px solid #ddd;
-  padding: 8px;
-  background-color: #fff;
-  flex-shrink: 0;  /* empêche de rétrécir et reste toujours en bas */
+.message.right .bubble {
+  background-color: red;
+  color: white;
+  text-align: right;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
-.chat-input input {
-  width: 100%;
+.message.left .bubble {
+  background-color: #ccc;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+/* Chat toggle button */
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  color: white;
   border: none;
-  outline: none;
-  font-size: 0.9rem;
-  color: #666;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
-.chat-input input::placeholder {
-  color: #aaa;
+.chat-gif {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  display: block;
 }
+
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -246,13 +447,5 @@ body {
 
   .presentation-image .gamepad {
     height: 300px;
-  }
-
-  .chatbox {
-    position: static;
-    transform: none;
-    width: 90%;
-    min-height: 350px;
-    margin-top: -20px;
   }
 }

@@ -5,7 +5,11 @@ body {
 }
 
 #login-register input {
-  all: unset;
+  	all: unset;
+	background-color: #F7FBFF;
+	border-radius: 12px;
+	padding: 10px;
+	border:1px solid #D4D7E3;
 }
 
 #login-register .mb-15 {
@@ -170,4 +174,100 @@ body {
   gap: 10px;
   margin-top: 48px;
   padding-right: 150px;
+}
+/* ========================= */
+/*        RESPONSIVE         */
+/* ========================= */
+
+/* Écrans ≤ 1024px (tablettes landscape) */
+@media (max-width: 1024px) {
+
+	#login-register {
+		column-gap: 20px;
+		padding: 20px;
+	}
+
+	#login-register .login-container,
+	#login-register .form-container {
+		padding: 32px;
+	}
+
+	#login-register #welcome {
+		font-size: 30px;
+	}
+
+	#login-register #details {
+		font-size: 18px;
+	}
+
+	#login-register .form-login {
+		padding-right: 50px;
+	}
+}
+
+/* Écrans ≤ 768px (tablettes portrait / petits laptops) */
+@media (max-width: 768px) {
+
+	#login-register {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		column-gap: 0;
+	}
+
+	#login-register .w-50 {
+		width: 100%;
+	}
+
+	#login-register .login-container,
+	#login-register .form-container {
+		padding: 24px;
+		margin-top: 24px;
+	}
+
+	#login-register #welcome {
+		font-size: 28px;
+	}
+
+	#login-register #details {
+		font-size: 16px;
+	}
+
+	#login-register .form-login {
+		padding-right: 0px;
+		width: 100%;
+	}
+}
+
+/* Écrans ≤ 480px (mobiles) */
+@media (max-width: 480px) {
+
+	#login-register #welcome {
+		font-size: 24px;
+	}
+
+	#login-register #details {
+		font-size: 14px;
+	}
+
+	#login-register input,
+	#login-register #google-button,
+	#login-register #check-button {
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	#login-register .login-container,
+	#login-register .form-container {
+		padding: 16px;
+	}
+
+	#login-register #image {
+		border-radius: 16px;
+	}
+
+	#login-register #txt-link1 {
+		padding-top: 24px;
+	}
 }

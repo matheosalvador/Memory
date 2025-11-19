@@ -20,7 +20,7 @@
         <div class="tabl2">
             <h4>Contact us</h4>
             <span>We are at your disposal for any questions.</span>
-            <p>contact@web.com</p>
+            <p>contact.memory.games@gmail.com</p>
         </div>
     </div>
 

@@ -59,6 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['old'] = ['email' => $email, 'pseudo' => $pseudo];
 
     // Redirection vers le formulaire
-    header("Location: ../register.php");
+    header("Location: ../login.php");
     exit;
 }
