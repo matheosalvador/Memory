@@ -57,7 +57,7 @@ require_once '../../utils/update_last_activity.php';
                 <button id="generatebtn">Generate a grid</button>
                 <button id="playbtn">Start</button>
                 <!-- Bouton Indice (caché par défaut) -->
-                <button id="hint-btn" style="display:none;">🔍 Indice</button>
+                <button id="hint-btn" style="display:none;">🔍 Clue</button>
 
                 <div id="timer" class="timer">00:00</div>
             </div>
