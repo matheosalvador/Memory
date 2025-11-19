@@ -13,17 +13,11 @@ require_once 'utils/update_last_activity.php';
 // Connexion à la base
 $pdo = getPDO();
 
-// Alerte si la connexion est un succès
-if (isset($_SESSION['success'])): ?>
-    <div class="alert-success">
-        <?= $_SESSION['success']; ?>
-    </div>
-    <?php unset($_SESSION['success']); ?>
-<?php endif; ?>
 
-<?php
+
 $errors = $_SESSION['errors'] ?? [];
 $success = $_SESSION['success'] ?? '';
+unset($_SESSION['errors'],$_SESSION['success']);
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
@@ -95,7 +89,7 @@ include 'partials/header-terminé.php';
             
             <!-- Affichage des erreurs / succès -->
                     <?php if(!empty($errors)): ?>
-                        <div class="errors">
+                        <div class="errors" style="color: red;">
                             <ul>
                                 <?php foreach($errors as $error): ?>
                                     <li><?= htmlspecialchars($error) ?></li>
@@ -103,7 +97,7 @@ include 'partials/header-terminé.php';
                             </ul>
                         </div>
                     <?php elseif($success): ?>
-                        <div class="success"><?= htmlspecialchars($success) ?></div>
+                        <div class="success" style="color: green;"><?= htmlspecialchars($success) ?></div>
                     <?php endif; ?>
             
             <form action="actions/account_action.php" method="post">

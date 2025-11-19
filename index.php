@@ -58,11 +58,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </figure>
         <figure>
             <img src="assets/images/game2.jpg" alt="game2">
-            <figcaption>Game 2</figcaption>
+            <figcaption>Doctor Who</figcaption>
         </figure>
         <figure>
             <img src="assets/images/game3.jpg" alt="game3">
-            <figcaption>Game 3</figcaption>
+            <figcaption>Puissance 4</figcaption>
         </figure>
     </div>
 </section>
