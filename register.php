@@ -54,7 +54,14 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                         <label for="pseudo">Pseudo</label>
                         <input class="input" name="pseudo" type="text" placeholder="4 characters min" required value="<?= htmlspecialchars($old['pseudo']) ?>">
                         <label for="password">Password</label>
-                        <input class="input" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+                        <input class="input" name="password" id="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+
+                        <!-- barre de sécu mdp -->
+                        <div id="password-strength" class="password-strength">
+                            <div class="strength-bar"></div>
+                            <span class="strength-text"></span>
+                        </div>
+
                         <label for="confirm_password">Confirm Password</label>
                         <input class="input" name="confirm_password" type="password" placeholder="Confirm password" required minlength="8">
                         <button type="submit" id="check-button"><span id="txt-button">Registration</span></button>
@@ -88,5 +95,52 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
             </div>
         </div>
     </div>
+
+
+
+    <script>
+    const passwordInput = document.getElementById('password');
+    const strengthBar = document.querySelector('.strength-bar');
+    const strengthText = document.querySelector('.strength-text');
+
+    passwordInput.addEventListener('input', () => {
+        const val = passwordInput.value;
+        let score = 0;
+
+        const hasMinLength = val.length >= 8;
+        const hasUpper = /[A-Z]/.test(val);
+        const hasNumber = /\d/.test(val);
+        const hasSpecial = /[\W_]/.test(val);
+
+        if(hasMinLength) score++;
+        if(hasUpper) score++;
+        if(hasNumber) score++;
+        if(hasSpecial) score++;
+
+        switch(score) {
+            case 0:
+            case 1:
+                strengthBar.style.width = "25%";
+                strengthBar.style.backgroundColor = "red";
+                strengthText.textContent = 'Weak';
+                break;
+            case 2:
+            case 3:
+                strengthBar.style.width = "60%";
+                strengthBar.style.backgroundColor = "orange";
+                strengthText.textContent = 'Medium';
+                break;
+            case 4:
+            case 5:
+                strengthBar.style.width = "100%";
+                strengthBar.style.backgroundColor = "green";
+                strengthText.textContent = 'Strong';
+                break;
+        }
+    });
+    </script>
+
+
+
     </body>
 </html>
