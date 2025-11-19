@@ -23,15 +23,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = "Email invalide.";
 }
 
-    // Vérification existence email ou pseudo
-$pdo = getPDO();
-$stmt = $pdo->prepare("SELECT * FROM main_user WHERE email = :email AND id != :id");
-$stmt->execute([
-    ':email' => $email,
-    ':id'    => $id
-]);
-
-if ($stmt->fetch()) {
+if (checkEmailExists($email, $id)) {
     $errors[] = "Email déjà utilisé.";
 }
     
