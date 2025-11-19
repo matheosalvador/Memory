@@ -1,22 +1,48 @@
-<?php session_start(); $currentPage = 'puissance4.php'; ?>
-<!DOCTYPE html>
+<?php
+session_start();
+require('../../utils/helper.php');
+require_once '../../utils/update_last_activity.php';
+?>
+
+<!DOCTYPE HTML>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/puissance4.css">
+    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/main.css">
+    <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>Puissance 4</title>
-    <link rel="stylesheet" href="puissance4.css">
 </head>
+
 <body>
-    <?php include 'header.php'; ?>
 
-    <main class="game-container">
-        <h1>Puissance 4</h1>
-        <div id="grid"></div>
-        <button id="resetBtn">Rejouer</button>
-    </main>
+<?php include "../../partials/header-terminé.php"; ?>
 
-    <?php include 'footer.php'; ?>
+<div id="endgame-popup" class="popup hidden" role="dialog" aria-modal="true">
+    <div class="popup-content">
+        <h2 id="winner-title">Félicitations !</h2>
+        <p id="winner-sub">Le joueur <span id="winner-player"></span> a gagné.</p>
+        <button id="restartbtn">Recommencer</button>
+    </div>
+</div>
 
-    <script src="puissance4.js"></script>
+<section class="puissance4-game">
+    <h1 class="wwline">Puissance 4</h1>
+    <p class="wwline">Clique sur une colonne pour déposer un jeton. Le premier qui aligne 4 gagne.</p>
+
+    <div class="controls">
+        <div class="current-player">Joueur actuel : <span id="currentPlayer">Rouge</span></div>
+        <button id="resetBtn">Nouvelle partie</button>
+    </div>
+
+    <div id="board" class="board" role="grid"></div>
+</section>
+
+<script src="<?= getBaseUrl(); ?>/assets/js/puissance4.js" defer></script>
+<script src="<?= getBaseUrl(); ?>/assets/js/burger.js" defer></script>
+
+<?php include "../../partials/footer-terminé.php"; ?>
+
 </body>
 </html>

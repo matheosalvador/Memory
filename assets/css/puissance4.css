@@ -1,3 +1,4 @@
+/* --- Page background --- */
 body {
     background-color: #070320;
     color: white;
@@ -5,40 +6,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.game-container {
+/* --- Section jeu --- */
+.puissance4-game {
     text-align: center;
     padding: 40px 0;
+    animation: fadeIn 0.8s ease-out;
 }
 
-#grid {
-    display: grid;
-    grid-template-columns: repeat(7, 70px);
-    grid-template-rows: repeat(6, 70px);
-    gap: 5px;
-    justify-content: center;
-    margin: 20px auto;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.cell {
-    width: 70px;
-    height: 70px;
-    background: #0c0a31;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: inset 0 0 10px #000;
-    transition: 0.2s ease;
-}
-
-.cell:hover {
-    transform: scale(1.1);
-}
-
-.red {
-    background: red;
-}
-
-yellow {
-    background: yellow;
+/* --- Contrôles --- */
+.controls {
+    margin-bottom: 25px;
+    font-size: 18px;
 }
 
 #resetBtn {
@@ -49,10 +32,141 @@ yellow {
     background: white;
     color: black;
     font-size: 16px;
-    margin-top: 20px;
     transition: 0.2s;
 }
 
-#resetBtn:hover {
+#resetBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#resetBtn:hover:not(:disabled) {
     transform: scale(1.05);
+}
+
+/* --- Grille du plateau --- */
+.board {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: boardAppear 1s ease-out forwards;
+}
+
+@keyframes boardAppear {
+    from { opacity: 0; transform: scale(0.9); filter: blur(4px); }
+    to   { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* --- Colonnes --- */
+.column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.column:hover {
+    animation: pulseColumn 0.35s ease-out;
+}
+
+@keyframes pulseColumn {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* --- Cellules --- */
+.cell {
+    width: 75px;
+    height: 75px;
+    margin: 3px;
+    background: #0c0a31;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px #000;
+    transition: 0.2s ease;
+    position: relative;
+}
+
+/* Effet pop */
+.cell.pop {
+    animation: pop 0.25s ease-out;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.4); }
+    80% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ⚠️ Jetons VISIBLES (très important) */
+.token {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+/* Jeton rouge */
+.red {
+    background: radial-gradient(circle, #ff4444, #cc0000);
+}
+
+/* Jeton jaune */
+.yellow {
+    background: radial-gradient(circle, #fff066, #d4c400);
+}
+
+/* Jetons gagnants */
+.winner {
+    animation: winningGlow 1s infinite ease-in-out;
+}
+
+@keyframes winningGlow {
+    0%   { box-shadow: 0 0 5px 3px white; }
+    50%  { box-shadow: 0 0 22px 10px white; }
+    100% { box-shadow: 0 0 5px 3px white; }
+}
+
+/* --- Popup fin de partie --- */
+.popup {
+    position: fixed;
+    z-index: 99999999;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: #1b1742;
+    padding: 30px 40px;
+    border-radius: 14px;
+    text-align: center;
+    color: white;
+    animation: popupShow 0.5s ease-out;
+}
+
+@keyframes popupShow {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+#restartbtn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    background: #ffffff;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#restartbtn:hover {
+    transform: scale(1.07);
 }
