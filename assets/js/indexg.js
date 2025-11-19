@@ -16,6 +16,46 @@ document.addEventListener("DOMContentLoaded", () => {
     startBtn.disabled = true;
     startBtn.style.opacity = 0.3;
 
+        // AUDIO (optionel mais on a voulu lol)
+    let bgVolume = 0.5;
+    let sfxVolume = 0.5;
+    let currentBG = null;
+
+    // bg music
+    const bgMusics = {
+        "Hollow_knight": new Audio("../../assets/audio/themes/HK/Fond.mp3"),
+        "Minecraft": new Audio("../../assets/audio/themes/Minecraft/Fond.mp3"),
+        "The_Legend_Of_Zelda": new Audio("../../assets/audio/themes/TLOZ/Fond.mp3")
+    };
+
+    // sfx carte match
+    const matchSFX = {
+        "Hollow_knight": new Audio("../../assets/audio/themes/HK/Matched.mp3"),
+        "Minecraft": new Audio("../../assets/audio/themes/Minecraft/Matched.mp3"),
+        "The_Legend_Of_Zelda": new Audio("../../assets/audio/themes/TLOZ/Matched.mp3")
+    };
+
+    // sfx win
+    const winSFX = {
+        "Hollow_knight": new Audio("../../assets/audio/themes/HK/Fin.mp3"),
+        "Minecraft": new Audio("../../assets/audio/themes/Minecraft/Fin.mp3"),
+        "The_Legend_Of_Zelda": new Audio("../../assets/audio/themes/TLOZ/Fin.mp3")
+    };
+
+    // boucle bg music
+    Object.values(bgMusics).forEach(a => { a.loop = true; a.volume = bgVolume;});
+
+    document.getElementById("bgVolume").addEventListener("input", e => {
+        bgVolume = parseFloat(e.target.value);
+        if (currentBG) currentBG.volume = bgVolume;
+    });
+
+    document.getElementById("sfxVolume").addEventListener("input", e => {
+        sfxVolume = parseFloat(e.target.value);
+        Object.values(matchSFX).forEach(audio => audio.volume = sfxVolume);
+        Object.values(winSFX).forEach(audio => audio.volume = sfxVolume);
+    });
+
     // fct de melange des cartes
     function shuffle(array) {
         let i = array.length, j, temp;
@@ -27,6 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return array;
     }
+
+    const soundToggle = document.getElementById("soundToggle");
+    const soundpanel = document.getElementById("sound-panel");
+
+    soundToggle.addEventListener("click", () => {
+        soundpanel.classList.toggle("hidden");
+    });
 
     // generation grid
     async function generateGrid() {
@@ -58,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             lockBoard = false;
             return;
         }
+        
         const selected = shuffle(files).slice(0, pairsCount);
         const finalCards = shuffle([...selected, ...selected]);
 
@@ -125,8 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // sons
             let matchAudio = matchSFX[themeS.value];
+            console.log("matchAudio", matchAudio);
             matchAudio.currentTime = 0;
-            matchAudio.play();
+            matchAudio.play().catch(err => console.error(err));
 
         } else {
             setTimeout(() => {
@@ -233,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     i++;
                     showtext();
                 }, 500);
-            }, 400);
+            }, 300);
         }
         showtext();
     }
@@ -322,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.style.zIndex = '1000';
                 card.style.transition = 'all 3s ease';
             });
-        }, 1200);
+        }, 1000);
 
         //deplacement carte vers grille initiale
         setTimeout(() => {
@@ -340,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.style.left = `${finalLeft}px`;
                 card.style.top = `${finalTop}px`;
             });
-        }, 1200);
+        }, 1300);
 
         //fin animation 4s après
         setTimeout(() => {
@@ -366,56 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
             currentBG.play();
 
             startTimer();
-        }, 4300);
+        }, 4400);
     });
 
-});
-
-
-
-// AUDIO (optionel mais on a voulu lol)
-let bgVolume = 0.5;
-let sfxVolume = 0.5;
-
-let currentBG = null;
-
-// bg music
-const bgMusics = {
-    "Hollow_knight": new Audio("../../assets/audio/thèmes/HK/HK Musique Fond.mp3"),
-    "Minecraft": new Audio("../../assets/audio/thèmes/Minecraft/Minecraft Musique Fond.mp3"),
-    "The_Legend_Of_Zelda": new Audio("../../assets/audio/thèmes/TLOZ/TLOZ Musique Fond.mp3")
-};
-
-// sfx carte match
-const matchSFX = {
-    "Hollow_knight": new Audio("../../assets/audio/thèmes/HK/HK Musique Carte Matched.mp3"),
-    "Minecraft": new Audio("../../assets/audio/thèmes/Minecraft/Minecraft Musique Carte Matched.mp3"),
-    "The_Legend_Of_Zelda": new Audio("../../assets/audio/thèmes/TLOZ/TLOZ Musique Carte Matched.mp3")
-};
-
-// sfx win
-const winSFX = {
-    "Hollow_knight": new Audio("../../assets/audio/thèmes/HK/HK Musique Fin.mp3"),
-    "Minecraft": new Audio("../../assets/audio/thèmes/Minecraft/Minecraft Musique Fin.mp3"),
-    "The_Legend_Of_Zelda": new Audio("../../assets/audio/thèmes/TLOZ/TLOZ Musique Fin.mp3")
-};
-
-// boucle bg music
-Object.values(bgMusics).forEach(audio => {
-audio.loop = true;
-audio.volume = bgVolume;
-});
-
-Object.values(matchSFX).forEach(audio => audio.volume = sfxVolume);
-Object.values(winSFX).forEach(audio => audio.volume = sfxVolume);
-
-document.getElementById("bgVolume").addEventListener("input", e => {
-    bgVolume = parseFloat(e.target.value);
-    if (currentBG) currentBG.volume = bgVolume;
-});
-
-document.getElementById("sfxVolume").addEventListener("input", e => {
-    sfxVolume = parseFloat(e.target.value);
-    Object.values(matchSFX).forEach(audio => audio.volume = sfxVolume);
-    Object.values(winSFX).forEach(audio => audio.volume = sfxVolume);
 });

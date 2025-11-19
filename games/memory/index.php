@@ -14,15 +14,18 @@ require_once '../../utils/update_last_activity.php';
     <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>Games</title>
 </head>
+
     <body>  
 
         <?php 
         include "../../partials/header-terminé.php";
         ?>
-
         <div class="audio-settings">
-            <label>Background music: <input type="range" min="0" max="1" step="0.01" value="0.5"></label>
-            <label>SFX volume: <input type="range" min="0" max="1" step="0.01" value="0.5"></label>
+            <button id="soundToggle" class="gear-btn">⚙️</button> 
+            <div id="sound-panel" class="sound-panel hidden">
+                <label>Background music: <input id="bgVolume" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+                <label>SFX volume: <input id="sfxVolume" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+            </div>
         </div>
 
         <!-- memory.php -->
