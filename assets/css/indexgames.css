@@ -490,3 +490,36 @@ body {
     height: 300px;
   }
 }
+/* Bouton Indice */
+#hint-btn {
+    display: none; /* Caché par défaut */
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease;
+}
+
+/* Effet hover */
+#hint-btn:hover {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    transform: scale(1.05);
+}
+
+/* Effet quand le Konami Code l'active */
+#hint-btn.found {
+    animation: hintPop 0.6s ease-out;
+}
+
+/* Animation pop */
+@keyframes hintPop {
+    0% { transform: scale(0.4); opacity: 0; }
+    60% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); }
+}
