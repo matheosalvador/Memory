@@ -14,18 +14,35 @@ require_once '../../utils/update_last_activity.php';
     <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
     <title>Games</title>
 </head>
+
     <body>  
 
         <?php 
         include "../../partials/header-terminé.php";
-         ?>
+        ?>
+
+        <div id="endgame-popup" class="popup">
+            <div class="popup-content">
+                <h2>Félicitations !</h2>
+                <p>Votre score est : <span id="score-value">0</span></p>
+                <button id="restartbtn">Restart</button>
+            </div>
+        </div>
+
+        <div class="audio-settings">
+            <button id="soundToggle" class="gear-btn">⚙️</button> 
+            <div id="sound-panel" class="sound-panel hidden">
+                <label>Background music: <input id="bgVolume" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+                <label>SFX volume: <input id="sfxVolume" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+            </div>
+        </div>
 
         <!-- memory.php -->
         <section class="memory-game">
             <h1 class="wwline">The Power Of Memory</h1>
             <p class="wwline">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-            Suspendisse scelerisque in tortor vitae sollicitudin.
+            Match all the cards to win the game!<br>
+            (Quick info : we've added sound! You can adjust the volume at the top of the page.)
             </p>
 
             <div class="controls">
@@ -41,13 +58,17 @@ require_once '../../utils/update_last_activity.php';
                 <div class="control">
                     <label for="themes">THEMES</label>
                     <select id="themes">
-                        <option value="Hollow_knight">Hollow Knight</option>
-                        <option value="Minecraft">Minecraft</option>
-                        <option value="The_Legend_Of_Zelda">The Legend Of Zelda</option>
+                        <option id="theme1" value="Hollow_knight">Hollow Knight</option>
+                        <option id="theme2" value="Minecraft">Minecraft</option>
+                        <option id="theme3" value="The_Legend_Of_Zelda">The Legend Of Zelda</option>
                     </select>
                 </div>
-                <button id="generatebtn">Generate a grid</button>
+                <button id="generatebtn">Generate grid</button>
                 <button id="playbtn">Start</button>
+                <!-- Bouton Indice (caché par défaut) -->
+                <button id="hint-btn" style="display:none;">🔍 Clue</button>
+
+                <div id="timer" class="timer">00:00</div>
             </div>
 
             <div class="grid">
@@ -69,11 +90,11 @@ require_once '../../utils/update_last_activity.php';
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse scelerisque in tortor vitae sollicitudin.
             </p>
-            <button class="play-btn">Play</button>
+            <button class="play-link">Play</button>
         </div>
 
         <div class="presentation-image">
-            <img src="../../assets/images/manette.png" alt="Manette de jeu" class="gamepad">
+            <img src="../../assets/images/game2.jpg" alt="doctorwho" class="game">
 
             <div class="chatbox">
                 <div class="chat-header">Power Of Memory</div>
@@ -97,7 +118,7 @@ require_once '../../utils/update_last_activity.php';
 
 
     <script>
-    // partie ez
+    // partie ez ez 
     const USER_ID = <?= json_encode($_SESSION['user_id'] ?? 0) ?>;
     const chatBody = document.querySelector('.chat-body');
     const chatInput = document.querySelector('.chat-input input');
@@ -154,46 +175,99 @@ require_once '../../utils/update_last_activity.php';
             }
         });
     }
-//send
-chatInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        const msg = chatInput.value.trim();
+    //send
+    chatInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            const msg = chatInput.value.trim();
 
-        // Vérification côté navigateur
-        if (msg.length < 3) {
-            alert("Votre message doit contenir au moins 3 caractères.");
-            return;
-        }
-
-        fetch("../../actions/chat.php?action=send", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "message=" + encodeURIComponent(msg)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log("SEND RESPONSE:", data);
-
-            if (data.status === "OK") {
-                chatInput.value = "";
-                loadMessages();
-            } else {
-                console.error("Erreur send:", data);
+            // Vérification côté navigateur
+            if (msg.length < 3) {
+                alert("Votre message doit contenir au moins 3 caractères.");
+                return;
             }
-        });
-    }
-});
 
+            fetch("../../actions/chat.php?action=send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "message=" + encodeURIComponent(msg)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log("SEND RESPONSE:", data);
 
+                if (data.status === "OK") {
+                    chatInput.value = "";
+                    loadMessages();
+                } else {
+                    console.error("Erreur send:", data);
+                }
+            });
+        }
+    });
+
+    //message_privée
 
     // refresh
     setInterval(loadMessages, 10000);
     loadMessages();
 
     </script>
+    <!-- >>>> Debut du Konammi code <<<< -->
+    <script>
+        // Konami code : ↑ ↑ ↓ ↓ ← → ← → B A
+        const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        let konamiPos = 0;
 
+        // Récupère le bouton déjà existant dans le HTML
+        const hintBtn = document.getElementById("hint-btn");
+
+        // Détection Konami Code
+        document.addEventListener("keydown", (e) => {
+            if (e.keyCode === konami[konamiPos]) {
+                konamiPos++;
+                if (konamiPos === konami.length) {
+                    hintBtn.style.display = "inline-block"; // rend visible le bouton
+                    hintBtn.classList.add("found");         // animation pop
+                    console.log("Konami code activé !");
+                    konamiPos = 0;
+                }
+            } else {
+                konamiPos = (e.keyCode === konami[0]) ? 1 : 0;
+            }
+        });
+
+        // Gestion du bouton indice
+        let hintUsed = false; // empêcher plusieurs utilisations
+        hintBtn.addEventListener("click", () => {
+            if (hintUsed) return; 
+            hintUsed = true;
+
+            const cards = [...document.querySelectorAll(".card:not(.matched)")];
+            if (cards.length < 2) return;
+
+            // Choix aléatoire d'une carte
+            const card1 = cards[Math.floor(Math.random() * cards.length)];
+            const cardId = card1.dataset.id;
+
+            // Trouver la paire correspondante
+            const card2 = cards.find(c => c !== card1 && c.dataset.id === cardId);
+            if (!card2) return;
+
+            // Ajout effet scintillant
+            card1.classList.add("hint-glow");
+            card2.classList.add("hint-glow");
+
+            // Retirer l'effet après 2,5s
+            setTimeout(() => {
+                card1.classList.remove("hint-glow");
+                card2.classList.remove("hint-glow");
+            }, 2500);
+        });
+    </script>
+
+    <!-- FIN DU KONAMI CODE -->
     </body>
     
 </html>

@@ -64,3 +64,4 @@ if ($action === "send") {
 }
 
 echo json_encode(['success' => 'No action']);
+//Message_privée 

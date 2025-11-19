@@ -175,6 +175,35 @@ body {
   margin-top: 48px;
   padding-right: 150px;
 }
+
+
+
+/* securité + mdp */
+.password-strength {
+	margin-top: 5px;
+	height: 8px;
+	width: 100%;
+	background-color: #e7e7e7;
+	border-radius: 4px;
+	position: relative;
+	margin-bottom: 25px;
+
+}
+
+.strength-bar {
+	height: 100%;
+	width: 0%;
+	border-radius: 4px;
+	transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-text {
+	display: block;
+	margin-top: 3px;
+	font-size: 0.9rem;
+	color: #646464;
+}
+
 /* ========================= */
 /*        RESPONSIVE         */
 /* ========================= */
