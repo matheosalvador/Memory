@@ -38,7 +38,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
  include __DIR__ . '/partials/header-terminé.php'; ?>
 
 
-
 <section class="main">
     <div class="content">
         <h6>OUR ...</h6>
@@ -144,21 +143,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a href="https://31.media.tumblr.com/ee77592e071b02c0d7c4f13c716cb196/tumblr_mv2b7jklvs1qeafupo1_500.gif">
                     <img src="assets/images/member1.png" alt="Photo de Member #1">
                 </a>
-                <figcaption>Member #1</figcaption>
+                <figcaption data-audio="assets/audio/accueil/francaist.mp3">Member #1</figcaption>
             </figure>
 
             <figure>
                 <a href="https://paypal.me/LucasVeysset">
                     <img src="assets/images/member2.png" alt="Photo de Member #2">
                 </a>
-                <figcaption>Member #2</figcaption>
+                <figcaption data-audio="assets/audio/accueil/francais.mp3">Member #2</figcaption>
             </figure>
 
             <figure>
                 <a href="https://tenor.com/view/cummins-gif-12535975135255283466">
                     <img src="assets/images/member3.png" alt="Photo de Member #3">
                 </a>
-                <figcaption>Member #3</figcaption>
+                <figcaption data-audio="assets/audio/accueil/chinois.mp3">Member #3</figcaption>
             </figure>
         </div>
 
@@ -173,14 +172,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a href="https://linktr.ee/tezc4t">
                     <img src="assets/images/directeur_DA.png" alt="Photo du DA">
                 </a>
-                <figcaption>Directeur DA en interim</figcaption>
+                <figcaption data-audio="assets/audio/accueil/vietnam.mp3">Directeur DA en interim</figcaption>
             </figure>
 
             <figure>
                 <a href="https://miwa.lol/aomigo">
                     <img src="assets/images/volontaire.png" alt="Photo du volontaire">
                 </a>
-                <figcaption>volunteer</figcaption>
+                <figcaption data-audio="assets/audio/accueil/gaulois.mp3">volunteer</figcaption>
             </figure>
         </div>
 
@@ -213,6 +212,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
     </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Sélectionne tous les figcaption qui ont l'attribut data-audio
+    const captions = document.querySelectorAll("figcaption[data-audio]");
+
+    captions.forEach(caption => {
+        caption.style.cursor = "pointer"; // pour indiquer que c'est cliquable
+        caption.addEventListener("click", () => {
+            const audioSrc = caption.getAttribute("data-audio");
+            const audio = new Audio(audioSrc);
+            audio.play();
+        });
+    });
+});
+</script>
 <script src="<?= getBaseUrl(); ?>/assets/js/burger.js"></script>
 
 <?php include 'partials/footer-terminé.php'; ?>
