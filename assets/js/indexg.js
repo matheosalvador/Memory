@@ -206,34 +206,132 @@ document.addEventListener("DOMContentLoaded", () => {
         lockCards = false; // libere de click
     }
 
-        // deblocage
+    // animation de fin
+    function playWinAnimation(callback) {
+        const cards = Array.from(grid.querySelectorAll(".card"));
+        if (cards.length === 0) return;
+
+        //reset cards
+        cards.forEach(card => {
+            card.style.position = "";
+            card.style.left = "";
+            card.style.top = "";
+            card.style.transition = "";
+            card.style.transform = "";
+            card.style.opacity = "";
+            card.style.zIndex = "";
+        });
+
+        // video
+        const video = document.createElement("video");
+        video.src = '../../assets/video/bettergalaxy.mp4';
+        video.autoplay = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.style.position = 'fixed';
+        video.style.top = '0';
+        video.style.left = '0';
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'cover';
+        video.style.zIndex = '0';
+        video.style.opacity = '0';
+        video.style.transition = 'opacity 1s';
+        document.body.appendChild(video);
+
+        // fondu video debut
+        setTimeout(() => video.style.opacity = '1', 50);
+
+        // carte serpentin (mon idée lol)
+        const cols = parseInt(gridSizeS.value.split("x")[0]);
+        let serpentineOrder = [];
+
+        const rows = cards.length / cols;
+
+        for (let r = 0; r < rows; r++) {
+            let rowCards = cards.slice(r * cols, r * cols + cols);
+            if (r % 2 === 1) rowCards.reverse();
+            serpentineOrder.push(...rowCards);
+        }
+
+        setTimeout(() => {
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            serpentineOrder.forEach((card, i) => {
+                const delay = i * (2500 / serpentineOrder.length); // 3s
+
+                setTimeout(() => {
+                    const rect = card.getBoundingClientRect();
+                    // css relou
+                    card.style.transition = "all 0.5s ease-in";
+                    card.style.position = "fixed";
+                    card.style.zIndex = "3000";
+                    card.style.left = rect.left + "px";
+                    card.style.top = rect.top + "px";
+
+                    card.offsetWidth;
+
+                    card.style.left = (centerX - rect.width / 2) + "px";
+                    card.style.top = (centerY - rect.height / 2) + "px";
+                    card.style.transform = "scale(0.2)";
+                    card.style.opacity = "0";
+                }, delay);
+            });
+        }, 500);
+
+        // 4sec
+        setTimeout(() => {
+            video.style.opacity = "0";
+            setTimeout(() => video.remove(), 1000);
+        }, 4000);
+
+        // 5sec (callback)
+        setTimeout(() => {
+            if (callback) callback();
+        }, 5000);
+    }
+
+    // fct de win (si ta win gg)
     function checkWin() {
         const allMatched = [...grid.querySelectorAll(".card")].every(c => c.classList.contains("matched"));
-        if(allMatched) {
-            stopTimer(); // ← ARRÊTE LE TIMER
-            if(currentBG) currentBG.pause(); // stop bg music
-            let winAudio = winSFX[themeS.value];
-            winAudio.currentTime = 0;
-            winAudio.play();
-            
-            const score = timerInterval;    // Exemple de calcul de score
+        if(!allMatched) return;
 
-            if(score !== undefined) {
-              scoreValue.textContent = score; // Mettre à jour le score dans la popup
-            }   
-            
+        stopTimer(); // stop timer
+
+        const presentationText = document.querySelector('.presentation-text');
+        //text caché
+        presentationText.style.opacity = '0';
+        presentationText.style.transition = 'opacity 0.5s';
+
+        if(currentBG) currentBG.pause(); // stop bg music
+        let winAudio = winSFX[themeS.value];
+        winAudio.currentTime = 0;
+        winAudio.play();
+    
+        playWinAnimation(() => {
+
+            //end animation
+            const score = milliseconds;
+            scoreValue.textContent = score;
+
+            //réafficheage text
+            presentationText.style.opacity = '1';
+        
             endgamePopup.style.display = 'flex'; // ou 'block' selon votre CSS
             lockBoard = false;
             generateBtn.disabled = false;
             gridSizeS.disabled = false;
             themeS.disabled = false;
             startBtn.disabled = true;
+
             generateBtn.style.opacity = 1;
             gridSizeS.style.opacity = 1;
             themeS.style.opacity = 1;
-
             lockCards = true;
-        }
+        });
+        
     }
 
     closeBtn.addEventListener('click', () => {
@@ -304,30 +402,15 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(timerInterval);
     }
 
-    // lock la page (animation)
-    function lockPage() {
-        const blocker = document.createElement('div');
-        blocker.id = 'page-locker';
-        blocker.style.position =  'fixed';
-        blocker.style.top = '0';
-        blocker.style.left = '0';
-        blocker.style.width = '100%';
-        blocker.style.height = '100%';
-        blocker.style.zIndex = '9999';
-        blocker.style.background = 'rgba(0, 0, 0, 0)';
-        document.body.appendChild(blocker);
-    }
-
-    // de-lock la page (animation)
-    function unlockPage() {
-        const blocker = document.getElementById('page-locker');
-        if(blocker) blocker.remove();
-    }
-
     // event bouton generation
     generateBtn.addEventListener("click", generateGrid);
     // btn animation de zinzin
     startBtn.addEventListener("click", () => {
+
+        const presentationText = document.querySelector('.presentation-text');
+        //text caché
+        presentationText.style.opacity = '0';
+        presentationText.style.transition = 'opacity 0.5s';
         
         lockCards = true;
         startBtn.disabled = true;
@@ -375,14 +458,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //carte centre apparition
         setTimeout(() => {
-            cards.forEach(card => {
+            const radius = 300;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            cards.forEach((card, index) => {
+                
+                const angle = (index / cards.length) * Math.PI * 2;
+
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+
                 const rect = card.getBoundingClientRect();
+
                 card.style.position = 'absolute';
-                card.style.left = `${centerX - rect.width / 2}px`;
-                card.style.top = `${centerY - rect.height / 2}px`;
+                card.offsetWidth;
+                card.style.left = `${x - rect.width / 2}px`;
+                card.style.top = `${y - rect.height / 2}px`;
                 card.style.opacity = '1';
                 card.style.zIndex = '1000';
                 card.style.transition = 'all 3s ease';
+                card.style.transform = 'scale(1.4)';
+                setTimeout(() => card.style.transform = 'scale(1)', 800);
             });
         }, 1000);
 
@@ -391,13 +488,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const parentRect = grid.getBoundingClientRect();
             const cols = parseInt(gridSizeS.value.split('x')[0]) || 4;
 
+            //gap css
+            const gridStyles = window.getComputedStyle(grid);
+            const gap = parseInt(gridStyles.gap) || 0;
+
             cards.forEach((card, index) => {
                 const row = Math.floor(index / cols);
                 const col = index % cols;
                 const cardWidth = card.offsetWidth;
                 const cardHeight = card.offsetHeight;
-                const finalLeft = parentRect.left + col * cardWidth;
-                const finalTop = parentRect.top + row * cardHeight;
+                const finalLeft = parentRect.left + col * (cardWidth + gap);
+                const finalTop = parentRect.top + row * (cardHeight + gap);
 
                 card.style.left = `${finalLeft}px`;
                 card.style.top = `${finalTop}px`;
@@ -417,6 +518,9 @@ document.addEventListener("DOMContentLoaded", () => {
             //fondu video fin
             video.style.opacity = '0';
             setTimeout(() => video.remove(), 500);
+
+            //réafficheage text
+            presentationText.style.opacity = '1';
 
             lockCards = false;
 
