@@ -133,21 +133,61 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <section class="team">
     <h3 class="wline">Our Team</h3>
-    <div class="members">
-        <figure>
-            <img src="assets/images/member1.png" alt="Photo de Member #1">
-            <figcaption>Member #1</figcaption>
-        </figure>
-        <figure>
-            <img src="assets/images/member2.png" alt="Photo de Member #2">
-            <figcaption>Member #2</figcaption>
-        </figure>
-        <figure>
-            <img src="assets/images/member3.png" alt="Photo de Member #3">
-            <figcaption>Member #3</figcaption>
-        </figure>
+
+    <div class="team-layout">
+
+        <!-- 3 membres à GAUCHE -->
+        <div class="members-right">
+            <h3 class="main-team-title">Main Team</h3>
+
+            <figure>
+                <a href="https://31.media.tumblr.com/ee77592e071b02c0d7c4f13c716cb196/tumblr_mv2b7jklvs1qeafupo1_500.gif">
+                    <img src="assets/images/member1.png" alt="Photo de Member #1">
+                </a>
+                <figcaption>Member #1</figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://paypal.me/LucasVeysset">
+                    <img src="assets/images/member2.png" alt="Photo de Member #2">
+                </a>
+                <figcaption>Member #2</figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://tenor.com/view/cummins-gif-12535975135255283466">
+                    <img src="assets/images/member3.png" alt="Photo de Member #3">
+                </a>
+                <figcaption>Member #3</figcaption>
+            </figure>
+        </div>
+
+        <!-- Trait blanc -->
+        <div class="separator"></div>
+
+        <!-- Externes à DROITE -->
+        <div class="members-external">
+            <h3 class="external-title">External</h3>
+
+            <figure>
+                <a href="https://linktr.ee/tezc4t">
+                    <img src="assets/images/directeur_DA.png" alt="Photo du DA">
+                </a>
+                <figcaption>Directeur DA en interim</figcaption>
+            </figure>
+
+            <figure>
+                <a href="https://miwa.lol/aomigo">
+                    <img src="assets/images/volontaire.png" alt="Photo du volontaire">
+                </a>
+                <figcaption>volunteer</figcaption>
+            </figure>
+        </div>
+
     </div>
 </section>
+
+
 <section class="newsletter">
     <!-- Texte blanc au-dessus -->
     <div class="newsletter-toptext">
