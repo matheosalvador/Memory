@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="card" data-id="${img}">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="../../assets/images/manette.png" alt="dos de carte">
+                        <img src="../../assets/images/back_card/${theme}/back_card.jpg" alt="dos de carte">
                     </div>
                     <div class="card-back">
                         <img src="../../assets/images/thèmes/${theme}/${img}" alt="carte">
