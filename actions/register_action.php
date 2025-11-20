@@ -51,14 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'pseudo' => $pseudo
         ]);
         $success = "Registration successful! You can now log in.";
+    
+        $_SESSION['success'] = $success;
+        header("Location: ../login.php");
+        exit;
+    } else {
+        // Stockage des messages pour affichage
+        $_SESSION['errors'] = $errors;
+        $_SESSION['old'] = ['email' => $email, 'pseudo' => $pseudo];
+        header("Location: ../register.php");
+        exit;
     }
-
-    // Stockage des messages pour affichage
-    $_SESSION['errors'] = $errors;
-    $_SESSION['success'] = $success;
-    $_SESSION['old'] = ['email' => $email, 'pseudo' => $pseudo];
-
-    // Redirection vers le formulaire
-    header("Location: ../login.php");
-    exit;
 }
