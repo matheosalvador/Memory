@@ -78,17 +78,21 @@ require_once '../../utils/update_last_activity.php';
     <!-- SECTION IMAGE + CHATBOX FINALE -->
     <section class="game-presentation">
         <div class="presentation-text">
-            <h2>Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit.</h2>
+            <h2>Doctor Who,<br>The Eternity Clock.</h2>
+            
+            <p style="font-weight: bold;">Time is in peril…</p>
+
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse scelerisque in tortor vitae sollicitudin.
-                Aliquam lacus augue, rhoncus eget porta et, egestas ut augue.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse scelerisque in tortor vitae sollicitudin.
+                When the gears of Eternity falter, the entire universe teeters on the brink of collapse.
+                Alongside the Eleventh Doctor and River Song, embark on a race against time across ages and galaxies.
             </p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse scelerisque in tortor vitae sollicitudin.
+                From futuristic prisons to the streets of sixteenth‑century London, face the Cybermen, the Silurians, and the mysterious Silents.
+                Every choice, every puzzle solved draws you closer—or pushes you further away—from the hidden truth behind the Eternity Clock.
+            </p>
+            <p style="font-weight: bold;">
+                An epic journey where past, present, and future intertwine…
+                and where the fate of time itself rests in your hands.
             </p>
             <button class="play-link">Play</button>
         </div>
@@ -126,15 +130,18 @@ require_once '../../utils/update_last_activity.php';
     const chatToggle = document.getElementById('chat-toggle');
     const chatBox = document.querySelector('.chatbox');
 
-
     // partie chiante
-    // chatbox hide
-    chatBox.style.display = 'none';
 
     chatToggle.addEventListener('click', () => {
-        const isOpen = chatBox.style.display === 'flex';
-        chatBox.style.display = isOpen ? 'none' : 'flex';
-        chatToggle.classList.toggle('open', !isOpen);
+        chatBox.classList.toggle('visible');
+        const open = chatBox.classList.contains('visible');
+        chatToggle.setAttribute('aria-pressed', open ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!chatBox.classList.contains('visible')) return;
+        if (chatBox.contains(e.target) || chatToggle.contains(e.target)) return;
+        chatBox.classList.remove('visible');
     });
 
     function loadMessages(callback = null) {

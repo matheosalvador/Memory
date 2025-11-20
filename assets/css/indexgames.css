@@ -4,6 +4,7 @@ body {
   background-color: #070320;
   font-family: Arial, sans-serif;
 }
+
 .wwline{
   color: white;
 }
@@ -22,15 +23,18 @@ body {
   padding: 60px 20px;
   text-align: center;
 }
+
 .memory-game h1 {
   font-size: 2.5rem;
   margin-bottom: 16px;
 }
+
 .memory-game p {
   font-size: 1rem;
   margin-bottom: 40px;
   line-height: 1.5;
 }
+
 .controls {
   display: flex;
   justify-content: center;
@@ -38,6 +42,7 @@ body {
   gap: 30px;
   margin-bottom: 50px;
 }
+
 .control label {
   display: block;
   font-size: 0.75rem;
@@ -45,6 +50,7 @@ body {
   margin-bottom: 4px;
   text-transform: uppercase;
 }
+
 .control select {
   padding: 8px 12px;
   border: 1px solid #555;
@@ -53,6 +59,7 @@ body {
   color: #0b0b2b;
   font-size: 1rem;
 }
+
 #generatebtn {
   padding: 10px 20px;
   background-color: #ff392b;
@@ -125,6 +132,7 @@ body {
   text-align: center;
   min-width: 200px;
 }
+
 /* === SECTION AVEC IMAGE DE MANETTE + CHATBOX === */
 .game-presentation {
   display: flex;
@@ -355,17 +363,28 @@ body {
 
 .chatbox {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
+  top: 50%;
+  right: -400px;
+  transform: translateY(-50%);
   width: 400px;
-  max-height: 400px;
+  height: 400px;
   background-color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  border-radius: 8px;
-  z-index: 999;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  z-index: 9999;
   overflow: hidden;
+  transition: right 0.45s cubic-bezier(.2,.9,.2,1), opacity 0.35s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chatbox.visible {
+  right: 20px;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Header */
@@ -469,13 +488,18 @@ body {
   right: 20px;
   width: 50px;
   height: 50px;
-  background-color: red;
+  background-color: #e0281b;
   color: white;
   border: none;
   border-radius: 50%;
   font-size: 24px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 10000;
+  transition: transform 0.2s ease, background 0.2s;
+}
+
+#chat-toggle:hover {
+  transform: scale(1.1);
 }
 
 .chat-gif {
