@@ -1,8 +1,54 @@
 <?php 
-require_once '../../utils/database.php'; // include database connction
+require_once 'database.php'; // include database connction
+$pdo = getPDO();// get pdo database connection
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// enregistrement post
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (!$input) {
+        echo json_encode(['status' => 'ERROR', 'message' => 'Invalid JSON']);
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'] ?? null;
+    if (!$user_id) {
+        echo json_encode(['status' => 'ERROR', 'message' => 'User not logged in']);
+        exit;
+    }
+
+    $game_id = (int)($input['game_id'] ?? 1);
+    $difficulty = $input['difficulty'] ?? null;
+    $score = (int)($input['time'] ?? 0);
+
+    if ($difficulty === null) {
+        echo json_encode(['status' => 'ERROR', 'message' => 'Missing difficulty']);
+        exit;
+    }
+
+    try {
+        $stmt = $pdo->prepare("
+            INSERT INTO score (user_id, game_id, difficulty, time, created_at)
+            VALUES (:user_id, :game_id, :difficulty, :time, NOW())
+        ");
+        $stmt->execute([
+            ':user_id' => $user_id,
+            ':game_id' => $game_id,
+            ':difficulty' => $difficulty,
+            ':time' => $score
+        ]);
+
+        echo json_encode(['status' => 'OK', 'message' => 'Score saved', 'id' => $pdo->lastInsertId()]);
+    } catch (PDOException $e) {
+        echo json_encode(['status' => 'ERROR', 'message' => 'DB error: ' . $e->getMessage()]);
+    }
+    exit;
+}
 
 function getScores() {
-    $pdo = getPDO(); // get pdo database connection
+    global $pdo;
     $pseudo = $_GET['pseudo'] ?? ''; // pseudo from url
     if ($pseudo) {
         // if exist, we get sql request from most score table

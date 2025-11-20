@@ -518,3 +518,6 @@ FROM (
 
 ORDER BY stats.mois ASC;
 
+
+
+ALTER TABLE score DROP COLUMN score;

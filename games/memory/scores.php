@@ -2,11 +2,13 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-session_start();
+
 
 require_once '../../utils/helper.php'; 
 require_once '../../utils/update_last_activity.php';
 require_once '../../utils/fct-scores.php';
+
+$scores = getScores();
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +53,7 @@ require_once '../../utils/fct-scores.php';
             </thead>
             <tbody id="bodytable">
                 <?php $position = 1; ?>
-                <?php foreach(getScores() as $score): ?>
+                <?php foreach($scores as $score): ?>
                     <?php
                         // Vérifie si le joueur connecté est celui de la ligne
                         $isCurrentUser = isset($_SESSION['user_id']) && (int)$_SESSION['user_id'] === (int)$score['user_id'];

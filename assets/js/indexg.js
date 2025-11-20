@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let lockBoard = false; // bloque le bouton "generate"
     let lockCards = false; // bloque les clics lors de comparaison
     let flippedCards = []; // follow les carte retourné
+    let currentDifficulty = null;
     
 
     const endgamePopup = document.getElementById('endgame-popup');
@@ -88,6 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const size = gridSizeS.value;
         const theme = themeS.value;
+
+        currentDifficulty =
+            size === "4x4" ? 1 :
+            size === "6x6" ? 1 :
+            size === "8x8" ? 1 :
+            null;
 
         const pairsCount = {
             "4x4": 8,
@@ -318,8 +325,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //réafficheage text
             presentationText.style.opacity = '1';
-        
+
+
+
             endgamePopup.style.display = 'flex'; // ou 'block' selon votre CSS
+
+
+
             lockBoard = false;
             generateBtn.disabled = false;
             gridSizeS.disabled = false;
@@ -330,6 +342,23 @@ document.addEventListener("DOMContentLoaded", () => {
             gridSizeS.style.opacity = 1;
             themeS.style.opacity = 1;
             lockCards = true;
+
+            //enregistrement score + dans la page score
+            const timeSec = Math.round(milliseconds / 1000);
+
+            fetch('../../utils/fct-scores.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    game_id: 1,
+                    difficulty: currentDifficulty,
+                    time: timeSec
+                })
+            })
+            .then(r => r.text())
+            .then(console.log)
+            .catch(console.error);
+
         });
         
     }
