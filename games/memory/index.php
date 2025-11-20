@@ -134,6 +134,12 @@ require_once '../../utils/update_last_activity.php';
         chatToggle.setAttribute('aria-pressed', open ? 'true' : 'false');
     });
 
+    document.addEventListener('click', (e) => {
+        if (!chatBox.classList.contains('visible')) return;
+        if (chatBox.contains(e.target) || chatToggle.contains(e.target)) return;
+        chatBox.classList.remove('visible');
+    });
+
     function loadMessages(callback = null) {
         fetch("../../actions/chat.php?action=load")
         .then(res => res.json())
