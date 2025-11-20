@@ -320,8 +320,8 @@ document.addEventListener("DOMContentLoaded", () => {
         playWinAnimation(() => {
 
             //end animation
-            const score = milliseconds / 1000;
-            scoreValue.textContent = score;
+            const score = milliseconds;
+            scoreValue.textContent = `${score} ms`; // 25300 ms
 
             //réafficheage text
             presentationText.style.opacity = '1';
