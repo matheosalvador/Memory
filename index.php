@@ -29,7 +29,7 @@ $recordTimeFormatted = sprintf("%02dm%02d", $minutes, $seconds);
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/index.css">
     <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/main.css">
     <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
-    <title>HOME</title>
+    <title>Home</title>
 </head>
 
 <body>
@@ -42,8 +42,8 @@ include __DIR__ . '/partials/header-terminé.php';
 <section class="main">
     <div class="content">
         <h6>OUR ...</h6>
-        <h4 class="wline">Start from The power of Memory games</h4>
-        <p>Description</p>
+        <h4 class="wline">Come play our games!</h4>
+        <p>To play click on start!</p>
 
         <!-- BOUTON START QUI OUVRE LE MENU -->
         <a href="#" id="openGameMenu" class="button">Start !</a>
@@ -78,22 +78,22 @@ include __DIR__ . '/partials/header-terminé.php';
         </figure>
         <figure>
             <img src="assets/images/game3.jpg" alt="game3">
-            <figcaption data-audio="assets/audio/accueil/puissance4.mp3">Puissance 4</figcaption>
+            <figcaption data-audio="assets/audio/accueil/puissance4.mp3">Connect 4</figcaption>
         </figure>
     </div>
 </section>
 
 <section class="info">
-    <h3 class="info-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+    <h3 class="info-title">Our games are totally free and addictive 🙂</h3>
 
     <div class="info-content">
-        <h3 class="info-title">Lorem Ipsum</h3>
+        <h3 class="info-title">Description of our games</h3>
 
         <div class="info-text">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                Suspendisse scelerisque in tortor vitae sollicitudin.<br>
-                Aliquam lacus augue, rhoncus eget porta et, egestas ut augue.
+                Memory Game: Challenge your memory by flipping cards it's simple, fast, and addictive!<br>
+                Doctor Who: The Eternity Clock: Dive into the Doctor's universe and save time through thrilling puzzles.<br>
+                Connect Four: Face your friends in this timeless strategy classic. Align four tokens and win the match!
             </p>
         </div>
 
@@ -176,14 +176,14 @@ include __DIR__ . '/partials/header-terminé.php';
                 <a href="https://linktr.ee/tezc4t">
                     <img src="assets/images/directeur_DA.png" alt="Photo du DA">
                 </a>
-                <figcaption data-audio="assets/audio/accueil/vietnam.mp3">Directeur DA en interim</figcaption>
+                <figcaption data-audio="assets/audio/accueil/vietnam.mp3">Interim Art Director</figcaption>
             </figure>
 
             <figure>
                 <a href="https://miwa.lol/aomigo">
                     <img src="assets/images/volontaire.png" alt="Photo du volontaire">
                 </a>
-                <figcaption data-audio="assets/audio/accueil/gaulois.mp3">volunteer</figcaption>
+                <figcaption data-audio="assets/audio/accueil/gaulois.mp3">Volunteer</figcaption>
             </figure>
         </div>
     </div>
@@ -191,12 +191,14 @@ include __DIR__ . '/partials/header-terminé.php';
 
 <section class="newsletter">
     <div class="newsletter-toptext">
-        <h3>Lorem Ipsum</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3>Description of our team</h3>
+        <p>At the start we started at 3 members.</p>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-            Suspendisse scelerisque in tortor vitae sollicitudin. 
-            Aliquam lacus augue, rhoncus eget porta et, egestas ut augue.
+            Today we are 5 people working hard to bring you the best gaming experience possible.
+            Our team is made up of passionate individuals dedicated to creating fun and engaging games for all ages.
+            We believe in the power of games to bring people together and create memorable experiences.
+            we hope you enjoy playing our games as much as we enjoy creating them for you!
+            hope to see you soon in one of our games!
         </p>
     </div>
 
