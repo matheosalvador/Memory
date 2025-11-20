@@ -126,15 +126,12 @@ require_once '../../utils/update_last_activity.php';
     const chatToggle = document.getElementById('chat-toggle');
     const chatBox = document.querySelector('.chatbox');
 
-
     // partie chiante
-    // chatbox hide
-    chatBox.style.display = 'none';
 
     chatToggle.addEventListener('click', () => {
-        const isOpen = chatBox.style.display === 'flex';
-        chatBox.style.display = isOpen ? 'none' : 'flex';
-        chatToggle.classList.toggle('open', !isOpen);
+        chatBox.classList.toggle('visible');
+        const open = chatBox.classList.contains('visible');
+        chatToggle.setAttribute('aria-pressed', open ? 'true' : 'false');
     });
 
     function loadMessages(callback = null) {

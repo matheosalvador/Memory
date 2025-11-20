@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
         playWinAnimation(() => {
 
             //end animation
-            const score = milliseconds;
+            const score = milliseconds / 1000;
             scoreValue.textContent = score;
 
             //réafficheage text
