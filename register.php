@@ -30,9 +30,10 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                 <div class="login-container flex">
 
                     <!-- title and paraphe -->
-                    <h1 id="welcome">Welcome to our place ! 👋</h1>
-                    <p id="details">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse scelerisque in tortor vitae sollicitudin.</p>
+                    <h1 id="welcome">Welcome to our place 👋</h1>
+                    <p id="details">
+                        Enter your information to complete your registration.
+                    </p>
 
                     <!-- Affichage des erreurs / succès -->
                     <?php if(!empty($errors)): ?>
@@ -91,7 +92,7 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
             </div>
         </form>
             <div class="w-50">
-                <img id="image" src="assets/images/Image.jpg" alt=""/>
+                <img id="image" src="assets/images/Image.jpg" alt="register image"/>
             </div>
         </div>
     </div>

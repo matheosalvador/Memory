@@ -15,7 +15,7 @@ require_once '../../utils/update_last_activity.php';
     <title>Puissance 4</title>
 </head>
 
-<body>
+<body>  
 
 <?php include "../../partials/header-terminé.php"; ?>
 
@@ -34,6 +34,22 @@ require_once '../../utils/update_last_activity.php';
     <h1 class="wwline">Puissance 4</h1>
     <p class="wwline">Clique sur une colonne pour déposer un jeton. Le premier qui aligne 4 gagne.</p>
 
+    <!--  Paramètres de jeu -->
+    <div class="game-settings">
+        <label for="mode">Mode de jeu :</label>
+        <select id="mode">
+            <option value="ia" selected>Joueur vs IA</option>
+            <option value="pvp">Joueur vs Joueur</option>
+        </select>
+
+        <label for="difficulty">Difficulté :</label>
+        <select id="difficulty">
+            <option value="easy">Facile</option>
+            <option value="medium">Moyenne</option>
+            <option value="hard">Difficile</option>
+        </select>
+    </div>
+
     <div class="controls">
         <div class="current-player">Joueur actuel : <span id="currentPlayer">Rouge</span></div>
         <button id="resetBtn">Nouvelle partie</button>
@@ -46,11 +62,13 @@ require_once '../../utils/update_last_activity.php';
 <script src="<?= getBaseUrl(); ?>/assets/js/burger.js" defer></script>
 
 <?php include "../../partials/footer-terminé.php"; ?>
+
 <script>
 function playAudio(src) {
     const audio = new Audio(src);
     audio.play().catch(err => console.error("Erreur audio :", err));
 }
 </script>
+
 </body>
 </html>
