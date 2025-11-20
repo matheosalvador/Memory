@@ -202,13 +202,18 @@ include __DIR__ . '/partials/header-terminé.php';
 
     <div class="container">
         <div class="text">
-            <h3>Restez informé</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-               Suspendisse scelerisque in tortor vitae sollicitudin.</p>
+            <h3>Don’t miss a single update!</h3>
+            <p>Subscribe to our newsletter and receive directly in your inbox:</p>
+            <ul>
+                <li style="color: green;">Our latest news</li>
+                <li style="color: green;">Exclusive tips</li>
+                <li style="color: green;">Special offers reserved for our subscribers</li>
+            </ul>
+            <p>👉 To sign up, enter your email address in the field provided and click the “Validate” button.</p>
         </div>
         <div class="form">
-            <input name="email" type="email" placeholder="Adresse email">
-            <button type="submit">Valider</button>
+            <input name="email" type="email" placeholder="Email address">
+            <button type="submit">Validate</button>
         </div>
     </div>
 </section>
