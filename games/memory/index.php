@@ -221,7 +221,7 @@ require_once '../../utils/update_last_activity.php';
     loadMessages();
 
     </script>
-    <!-- >>>> Debut du Konammi code <<<< -->
+    <!-- debut konami -->
     <script>
         // Konami code : ↑ ↑ ↓ ↓ ← → ← → B A
         const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
@@ -274,7 +274,7 @@ require_once '../../utils/update_last_activity.php';
         });
     </script>
 
-    <!-- FIN DU KONAMI CODE -->
+    <!-- fin konami -->
     </body>
     
 </html>
