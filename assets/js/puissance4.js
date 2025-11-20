@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (winnerPlayer) winnerPlayer.textContent = winner === "red" ? "Rouge" : "Jaune";
         }
 
-        // 🔊 AUDIO DE VICTOIRE
+        //  AUDIO DE VICTOIRE
         const title = document.getElementById("winner-title");
         if (title) {
             const audioSrc = title.getAttribute("data-audio");

@@ -99,7 +99,7 @@ body {
     100% { transform: scale(1); }
 }
 
-/* ⚠️ Jetons VISIBLES (très important) */
+/*  Jetons VISIBLES (très important) */
 .token {
     width: 75px;
     height: 75px;
