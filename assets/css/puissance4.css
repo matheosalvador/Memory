@@ -24,6 +24,23 @@ body {
     font-size: 18px;
 }
 
+/* --- AJOUT : Style du sélecteur de mode --- */
+.mode-select {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.mode-select select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    background: white;
+    color: black;
+    font-size: 16px;
+}
+
+/* --- Bouton reset --- */
 #resetBtn {
     padding: 12px 25px;
     cursor: pointer;
@@ -99,7 +116,7 @@ body {
     100% { transform: scale(1); }
 }
 
-/*  Jetons VISIBLES (très important) */
+/* Jetons visibles */
 .token {
     width: 75px;
     height: 75px;
@@ -169,4 +186,23 @@ body {
 
 #restartbtn:hover {
     transform: scale(1.07);
+}
+.game-settings {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.game-settings label {
+    font-weight: bold;
+}
+
+.game-settings select {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #fff;
+    border: 2px solid #ccc;
+    cursor: pointer;
 }
