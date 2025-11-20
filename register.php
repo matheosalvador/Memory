@@ -37,7 +37,7 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
 
                     <!-- Affichage des erreurs / succès -->
                     <?php if(!empty($errors)): ?>
-                        <div class="errors">
+                        <div class="errors" style="color: red;">
                             <ul>
                                 <?php foreach($errors as $error): ?>
                                     <li><?= htmlspecialchars($error) ?></li>
@@ -45,7 +45,7 @@ unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['old']);
                             </ul>
                         </div>
                     <?php elseif($success): ?>
-                        <div class="success"><?= htmlspecialchars($success) ?></div>
+                        <div class="success" style="color: green;"><?= htmlspecialchars($success) ?></div>
                     <?php endif; ?>
 
                     <!-- Formulaire -->
