@@ -15,18 +15,36 @@ require_once '../../utils/update_last_activity.php';
     <title>Puissance 4</title>
 </head>
 
-<body>  
+<body>
 
 <?php include "../../partials/header-terminé.php"; ?>
 
-<div id="endgame-popup" class="popup hidden" role="dialog" aria-modal="true">
+<!-- POPUP VICTOIRE -->
+<div id="win-popup" class="popup hidden" role="dialog" aria-modal="true">
     <div class="popup-content">
         <h2 id="winner-title" 
             data-audio="<?= getBaseUrl(); ?>/assets/audio/footer-contact-puissance4/travailsup.mp3">
             Félicitations !
         </h2>
         <p id="winner-sub">Le joueur <span id="winner-player"></span> a gagné.</p>
-        <button id="restartbtn">Recommencer</button>
+        <button class="restartbtn">Recommencer</button>
+    </div>
+</div>
+
+<!-- POPUP DÉFAITE IA -->
+<div id="lose-popup" 
+     class="popup hidden" 
+     role="dialog" 
+     aria-modal="true"
+     data-nightmare="<?= getBaseUrl(); ?>/assets/audio/footer-contact-puissance4/looseH.mp3"
+     data-warning3="<?= getBaseUrl(); ?>/assets/audio/footer-contact-puissance4/warning3.mp3">
+    <div class="popup-content lose">
+        <h2 id="lose-title"
+            data-audio="<?= getBaseUrl(); ?>/assets/audio/footer-contact-puissance4/sonloose1.mp3">
+            Défaite…
+        </h2>
+        <p id="lose-sub">L'IA t’a battu.</p>
+        <button class="restartbtn">Réessayer</button>
     </div>
 </div>
 
@@ -34,7 +52,6 @@ require_once '../../utils/update_last_activity.php';
     <h1 class="wwline">Puissance 4</h1>
     <p class="wwline">Clique sur une colonne pour déposer un jeton. Le premier qui aligne 4 gagne.</p>
 
-    <!--  Paramètres de jeu -->
     <div class="game-settings">
         <label for="mode">Mode de jeu :</label>
         <select id="mode">
@@ -55,20 +72,15 @@ require_once '../../utils/update_last_activity.php';
         <button id="resetBtn">Nouvelle partie</button>
     </div>
 
-    <div id="board" class="board" role="grid"></div>
+    <!-- IMPORTANT : data-warning ajouté ici pour que le JS puisse lire WARNING_SOUND -->
+    <div id="board" class="board" role="grid"
+         data-warning="<?= getBaseUrl(); ?>/assets/audio/footer-contact-puissance4/warning.mp3"></div>
 </section>
 
 <script src="<?= getBaseUrl(); ?>/assets/js/puissance4.js" defer></script>
 <script src="<?= getBaseUrl(); ?>/assets/js/burger.js" defer></script>
 
 <?php include "../../partials/footer-terminé.php"; ?>
-
-<script>
-function playAudio(src) {
-    const audio = new Audio(src);
-    audio.play().catch(err => console.error("Erreur audio :", err));
-}
-</script>
-
+<audio id="bgMusic" loop volume="0.6"></audio>
 </body>
 </html>

@@ -6,17 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
     let board = [];
     let currentPlayer = "red";
     let gameOver = false;
+    let warningPlayed = false;
 
     const boardDiv = document.getElementById("board");
     const currentPlayerSpan = document.getElementById("currentPlayer");
-    const popup = document.getElementById("endgame-popup");
-    const winnerPlayer = document.getElementById("winner-player");
-    const restartBtn = document.getElementById("restartbtn");
-    const resetBtn = document.getElementById("resetBtn");
 
+    // Try to read a warning sound path from HTML (data-warning on board)
+    const WARNING_SOUND = boardDiv?.dataset?.warning || null;
+
+    // POPUPS
+    const winPopup = document.getElementById("win-popup");
+    const losePopup = document.getElementById("lose-popup");
+    const winnerPlayer = document.getElementById("winner-player");
+    const resetBtn = document.getElementById("resetBtn");
+    const popupRestartBtns = [...document.querySelectorAll(".restartbtn")];
+
+    // SELECTS
     const modeSelect = document.getElementById("mode");
     const difficultySelect = document.getElementById("difficulty");
 
+    // BG MUSIC element (placed in your PHP page)
+    const bgMusic = document.getElementById("bgMusic");
+
+    // IA depths
     const DEPTH = {
         easy: 0,
         medium: 2,
@@ -24,18 +36,99 @@ document.addEventListener("DOMContentLoaded", () => {
         nightmare: 8
     };
 
-    // -------------------------------
-    // INITIALISATION DU PLATEAU
-    // -------------------------------
+    // ---------------------------
+    // detect base url from any dataset that contains '/assets/'
+    // ---------------------------
+    function detectBaseUrl() {
+        const candidates = [
+            boardDiv?.dataset?.warning,
+            losePopup?.dataset?.nightmare,
+            losePopup?.dataset?.warning3,
+            winPopup?.querySelector("#winner-title")?.dataset?.audio,
+            document.querySelector("[data-audio]")?.dataset?.audio
+        ];
+        for (const val of candidates) {
+            if (!val) continue;
+            const idx = val.indexOf("/assets/");
+            if (idx !== -1) {
+                return val.slice(0, idx); // e.g. "http://localhost/Memory"
+            }
+        }
+        // fallback: empty string means relative paths from current location
+        return "";
+    }
+
+    const BASE_URL = detectBaseUrl(); // may be "" if not found
+
+    // ---------------------------
+    // audio files (filenames must match your filesystem)
+    // build full URLs using BASE_URL
+    // ---------------------------
+    const FILES_BY_DIFFICULTY = {
+        easy:  `${BASE_URL}/assets/audio/footer-contact-puissance4/easy.mp3`,
+        medium:`${BASE_URL}/assets/audio/footer-contact-puissance4/Moderate.mp3`,
+        hard:  `${BASE_URL}/assets/audio/footer-contact-puissance4/Hardcore.mp3`,
+        nightmare:`${BASE_URL}/assets/audio/footer-contact-puissance4/Hardcore.mp3`
+    };
+
+    // ---------------------------
+    // background music control
+    // ---------------------------
+    function resumeBgMusicIfBlocked() {
+        if (!bgMusic) return;
+        bgMusic.play().then(() => {
+            // ok
+        }).catch(() => {
+            // blocked until user gesture
+        });
+    }
+
+    function oneUserGestureStart() {
+        if (!bgMusic) {
+            document.removeEventListener("click", oneUserGestureStart);
+            document.removeEventListener("touchstart", oneUserGestureStart);
+            return;
+        }
+        bgMusic.play().catch(()=>{});
+        document.removeEventListener("click", oneUserGestureStart);
+        document.removeEventListener("touchstart", oneUserGestureStart);
+    }
+
+    document.addEventListener("click", oneUserGestureStart, { once: true, passive: true });
+    document.addEventListener("touchstart", oneUserGestureStart, { once: true, passive: true });
+
+    function updateBackgroundMusic() {
+        if (!bgMusic || !difficultySelect) return;
+        const difficulty = difficultySelect.value || "easy";
+        const src = FILES_BY_DIFFICULTY[difficulty];
+        if (!src) return;
+
+        // only change if different to avoid restarting unnecessarily
+        if (bgMusic.src !== src) {
+            bgMusic.src = src;
+            bgMusic.volume = 0.6;
+            bgMusic.loop = true;
+            resumeBgMusicIfBlocked();
+        }
+    }
+
+    if (difficultySelect) difficultySelect.addEventListener("change", updateBackgroundMusic);
+
+    // ---------------------------
+    // INIT BOARD
+    // ---------------------------
     function initBoard() {
         board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
-        boardDiv.innerHTML = "";
+        if (boardDiv) boardDiv.innerHTML = "";
         currentPlayer = "red";
-        currentPlayerSpan.textContent = "Rouge";
+        if (currentPlayerSpan) currentPlayerSpan.textContent = "Rouge";
+        warningPlayed = false;
         gameOver = false;
 
-        popup.classList.add("hidden");
-        resetBtn.disabled = true;
+        winPopup?.classList.add("hidden");
+        losePopup?.classList.add("hidden");
+
+        if (resetBtn) resetBtn.disabled = false;
 
         for (let c = 0; c < COLS; c++) {
             const colDiv = document.createElement("div");
@@ -44,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             colDiv.addEventListener("click", () => {
                 if (gameOver) return;
-                if (modeSelect.value === "ia" && currentPlayer === "yellow") return; // joueur peut jouer seulement rouge en mode IA
+                if (modeSelect && modeSelect.value === "ia" && currentPlayer === "yellow") return;
                 handleMove(c);
             });
 
@@ -56,11 +149,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             boardDiv.appendChild(colDiv);
         }
+
+        // refresh bg music (if difficulty already set)
+        updateBackgroundMusic();
     }
 
-    // -------------------------------
-    // GESTION DU COUP
-    // -------------------------------
+    // ---------------------------
+    // handle a move
+    // ---------------------------
     async function handleMove(c) {
         if (gameOver) return;
 
@@ -75,38 +171,61 @@ document.addEventListener("DOMContentLoaded", () => {
         const cell = boardDiv.children[c].children[r];
         const settled = document.createElement("div");
         settled.className = `token ${currentPlayer}`;
-        settled.style.width = "100%";
-        settled.style.height = "100%";
-        settled.style.borderRadius = "50%";
         cell.appendChild(settled);
-        cell.classList.add("pop");
-        setTimeout(() => cell.classList.remove("pop"), 220);
 
         const winning = getWinningCells(r, c);
         if (winning.length) {
             winning.forEach(([wr, wc]) => {
-                boardDiv.children[wc].children[wr].classList.add("winner");
+                if (boardDiv.children[wc] && boardDiv.children[wc].children[wr]) {
+                    boardDiv.children[wc].children[wr].classList.add("winner");
+                }
             });
-            endGame(currentPlayer);
-            return;
+
+            if (currentPlayer === "yellow" && modeSelect && modeSelect.value === "ia") {
+                return endLose();
+            }
+            return endWin(currentPlayer);
         }
 
+        // draw
         if (board.every(row => row.every(cell => cell !== null))) {
-            endGame("draw");
-            return;
+            return endWin("draw");
         }
+
+        const iaJustPlayed = currentPlayer === "yellow";
 
         currentPlayer = currentPlayer === "red" ? "yellow" : "red";
-        currentPlayerSpan.textContent = currentPlayer === "red" ? "Rouge" : "Jaune";
+        if (currentPlayerSpan) currentPlayerSpan.textContent = currentPlayer === "red" ? "Rouge" : "Jaune";
 
-        if (currentPlayer === "yellow" && modeSelect.value === "ia") {
-            setTimeout(() => aiPlay(difficultySelect.value), 300);
+        // detect threat only after IA played
+        if (iaJustPlayed && modeSelect && modeSelect.value === "ia") detectThreat();
+
+        if (currentPlayer === "yellow" && modeSelect && modeSelect.value === "ia") {
+            setTimeout(() => aiPlay(difficultySelect ? difficultySelect.value : "easy"), 300);
         }
     }
 
-    // -------------------------------
-    // ANIMATION DE CHUTE
-    // -------------------------------
+    // ---------------------------
+    // detect 3 yellow + 1 empty windows -> play warning once
+    // ---------------------------
+    function detectThreat() {
+        if (warningPlayed) return;
+        if (!WARNING_SOUND) return;
+
+        for (let w of getAllWindows(board)) {
+            const y = w.filter(x => x === "yellow").length;
+            const e = w.filter(x => x === null).length;
+            if (y === 3 && e === 1) {
+                try { new Audio(WARNING_SOUND).play(); } catch (err) {}
+                warningPlayed = true;
+                return;
+            }
+        }
+    }
+
+    // ---------------------------
+    // animate drop
+    // ---------------------------
     function animateDrop(c, r, color) {
         return new Promise(resolve => {
             const colDiv = boardDiv.children[c];
@@ -125,169 +244,128 @@ document.addEventListener("DOMContentLoaded", () => {
             const cellRect = targetCell.getBoundingClientRect();
             const targetY = cellRect.top - colRect.top;
 
-            requestAnimationFrame(() => token.style.top = `${targetY}px`);
+            requestAnimationFrame(() => (token.style.top = `${targetY}px`));
 
-            token.addEventListener("transitionend", () => {
+            function done() {
                 if (token.parentElement) token.remove();
                 resolve();
-            });
+            }
 
-            setTimeout(() => {
-                if (token.parentElement) token.remove();
-                resolve();
-            }, 650);
+            token.addEventListener("transitionend", done);
+            setTimeout(done, 700);
         });
     }
 
-    // -------------------------------
-    // IA
-    // -------------------------------
+    // ---------------------------
+    // AI logic (random / medium / minimax)
+    // ---------------------------
     function aiPlay(level) {
-
         if (gameOver) return;
-
         if (level === "easy") return randomMove();
         if (level === "medium") return mediumMove();
         if (level === "hard") return minimaxMove(DEPTH.hard);
         if (level === "nightmare") return minimaxMove(DEPTH.nightmare);
-
         randomMove();
     }
 
     function randomMove() {
         const valid = getValidColumns();
+        if (!valid.length) return;
         handleMove(valid[Math.floor(Math.random() * valid.length)]);
     }
 
     function mediumMove() {
         const valid = getValidColumns();
-
         for (let c of valid) {
-            if (checkWinBoard(simulateMove(board, c, "yellow"), "yellow"))
-                return handleMove(c);
+            if (checkWinBoard(simulateMove(board, c, "yellow"), "yellow")) return handleMove(c);
         }
         for (let c of valid) {
-            if (checkWinBoard(simulateMove(board, c, "red"), "red"))
-                return handleMove(c);
+            if (checkWinBoard(simulateMove(board, c, "red"), "red")) return handleMove(c);
         }
-
         randomMove();
     }
 
     function minimaxMove(depth) {
         const valid = getValidColumns();
-        let bestScore = -Infinity;
-        let bestCol = valid[0];
-
+        if (!valid.length) return;
+        let bestScore = -Infinity, bestCol = valid[0];
         for (let col of valid) {
             const temp = simulateMove(board, col, "yellow");
             const score = minimax(temp, depth - 1, false, -Infinity, Infinity);
-            if (score > bestScore) {
-                bestScore = score;
-                bestCol = col;
-            }
+            if (score > bestScore) { bestScore = score; bestCol = col; }
         }
-
         handleMove(bestCol);
     }
 
-    // -------------------------------
-    // MINIMAX
-    // -------------------------------
-    function minimax(boardState, depth, maximizing, alpha, beta) {
-
-        if (depth === 0 || isTerminal(boardState))
-            return evaluateBoard(boardState);
-
-        const valid = getValidColumns(boardState);
-        if (valid.length === 0) return 0;
-
-        valid.sort((a, b) => Math.abs(a - 3) - Math.abs(b - 3));
-
+    function minimax(state, depth, maximizing, alpha, beta) {
+        if (depth === 0 || isTerminal(state)) return evaluateBoard(state);
+        const valid = getValidColumns(state);
+        if (!valid.length) return 0;
         if (maximizing) {
-            let maxEval = -Infinity;
+            let best = -Infinity;
             for (let col of valid) {
-                const child = simulateMove(boardState, col, "yellow");
-                const evalScore = minimax(child, depth - 1, false, alpha, beta);
-                maxEval = Math.max(maxEval, evalScore);
-                alpha = Math.max(alpha, evalScore);
-                if (beta <= alpha) break;
+                const child = simulateMove(state, col, "yellow");
+                const score = minimax(child, depth - 1, false, alpha, beta);
+                best = Math.max(best, score);
+                alpha = Math.max(alpha, score);
+                if (alpha >= beta) break;
             }
-            return maxEval;
+            return best;
         } else {
-            let minEval = Infinity;
+            let best = Infinity;
             for (let col of valid) {
-                const child = simulateMove(boardState, col, "red");
-                const evalScore = minimax(child, depth - 1, true, alpha, beta);
-                minEval = Math.min(minEval, evalScore);
-                beta = Math.min(beta, evalScore);
+                const child = simulateMove(state, col, "red");
+                const score = minimax(child, depth - 1, true, alpha, beta);
+                best = Math.min(best, score);
+                beta = Math.min(beta, score);
                 if (beta <= alpha) break;
             }
-            return minEval;
+            return best;
         }
     }
 
-    // -------------------------------
-    // HEURISTIQUE
-    // -------------------------------
+    // ---------------------------
+    // evaluation helper
+    // ---------------------------
     function evaluateBoard(b) {
         let score = 0;
-
-        const center = Math.floor(COLS / 2);
-        let centerCount = 0;
-        for (let r = 0; r < ROWS; r++)
-            if (b[r][center] === "yellow") centerCount++;
-
-        score += centerCount * 5;
-
-        const windows = getAllWindows(b);
-        for (let w of windows) {
+        for (let w of getAllWindows(b)) {
             const y = w.filter(x => x === "yellow").length;
             const r = w.filter(x => x === "red").length;
             const e = w.filter(x => x === null).length;
-
             if (y === 4) score += 10000;
             else if (y === 3 && e === 1) score += 80;
-            else if (y === 2 && e === 2) score += 10;
-
-            if (r === 4) score -= 12000;
-            else if (r === 3 && e === 1) score -= 90;
-            else if (r === 2 && e === 2) score -= 8;
+            if (r === 4) score -= 10000;
+            else if (r === 3 && e === 1) score -= 80;
         }
-
         return score;
     }
 
+    // ---------------------------
+    // get all 4-cell windows (rows, cols, diags)
+    // ---------------------------
     function getAllWindows(state) {
         const res = [];
-
         for (let r = 0; r < ROWS; r++)
             for (let c = 0; c < COLS - 3; c++)
                 res.push([state[r][c], state[r][c+1], state[r][c+2], state[r][c+3]]);
-
         for (let c = 0; c < COLS; c++)
             for (let r = 0; r < ROWS - 3; r++)
                 res.push([state[r][c], state[r+1][c], state[r+2][c], state[r+3][c]]);
-
         for (let r = 0; r < ROWS - 3; r++)
             for (let c = 0; c < COLS - 3; c++)
                 res.push([state[r][c], state[r+1][c+1], state[r+2][c+2], state[r+3][c+3]]);
-
         for (let r = 3; r < ROWS; r++)
             for (let c = 0; c < COLS - 3; c++)
                 res.push([state[r][c], state[r-1][c+1], state[r-2][c+2], state[r-3][c+3]]);
-
         return res;
     }
 
-    // -------------------------------
-    // OUTILS IA
-    // -------------------------------
+    // ---------------------------
+    // utilities
+    // ---------------------------
     function getValidColumns(state = board) {
-        const valid = [];
-        for (let c = 0; c < COLS; c++)
-            if (state[0][c] === null) valid.push(c);
-        return valid;
+        return [...Array(COLS).keys()].filter(c => state[0][c] === null);
     }
 
     function simulateMove(state, col, color) {
@@ -299,11 +377,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function isTerminal(state) {
-        return (
-            checkWinBoard(state, "yellow") ||
-            checkWinBoard(state, "red") ||
-            getValidColumns(state).length === 0
-        );
+        return checkWinBoard(state, "yellow") || checkWinBoard(state, "red") || getValidColumns(state).length === 0;
+    }
+
+    // ---------------------------
+    // winners detection
+    // ---------------------------
+    function getWinningCells(row, col) {
+        return getWinningCellsFromState(board, row, col);
+    }
+
+    function getWinningCellsFromState(state, row, col) {
+        const color = state[row][col];
+        if (!color) return [];
+        const dirs = [[0,1], [1,0], [1,1], [1,-1]];
+        for (let [dr, dc] of dirs) {
+            let line = [[row, col]];
+            let r = row + dr, c = col + dc;
+            while (r >= 0 && r < ROWS && c >= 0 && c < COLS && state[r][c] === color) {
+                line.push([r, c]); r += dr; c += dc;
+            }
+            r = row - dr; c = col - dc;
+            while (r >= 0 && r < ROWS && c >= 0 && c < COLS && state[r][c] === color) {
+                line.unshift([r, c]); r -= dr; c -= dc;
+            }
+            if (line.length >= 4) return line;
+        }
+        return [];
     }
 
     function checkWinBoard(state, color) {
@@ -314,77 +414,49 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
-    function getWinningCellsFromState(state, row, col) {
-        const color = state[row][col];
-        if (!color) return [];
-
-        const dirs = [[0,1],[1,0],[1,1],[1,-1]];
-
-        for (let [dr,dc] of dirs) {
-            let line = [[row,col]];
-            let r = row + dr, c = col + dc;
-
-            while (r>=0 && r<ROWS && c>=0 && c<COLS && state[r][c] === color) {
-                line.push([r,c]);
-                r += dr; c += dc;
-            }
-
-            r = row - dr; c = col - dc;
-            while (r>=0 && r<ROWS && c>=0 && c<COLS && state[r][c] === color) {
-                line.unshift([r,c]);
-                r -= dr; c -= dc;
-            }
-
-            if (line.length >= 4) return line;
-        }
-        return [];
-    }
-
-    function getWinningCells(row, col) {
-        return getWinningCellsFromState(board, row, col);
-    }
-
-    // -------------------------------
-    // FIN DE PARTIE
-    // -------------------------------
-    function endGame(winner) {
+    // ---------------------------
+    // end game UI + sounds
+    // ---------------------------
+    function endWin(winner) {
         gameOver = true;
-        popup.classList.remove("hidden");
-
-        winnerPlayer.textContent =
-            winner === "draw"
-                ? "Égalité"
-                : (winner === "red" ? "Rouge" : "Jaune");
-
-        const audio = document.getElementById("winner-title").getAttribute("data-audio");
-        if (audio) new Audio(audio).play().catch(() => {});
-
-        resetBtn.disabled = false;
+        winPopup?.classList.remove("hidden");
+        if (winnerPlayer) {
+            winnerPlayer.textContent = (winner === "draw") ? "Égalité" : (winner === "red" ? "Rouge" : "Jaune");
+        }
+        const audio = winPopup?.querySelector("#winner-title")?.dataset?.audio;
+        if (audio) try { new Audio(audio).play(); } catch(e) {}
     }
 
+    function endLose() {
+        gameOver = true;
+        const loseNormal = document.getElementById("lose-title")?.dataset?.audio || null;
+        const loseNightmare = losePopup?.dataset?.nightmare || null;
+        const sound = (difficultySelect && difficultySelect.value === "nightmare") ? loseNightmare : loseNormal;
+        if (sound) try { new Audio(sound).play(); } catch(e) {}
+        losePopup?.classList.remove("hidden");
+    }
+
+    // ---------------------------
+    // reset helpers
+    // ---------------------------
     function resetHighlights() {
         document.querySelectorAll(".winner").forEach(e => e.classList.remove("winner"));
-        document.querySelectorAll(".cell .token").forEach(tok => tok.remove());
+        document.querySelectorAll(".cell .token").forEach(t => t.remove());
     }
 
-    restartBtn.addEventListener("click", () => { resetHighlights(); initBoard(); });
-    resetBtn.addEventListener("click", () => { resetHighlights(); initBoard(); });
+    [...popupRestartBtns, resetBtn].forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener("click", () => {
+            winPopup?.classList.add("hidden");
+            losePopup?.classList.add("hidden");
+            resetHighlights();
+            initBoard();
+        });
+    });
 
-    initBoard();
-
-    // -------------------------------
-    // KONAMI CODE — UNLOCK NIGHTMARE
-    // -------------------------------
-    const konami = [
-        "ArrowUp","ArrowUp",
-        "ArrowDown","ArrowDown",
-        "ArrowLeft","ArrowRight",
-        "ArrowLeft","ArrowRight",
-        "b","a"
-    ];
-
+    // KONAMI unlock
+    const konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
     let konamiIndex = 0;
-
     document.addEventListener("keydown", (e) => {
         if (e.key === konami[konamiIndex]) {
             konamiIndex++;
@@ -392,22 +464,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 unlockNightmare();
                 konamiIndex = 0;
             }
-        } else {
-            konamiIndex = 0;
-        }
+        } else konamiIndex = 0;
     });
-
     function unlockNightmare() {
+        if (!difficultySelect) return;
         if (!difficultySelect.querySelector("option[value='nightmare']")) {
             const opt = document.createElement("option");
             opt.value = "nightmare";
             opt.textContent = "Nightmare 👹";
             difficultySelect.appendChild(opt);
         }
-
         difficultySelect.value = "nightmare";
-
-        alert("🔥 Mode NIGHTMARE débloqué ! Bonne chance… 😈");
+        alert("🔥 Mode NIGHTMARE débloqué !");
+        updateBackgroundMusic();
     }
 
-});
+    // start
+    initBoard();
+
+}); // DOMContentLoaded end
