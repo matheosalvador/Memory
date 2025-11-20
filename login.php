@@ -1,5 +1,5 @@
-<?php 
-require('utils/helper.php');
+<!-- Helper add into this page  -->
+<?php require('utils/helper.php');
 session_start();
 
 // Récupération des messages de session
@@ -20,73 +20,73 @@ unset($_SESSION['errors'], $_SESSION['success']);
 	<link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
 	<title>Login</title>
 </head>
+    <!-- Body -->
+	<body>
+		<div id="login-register">
+			<div class="flex">
+				<div class="w-50">
+					<div class="login-container flex">
+						
+						<!-- title and paraphe -->
+						<h1 id="welcome">Welcome back 👋</h1>
+						<p id="details">
+							Enter your account information to access the game.
+						</p>
 
-<body>
-	<div id="login-register">
-		<div class="flex">
-			<div class="w-50">
-				<div class="login-container flex">
-					
-					<!-- title and paraphe -->
-					<h1 id="welcome">Welcome back 👋</h1>
-					<p id="details">
-						Enter your account information to access the game.
-					</p>
+						<!--  Affichage des erreurs / succès -->
+						<?php if (!empty($errors)): ?>
+							<div class="errors" style="color: red; margin-bottom: 15px;">
+								<ul>
+									<?php foreach ($errors as $error): ?>
+										<li><?= htmlspecialchars($error) ?></li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						<?php elseif ($success): ?>
+							<div class="success" style="color: green; margin-bottom: 15px;">
+								<?= htmlspecialchars($success) ?>
+							</div>
+						<?php endif; ?>
 
-					<!--  Affichage des messages -->
-					<?php if (!empty($errors)): ?>
-						<div class="errors" style="color: red; margin-bottom: 15px;">
-							<ul>
-								<?php foreach ($errors as $error): ?>
-									<li><?= htmlspecialchars($error) ?></li>
-								<?php endforeach; ?>
-							</ul>
+						<!--  Formulaire de connexion -->
+						<form class="form-login" action="actions/login_action.php" method="post">
+							<label for="email">Email</label>
+							<input class="input" name="email" type="email" placeholder="Example@email.com" required>
+
+							<label for="password">Password</label>
+							<input class="input" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
+
+							<button type="submit" id="check-button">
+								<span id="txt-button">Sign in</span>
+							</button>
+						
+
+						<!-- Ligne de séparation -->
+						<div class="flex align-items-center">
+							<div class="border-bottom height-1 w-full"></div>
+							<div class="flex bg-white p1">
+								<span class="mt-3">Or</span>
+							</div>
+							<div class="border-bottom height-1 w-full"></div>
 						</div>
-					<?php elseif ($success): ?>
-						<div class="success" style="color: green; margin-bottom: 15px;">
-							<?= htmlspecialchars($success) ?>
-						</div>
-					<?php endif; ?>
 
-					<!--  Formulaire de connexion -->
-					<form class="form-login" action="actions/login_action.php" method="post">
-						<label for="email">Email</label>
-						<input class="input" name="email" type="email" placeholder="Example@email.com" required>
-
-						<label for="password">Password</label>
-						<input class="input" name="password" type="password" placeholder="Minimum 8 characters" required minlength="8">
-
-						<button type="submit" id="check-button">
-							<span id="txt-button">Sign in</span>
+						<!-- Bouton Google -->
+						<button id="google-button">
+							<div class="flex align-items-center justify-content-center gap-1">
+								<img id="google" width="25px" src="assets/images/google.png" />
+								<span>Sign in with Google</span>
+							</div>
 						</button>
-					
 
-					<!-- Ligne de séparation -->
-					<div class="flex align-items-center">
-						<div class="border-bottom height-1 w-full"></div>
-						<div class="flex bg-white p1">
-							<span class="mt-3">Or</span>
-						</div>
-						<div class="border-bottom height-1 w-full"></div>
+						<!-- Lien vers inscription -->
+						<span id="txt-link1">No account? <a href="register.php" id="link2">Sign up</a></span>
 					</div>
-
-					<!-- Bouton Google -->
-					<button id="google-button">
-						<div class="flex align-items-center justify-content-center gap-1">
-							<img id="google" width="25px" src="assets/images/google.png" />
-							<span>Sign in with Google</span>
-						</div>
-					</button>
-
-					<!-- Lien vers inscription -->
-					<span id="txt-link1">No account? <a href="register.php" id="link2">Sign up</a></span>
+				</div>
+			</form>
+				<div class="w-50">
+					<img id="image" src="assets/images/Image.jpg" alt="login image" />
 				</div>
 			</div>
-		</form>
-			<div class="w-50">
-				<img id="image" src="assets/images/Image.jpg" alt="login image" />
-			</div>
 		</div>
-	</div>
-</body>
-</html>
+	</body>
+	</html>

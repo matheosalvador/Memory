@@ -17,20 +17,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validation email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Email invalide.";
+        $errors[] = "Invalid email.";
     }
 
     // Validation pseudo
     if (strlen($pseudo) < 4) {
-        $errors[] = "Le pseudo doit faire au moins 4 caractères.";
+        $errors[] = "The pseudo must be at least 4 characters long.";
     }
 
     // Validation mot de passe
     if ($password !== $confirm_password) {
-        $errors[] = "Les mots de passe ne correspondent pas.";
+        $errors[] = "Passwords do not match.";
     }
     if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$/', $password)) {
-        $errors[] = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
+        $errors[] = "The password must contain at least 8 characters, one uppercase letter, one number, and one special character.";
     }
 
     // Vérification existence email ou pseudo
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("SELECT * FROM main_user WHERE email = :email OR pseudo = :pseudo");
     $stmt->execute(['email' => $email, 'pseudo' => $pseudo]);
     if ($stmt->fetch()) {
-        $errors[] = "Email ou pseudo déjà utilisé.";
+        $errors[] = "Email or pseudo already in use.";
     }
 
     // Si pas d'erreurs, insertion
@@ -50,15 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'mdp' => $hashed,
             'pseudo' => $pseudo
         ]);
-        $success = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
+        $success = "Registration successful! You can now log in.";
+    
+        $_SESSION['success'] = $success;
+        header("Location: ../login.php");
+        exit;
+    } else {
+        // Stockage des messages pour affichage
+        $_SESSION['errors'] = $errors;
+        $_SESSION['old'] = ['email' => $email, 'pseudo' => $pseudo];
+        header("Location: ../register.php");
+        exit;
     }
-
-    // Stockage des messages pour affichage
-    $_SESSION['errors'] = $errors;
-    $_SESSION['success'] = $success;
-    $_SESSION['old'] = ['email' => $email, 'pseudo' => $pseudo];
-
-    // Redirection vers le formulaire
-    header("Location: ../login.php");
-    exit;
 }

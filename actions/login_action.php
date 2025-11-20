@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user['id'];      // ← uniformiser le nom avec ton autre page
         $_SESSION['pseudo'] = $user['pseudo'];
         $_SESSION['email'] = $user['email'];
-        $_SESSION['success'] = "Connexion réussie ! Bienvenue " . htmlspecialchars($user['pseudo']) . " 👋";
+        $_SESSION['success'] = "Login successful! Welcome. " . htmlspecialchars($user['pseudo']) . " 👋";
 
         header('Location: ../myAccount.php');
         exit;
     } else {
         //  Erreur de connexion
-        $_SESSION['errors'] = ["Email ou mot de passe incorrect."];
+        $_SESSION['errors'] = ["Incorrect email or password."];
         header('Location: ../login.php');
         exit;
     }

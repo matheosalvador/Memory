@@ -32,9 +32,9 @@ if (isset($_FILES['picture_change']) && $_FILES['picture_change']['error'] === U
      
         //  Déplacement du fichier image
     if (move_uploaded_file($fileTmpPath, $destPath)) {
-        $_SESSION['success'] = "Photo de profil mise à jour avec succès.";
+        $_SESSION['success'] = "Profile picture updated successfully.";
     } else {
-        $_SESSION['errors'][] = "Erreur lors du téléchargement du fichier.";
+        $_SESSION['errors'][] = "Error while uploading the file.";
     }
 }
 

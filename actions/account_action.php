@@ -20,16 +20,16 @@ $id = $_SESSION["user_id"];
 
     // Validation email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Email invalide.";
+    $errors[] = "Invalid email.";
 }
 
 if (checkEmailExists($email, $id)) {
-    $errors[] = "Email déjà utilisé.";
+    $errors[] = "Email already in use.";
 }
     
     // Validation password
 if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$/', $_POST["password"])) {
-    $errors[] = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
+    $errors[] = "The password must contain at least 8 characters, one uppercase letter, one number, and one special character.";
 }
 
     //  Verification des erreurs avant de sauvegarder  
