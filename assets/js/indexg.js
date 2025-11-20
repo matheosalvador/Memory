@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const endgamePopup = document.getElementById('endgame-popup');
     const scoreValue = document.getElementById('score-value');
-    const closeBtn = document.getElementById('restartbtn');
+    const restartBtn = document.getElementById('restartbtn');
     const startBtn = document.getElementById('playbtn');
     const generateBtn = document.getElementById('generatebtn');
     const gridSizeS = document.getElementById('gridsizes');
@@ -334,8 +334,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
     }
 
-    closeBtn.addEventListener('click', () => {
-      endgamePopup.style.display = 'none';
+    restartBtn.addEventListener('click', () => {
+        endgamePopup.style.display = 'none';
+        generateGrid();
     });
 
     function startTimer() {
