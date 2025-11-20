@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentDifficulty =
             size === "4x4" ? 1 :
-            size === "6x6" ? 1 :
-            size === "8x8" ? 1 :
+            size === "6x6" ? 2 :
+            size === "8x8" ? 3 :
             null;
 
         const pairsCount = {
