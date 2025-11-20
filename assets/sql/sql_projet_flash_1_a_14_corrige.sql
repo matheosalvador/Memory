@@ -144,6 +144,7 @@ SELECT * FROM main_user WHERE email = 'jnffbj@gmail.com' AND mdp ='gfbyvuhgeu764
 
 
 -- user story 6
+--a mettre dans game
 SELECT 
 g.game_name,
 m.pseudo,
@@ -270,7 +271,7 @@ WHERE id=24
     
 -- user story 13
 -- valeur pour tester la messagerie privée (insérer des valeurs)
-INSERT INTO mesagerie_privee(user_sender_id, user_receiver_id, msg, is_read, created_at, read_at) VALUES
+INSERT INTO messagerie_privee(user_sender_id, user_receiver_id, msg, is_read, created_at, read_at) VALUES
 (1, 2, 'Yo ShadowNova, prêt pour la session de test ?', 1, '2025-10-16 08:00:00', '2025-10-16 08:05:00'),
 (2, 1, 'Toujours prêt PixelRider ', 1, '2025-10-16 08:07:00', '2025-10-16 08:08:00'),
 (1, 3, 'Salut FrostByteX, tu peux checker mon dernier commit ?', 0, '2025-10-16 09:00:00', NULL),
@@ -282,7 +283,7 @@ INSERT INTO mesagerie_privee(user_sender_id, user_receiver_id, msg, is_read, cre
 (3, 4, 'EchoDrift, t’as vu le nouveau patch du jeu ?', 1, '2025-10-15 19:00:00', '2025-10-15 19:02:00'),
 (4, 3, 'Oui FrostByteX, les graphismes sont fous !', 1, '2025-10-15 19:05:00', '2025-10-15 19:06:00');
 
-SELECT (
+SELECT 
     m.id,
     sender.pseudo AS sender_pseudo,
     receiver.pseudo AS receiver_pseudo,
@@ -292,11 +293,11 @@ SELECT (
     m.is_read
 FROM messagerie_privee AS m
 JOIN main_user AS sender
-ON sender.id = m.user_sender_id
+    ON sender.id = m.user_sender_id
 JOIN main_user AS receiver 
-ON receiver.id = m.user_receiver_id
+    ON receiver.id = m.user_receiver_id
 JOIN (
-    SELECT (
+    SELECT 
         (user_sender_id + user_receiver_id) AS conversation_sum,
         MAX(created_at) AS last_message_date
     FROM messagerie_privee
@@ -306,8 +307,6 @@ JOIN (
     ON (m.user_sender_id + m.user_receiver_id) = conv.conversation_sum
     AND m.created_at = conv.last_message_date
 WHERE 1 IN (m.user_sender_id, m.user_receiver_id)
-    )
-    )
 ORDER BY m.created_at DESC;
 -- fin de user story 13
 
@@ -448,7 +447,7 @@ FROM (
     GROUP BY YEAR(s.created_at), MONTH(s.created_at)
 ) AS stats
 ORDER BY stats.mois ASC;
-
+------------------------------------------------------
 SELECT 
     stats.annee,
     stats.mois,
@@ -460,7 +459,7 @@ SELECT
     (SELECT g.game_name
      FROM score s2
      JOIN game g ON g.id = s2.game_id
-     WHERE s2.user_id = :player_id
+     WHERE s2.user_id = 1
        AND YEAR(s2.created_at) = stats.annee
        AND MONTH(s2.created_at) = stats.mois
      GROUP BY s2.game_id
@@ -469,6 +468,22 @@ SELECT
 
     -- SCORE MOYEN DU JOUEUR DANS LE MOIS
     stats.score_moyen
+
+FROM (
+    SELECT 
+        YEAR(s.created_at) AS annee,
+        MONTH(s.created_at) AS mois,
+        COUNT(*) AS total_parties,
+        AVG(s.score) AS score_moyen
+    FROM score s
+    WHERE s.user_id = 1
+      AND YEAR(s.created_at) = 2025
+    GROUP BY YEAR(s.created_at), MONTH(s.created_at)
+) AS stats
+
+ORDER BY stats.mois ASC;
+------------------------------------------------------
+
 
 SELECT 
     stats.annee,
@@ -502,3 +517,4 @@ FROM (
 ) AS stats
 
 ORDER BY stats.mois ASC;
+
