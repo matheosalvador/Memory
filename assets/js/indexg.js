@@ -442,6 +442,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // event bouton generation
     generateBtn.addEventListener("click", generateGrid);
+
+
     // btn animation de zinzin
     startBtn.addEventListener("click", () => {
 
