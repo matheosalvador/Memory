@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const FILES_BY_DIFFICULTY = {
         easy:  `${BASE_URL}/assets/audio/footer-contact-puissance4/easy.mp3`,
         medium:`${BASE_URL}/assets/audio/footer-contact-puissance4/Moderate.mp3`,
-        hard:  `${BASE_URL}/assets/audio/footer-contact-puissance4/Hardcore.mp3`,
+        hard:  `${BASE_URL}/assets/audio/footer-contact-puissance4/hard.mp3`,
         nightmare:`${BASE_URL}/assets/audio/footer-contact-puissance4/Hardcore.mp3`
     };
 
