@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Object.values(winSFX).forEach(audio => audio.volume = sfxVolume);
     });
 
-    // fct de melange des cartes
+    // fct de melange des cartes utilisant l’algorithme de Fisher–Yates (version moderne de Knuth)
     function shuffle(array) {
         let i = array.length, j, temp;
         while (i--) {

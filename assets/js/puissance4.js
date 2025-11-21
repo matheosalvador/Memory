@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
             difficultySelect.appendChild(opt);
         }
         difficultySelect.value = "nightmare";
-        alert("🔥 Mode NIGHTMARE débloqué !");
+        alert("🔥 Mode NIGHTMARE débloqué ! Bonne chance vous en aurez besoin.");
         updateBackgroundMusic();
     }
 
