@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startBtn.disabled = true;
     startBtn.style.opacity = 0.3;
 
-        // AUDIO (optionel mais on a voulu lol)
+    // AUDIO (optionel mais on a voulu lol)
     let bgVolume = 0.5;
     let sfxVolume = 0.5;
     let currentBG = null;
@@ -49,11 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // boucle bg music
     Object.values(bgMusics).forEach(a => { a.loop = true; a.volume = bgVolume;});
 
+    // reglage volume music background
     document.getElementById("bgVolume").addEventListener("input", e => {
         bgVolume = parseFloat(e.target.value);
         if (currentBG) currentBG.volume = bgVolume;
     });
 
+    // reglage volume sfx 
     document.getElementById("sfxVolume").addEventListener("input", e => {
         sfxVolume = parseFloat(e.target.value);
         Object.values(matchSFX).forEach(audio => audio.volume = sfxVolume);
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const size = gridSizeS.value;
         const theme = themeS.value;
 
+        //difficulty par id (pour les score affiché dans la page score)
         currentDifficulty =
             size === "4x4" ? 1 :
             size === "6x6" ? 2 :
@@ -160,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.classList.add("flipped");
         flippedCards.push(card);
 
+        // lorsque 2 cartes de meme id ...
         if(flippedCards.length === 2) {
             checkMatch();
         }
@@ -229,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.zIndex = "";
         });
 
-        // video
+        // parametre video
         const video = document.createElement("video");
         video.src = '../../assets/video/bettergalaxy.mp4';
         video.autoplay = true;
@@ -261,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
             serpentineOrder.push(...rowCards);
         }
 
+        // animation cartes fin
         setTimeout(() => {
 
             const centerX = window.innerWidth / 2;
@@ -288,13 +293,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }, 500);
 
-        // 4sec
+        // après 4sec
         setTimeout(() => {
             video.style.opacity = "0";
             setTimeout(() => video.remove(), 1000);
         }, 4000);
 
-        // 5sec (callback)
+        // après 5sec (callback)
         setTimeout(() => {
             if (callback) callback();
         }, 5000);
@@ -308,6 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
         stopTimer(); // stop timer
 
         const presentationText = document.querySelector('.presentation-text');
+
         //text caché
         presentationText.style.opacity = '0';
         presentationText.style.transition = 'opacity 0.5s';
@@ -317,18 +323,19 @@ document.addEventListener("DOMContentLoaded", () => {
         winAudio.currentTime = 0;
         winAudio.play();
     
+        // joue l'animation de fin (optionel mais c beau)
         playWinAnimation(() => {
 
             //end animation
             const score = milliseconds;
-            scoreValue.textContent = `${score} ms`; // 25300 ms
+            scoreValue.textContent = `${score} ms`;
 
             //réafficheage text
             presentationText.style.opacity = '1';
 
 
-
-            endgamePopup.style.display = 'flex'; // ou 'block' selon votre CSS
+            // parametre popup
+            endgamePopup.style.display = 'flex';
 
 
 
@@ -368,6 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
         generateGrid();
     });
 
+    // chrono
     function startTimer() {
         clearInterval(timerInterval);
         milliseconds = 0;
