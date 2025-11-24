@@ -1,0 +1,237 @@
+/* ------------------------------------------------------
+   style.css — Style général du menu de configuration
+   Jeu de l'Oie — Version multi-joueurs + IA
+-------------------------------------------------------*/
+
+/* RESET SIMPLE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* CONTAINER PRINCIPAL */
+.config-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* FORMULAIRE */
+.config-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.config-form select,
+.config-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 12px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+
+/* BOUTON LANCER LA PARTIE */
+.btn-start {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-start:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #16a34a, #166534);
+}
+
+.btn-start:active {
+    transform: scale(0.97);
+}
+
+/* BLOC DES JOUEURS GENERÉ VIA JS */
+#playersConfig {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.player-block {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+}
+
+.player-block:last-child {
+    border-bottom: none;
+}
+
+.player-block h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.role-select {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.role-select select {
+    flex: 1;
+}
+
+.ia-settings {
+    padding-left: 10px;
+    border-left: 2px solid rgba(255,255,255,0.1);
+    margin-top: 8px;
+}
+
+.ia-settings label {
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .config-container {
+        max-width: 95%;
+    }
+}/* Style du Jeu de l'Oie */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
+    color: #222;
+}
+
+/* CONTAINER */
+.game-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* FORMULAIRE */
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.settings label {
+    font-weight: bold;
+}
+
+.settings select,
+.settings button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #888;
+    font-size: 16px;
+}
+
+.settings button {
+    background: #2ecc71;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.settings button:hover {
+    background: #27ae60;
+}
+
+/* BOARD (PLATEAU) */
+.board {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background: #eee;
+    border: 1px solid #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 4px;
+    position: relative;
+}
+
+.player-token {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+.p1 { background: red; }
+.p2 { background: blue; }
+.p3 { background: green; }
+.p4 { background: orange; }
+

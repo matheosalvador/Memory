@@ -58,7 +58,7 @@ include __DIR__ . '/partials/header-terminé.php';
 
         <a href="games/memory/index.php" class="game-option">🧠 Memory Game</a>
         <a href="games/puissance_4/index.php" class="game-option">⭕ Puissance 4</a>
-        <a class="game-option disabled">🔒  Doctor Who (coming soon)</a>
+        <a href="games/jeux_de_l_oie/index.php" class="game-option">🎲 Jeux de l'oie</a>
 
         <button id="closeGameMenu">Close</button>
     </div>
@@ -74,7 +74,7 @@ include __DIR__ . '/partials/header-terminé.php';
         </figure>
         <figure>
             <img src="assets/images/game2.jpg" alt="game2">
-            <figcaption data-audio="assets/audio/accueil/doctorwho.mp3">Doctor Who</figcaption>
+            <figcaption data-audio="assets/audio/accueil/doctorwho.mp3">Jeux de l'oie </figcaption>
         </figure>
         <figure>
             <img src="assets/images/game3.jpg" alt="game3">
