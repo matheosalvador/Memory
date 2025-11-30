@@ -1,22 +1,26 @@
-// index.js - Gestion du menu de sélection et redirection
-
 document.addEventListener("DOMContentLoaded", () => {
-    const startBtn = document.getElementById("startGameBtn");
     const playerCountSelect = document.getElementById("playerCount");
-    const modeSelect = document.getElementById("gameMode");
+    const playersConfig = document.getElementById("playersConfig");
 
-    if (!startBtn) return;
+    // Génère les champs au chargement
+    updatePlayersFields(playerCountSelect.value);
 
-    startBtn.addEventListener("click", () => {
-        const playerCount = playerCountSelect.value;
-        const mode = modeSelect.value;
-
-        if (!playerCount || !mode) {
-            alert("Veuillez choisir le nombre de joueurs et un mode de jeu.");
-            return;
-        }
-
-        // Redirection vers la page du jeu
-        window.location.href = `game.php?players=${playerCount}&mode=${mode}`;
+    // Met à jour les champs quand le nombre change
+    playerCountSelect.addEventListener("change", () => {
+        updatePlayersFields(playerCountSelect.value);
     });
 });
+
+function updatePlayersFields(count) {
+    const playersConfig = document.getElementById("playersConfig");
+    playersConfig.innerHTML = "";
+
+    for (let i = 1; i <= count; i++) {
+        playersConfig.innerHTML += `
+            <div class="player-block">
+                <label>Nom du joueur ${i} :</label>
+                <input type="text" name="player${i}Name" placeholder="Joueur ${i}" required>
+            </div>
+        `;
+    }
+}

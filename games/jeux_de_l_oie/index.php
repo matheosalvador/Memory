@@ -1,10 +1,10 @@
 <?php
-// index.php — Page de configuration du Jeu de l'Oie (PVP / PVsIA)
-// Cette page génère un formulaire permettant de sélectionner :
-// - Nombre de joueurs (2, 3, 4)
-// - Type de joueurs (Humains / IA)
-// - Noms des joueurs
-// - Difficulté des IA (IA-D3 par défaut)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+require_once __DIR__ . '/../../utils/helper.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,14 +13,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu de l'Oie – Configuration</title>
-    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/main.css">
-    <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
-    <!-- Lien vers style.css -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
 
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/main.css">
+    <link rel="stylesheet" href="<?= getBaseUrl(); ?>/assets/css/style.css">
+    <link rel="icon" type="image/png" href="<?= getBaseUrl(); ?>/assets/images/favicon.ico">
 </head>
-<body>
+
+<body class="config-page">
+
 <?php include "../../partials/header-terminé.php"; ?>
+
 <div class="config-container">
     <h1>⚙ Configuration du Jeu de l'Oie</h1>
 
@@ -36,18 +39,50 @@
 
         <hr>
 
-        <!-- Section joueurs dynamiques (remplie via JS) -->
+        <!-- Choix du mode de jeu -->
+        <label for="mode">Mode de jeu :</label>
+        <select name="mode" id="mode">
+            <option value="pvp">Joueur vs Joueur</option>
+            <option value="pvai">Joueur vs IA</option>
+        </select>
+
+        <hr>
+
+        <!-- Champs des noms de joueurs générés via JS -->
         <div id="playersConfig"></div>
 
         <hr>
 
-        <!-- Bouton de lancement -->
+        <!-- Lancer la partie -->
         <button type="submit" class="btn-start">🚀 Lancer la partie</button>
     </form>
 </div>
 
-<!-- Script JS qui gère l'affichage dynamique des joueurs -->
-<script src="../../assets/js/index.js"></script>
+<script>
+    // Génération dynamique des champs joueurs
+    const playerCountSelect = document.getElementById('playerCount');
+    const playersConfigDiv = document.getElementById('playersConfig');
+
+    function renderPlayerFields(count) {
+        playersConfigDiv.innerHTML = '';
+        for (let i = 1; i <= count; i++) {
+            const div = document.createElement('div');
+            div.className = 'player-block';
+            div.innerHTML = `
+                <h3>Joueur ${i}</h3>
+                <label>Nom :</label>
+                <input type="text" name="playerName[]" placeholder="Nom du joueur ${i}" required>
+            `;
+            playersConfigDiv.appendChild(div);
+        }
+    }
+
+    renderPlayerFields(playerCountSelect.value);
+
+    playerCountSelect.addEventListener('change', (e) => {
+        renderPlayerFields(e.target.value);
+    });
+</script>
 
 </body>
 </html>
