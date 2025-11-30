@@ -59,6 +59,7 @@ function initPlayers() {
             name: window.PLAYER_NAMES[i-1] || `Joueur ${i}`,
             position: 1,
             skip: 0,
+            turns: 0, // compteur de tours
             isAI: (window.GAME_MODE === "pvai" && i === window.PLAYER_COUNT),
             aiSmartRerolls: 1
         });
@@ -145,6 +146,34 @@ function renderTokens() {
 }
 
 // ============================================================
+// ENREGISTREMENT SCORE
+// ============================================================
+function saveScore(player) {
+    const payload = {
+        game_id: 3,          // ID pour "Jeu de l'oie"
+        difficulty: "1",
+        time: 0,
+        data: {
+            player: player.name,
+            position: player.position,
+            turns: player.turns
+        }
+    };
+
+    fetch('../../utils/fct-scores.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "OK") console.log("Score enregistré ! ID:", data.id);
+        else console.error("Erreur score :", data.message);
+    })
+    .catch(err => console.error("Erreur fetch :", err));
+}
+
+// ============================================================
 // TOUR PAR TOUR
 // ============================================================
 function nextPlayer() {
@@ -160,6 +189,7 @@ function rollDice() { return Math.floor(Math.random() * 6) + 1; }
 
 function playTurn() {
     const p = players[currentPlayer];
+    p.turns++;
 
     if (p.skip > 0) {
         alert(`${p.name} passe son tour.`);
@@ -188,6 +218,8 @@ function playTurn() {
         alert(`🎉 ${p.name} gagne !`);
         rollBtn.disabled = true;
         caseInfo.textContent = "";
+
+        saveScore(p); // enregistre score à la fin
         return;
     }
 

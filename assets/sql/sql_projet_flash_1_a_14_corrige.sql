@@ -521,3 +521,12 @@ ORDER BY stats.mois ASC;
 
 
 ALTER TABLE score DROP COLUMN score;
+-- AJOUT DES NOUVEAUX JEUX
+INSERT INTO game (game_name)
+VALUES 
+    ('Puissance 4'),
+    ('Jeu de l\'oie');
+
+-- AJOUT DU JSON POUR STOCKER LES DONNÉES DES AUTRES JEUX
+ALTER TABLE score
+ADD COLUMN data JSON NULL AFTER time;
